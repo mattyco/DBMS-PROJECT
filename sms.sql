@@ -21,11 +21,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `username` varchar(16) NOT NULL,
-  `adminID` int(11) NOT NULL,
+  `Sno` int(10) NOT NULL AUTO_INCREMENT,
+  `Rollno` varchar(9) NOT NULL,
   `password` varchar(32) NOT NULL,
-  `email` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `email` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`Rollno`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -34,23 +35,24 @@ CREATE TABLE `admin` (
 --
 
 CREATE TABLE `course` (
-  `courseID` int(11) NOT NULL,
+  `courseID` varchar(5) NOT NULL,
   `courseName` varchar(45) NOT NULL,
   `classroom` varchar(45) NOT NULL,
   `slot` enum('A','B','C','D','E') NOT NULL,
   `totalClasses` int(11) NOT NULL DEFAULT '0',
-  `possibleLeaves` int(11) DEFAULT '0',
   `credits` enum('3','4') NOT NULL,
-  `considerInCGPA` enum('Y','N') DEFAULT 'N',
-  `teacherID` int(11) DEFAULT NULL
+  `considerInCGPA` enum('Y','N') DEFAULT 'N',   --not sure if this is needed
+  `teacherID` varchar(9) DEFAULT NULL,
+  PRIMARY KEY (`courseID`,`teacherID`), 
+  FOREIGN KEY (`teacherID`) REFERENCES `teacher`()		--complete
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `course`
 --
 
-INSERT INTO `course` (`courseID`, `courseName`, `classroom`, `slot`, `totalClasses`, `possibleLeaves`, `credits`, `considerInCGPA`, `teacherID`) VALUES
-(1, 'DAA', 'ELHC101', 'A', 40, 8, '4', 'Y', 1);
+--INSERT INTO `course` (`courseID`, `courseName`, `classroom`, `slot`, `totalClasses`, `possibleLeaves`, `credits`, `considerInCGPA`, `teacherID`) VALUES
+--(1, 'DAA', 'ELHC101', 'A', 40, 8, '4', 'Y', 1);
 
 -- --------------------------------------------------------
 
@@ -108,22 +110,22 @@ INSERT INTO `mess` (`messName`, `messType`, `dailyCharges`) VALUES
 --
 
 CREATE TABLE `student` (
-  `studentID` int(11) NOT NULL,
+  `Rollno` varchar(9) NOT NULL PRIMARY KEY,
   `studentName` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `department` varchar(45) NOT NULL,
   `birthDate` varchar(14) NOT NULL,
   `batch` varchar(45) NOT NULL,
-  `registeredMess` varchar(45) DEFAULT NULL,
-  `CGPA` int(11) DEFAULT NULL
+  `CGPA` int(11) DEFAULT NULL,					--NEEDED?
+  'address' varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`studentID`, `studentName`, `email`, `department`, `birthDate`, `batch`, `registeredMess`, `CGPA`) VALUES
-(150020, 'Kiran', 'k@k.com', 'CSE', '221197', 'J', 'A', 7);
+--INSERT INTO `student` (`studentID`, `studentName`, `email`, `department`, `birthDate`, `batch`, `registeredMess`, `CGPA`) VALUES
+--(150020, 'Kiran', 'k@k.com', 'CSE', '221197', 'J', 'A', 7);
 
 -- --------------------------------------------------------
 
@@ -132,12 +134,11 @@ INSERT INTO `student` (`studentID`, `studentName`, `email`, `department`, `birth
 --
 
 CREATE TABLE `student_has_course` (
-  `studentID` int(11) NOT NULL,
-  `teacherID` int(11) NOT NULL,
-  `courseID` int(11) NOT NULL,
+  `Sno` int(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `studentID` varchar(9) NOT NULL,
+  `courseID` varchar(5) NOT NULL,
   `leavesTaken` int(11) DEFAULT NULL,
-  `grade` enum('S','A','B','C','D','E','F','R') DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Dumping data for table `student_has_course`
@@ -175,15 +176,15 @@ INSERT INTO `student_taken_mess` (`studentID`, `messName`, `month`, `year`, `ext
 --
 
 CREATE TABLE `teacher` (
-  `teacherID` int(11) NOT NULL,
-  `username` varchar(16) NOT NULL,
+  `Rollno` varchar(9) NOT NULL PRIMARY KEY,
+  'contactNo' int(10) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(32) NOT NULL,
   `teacherName` varchar(45) NOT NULL,
   `startDate` varchar(14) NOT NULL,
   `birthDate` varchar(14) DEFAULT NULL,
   `department` varchar(45) DEFAULT NULL,
-  `designation` varchar(45) DEFAULT NULL
+  `designation` varchar(45) DEFAULT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
