@@ -44,7 +44,7 @@ CREATE TABLE `course` (
   `considerInCGPA` enum('Y','N') DEFAULT 'N',   --not sure if this is needed
   `teacherID` varchar(9) DEFAULT NULL,
   PRIMARY KEY (`courseID`,`teacherID`), 
-  FOREIGN KEY (`teacherID`) REFERENCES `teacher`()		--complete
+  FOREIGN KEY (`teacherID`) REFERENCES `teacher`(`Rollno`)		--completed
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -88,7 +88,7 @@ CREATE TABLE `members` (
 --
 -- Table structure for table `mess`
 --
-
+/*
 CREATE TABLE `mess` (
   `messName` varchar(1) NOT NULL,
   `messType` enum('veg','non-veg') NOT NULL,
@@ -102,7 +102,7 @@ CREATE TABLE `mess` (
 INSERT INTO `mess` (`messName`, `messType`, `dailyCharges`) VALUES
 ('A', 'veg', 59),
 ('B', 'non-veg', 79);
-
+*/
 -- --------------------------------------------------------
 
 --
@@ -133,26 +133,26 @@ CREATE TABLE `student` (
 -- Table structure for table `student_has_course`
 --
 
-CREATE TABLE `student_has_course` (
+CREATE TABLE `preregistration` (
   `Sno` int(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `studentID` varchar(9) NOT NULL,
-  `courseID` varchar(5) NOT NULL,
+  `studentID` varchar(9) NOT NULL FOREIGN KEY REFERENCES `student`(`Rollno`)
+  `courseID` varchar(5) NOT NULL FOREIGN KEY REFERENCES `course`(`courseID`),
   `leavesTaken` int(11) DEFAULT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Dumping data for table `student_has_course`
 --
-
+/*
 INSERT INTO `student_has_course` (`studentID`, `teacherID`, `courseID`, `leavesTaken`, `grade`) VALUES
 (150020, 1, 1, 3, 'S');
-
+*/
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `student_taken_mess`
 --
-
+/*
 CREATE TABLE `student_taken_mess` (
   `studentID` int(11) NOT NULL,
   `messName` varchar(1) DEFAULT NULL,
@@ -168,7 +168,7 @@ CREATE TABLE `student_taken_mess` (
 
 INSERT INTO `student_taken_mess` (`studentID`, `messName`, `month`, `year`, `extraAmount`, `totalAmount`) VALUES
 (150020, 'A', '1', '2017', 500, 2500);
-
+*/
 -- --------------------------------------------------------
 
 --
@@ -190,7 +190,7 @@ CREATE TABLE `teacher` (
 --
 -- Dumping data for table `teacher`
 --
-
+/*
 INSERT INTO `teacher` (`teacherID`, `username`, `email`, `password`, `teacherName`, `startDate`, `birthDate`, `department`, `designation`) VALUES
 (1, 'teach', 't@t.com', '1234', 'Sujith', '221185', '121380', 'CSE', 'Teacher');
 
@@ -296,3 +296,4 @@ ALTER TABLE `student_has_course`
 ALTER TABLE `student_taken_mess`
   ADD CONSTRAINT `fk_messname` FOREIGN KEY (`messName`) REFERENCES `mess` (`messName`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_student` FOREIGN KEY (`studentID`) REFERENCES `student` (`studentID`) ON UPDATE CASCADE;
+*/
