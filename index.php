@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 <html>
-<title>SMS - NITC</title>
+<title>DSS - NITC</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="assets/css/main.css" />
@@ -61,33 +61,23 @@ body, html {
     <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
       <i class="fa fa-bars"></i>
     </a>
-    <a href="home.php" class="w3-bar-item w3-button">HOME</a>
+    <a href="index.php" class="w3-bar-item w3-button">HOME</a>
     <a href="php/teacher.php" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> TEACHER</a>
     <a href="php/student.php" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> STUDENT</a>
-    <a href="php/mess.php" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> MESS FEE</a>
-    <a href="php/attendance.php" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> ATTENDANCE</a>
-    <a href="login/logout.php" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
-      LOGOUT
-    </a>
   </div>
 
   <!-- Navbar on small screens -->
   <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-    <a href="home.php" class="w3-bar-item w3-button" onclick="toggleFunction()">HOME</a>
+    <a href="index.php" class="w3-bar-item w3-button" onclick="toggleFunction()">HOME</a>
     <a href="php/teacher.php" class="w3-bar-item w3-button" onclick="toggleFunction()">TEACHER</a>
     <a href="php/student.php" class="w3-bar-item w3-button" onclick="toggleFunction()">STUDENT</a>
-    <a href="php/mess.php" class="w3-bar-item w3-button" onclick="toggleFunction()">MESS FEE</a>
-    <a href="php/attendance.php" class="w3-bar-item w3-button">ATTENDANCE</a>
-    <a href="login/logout.php" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
-      LOGOUT
-    </a>
   </div>
 </div>
 
 <!-- First Parallax Image with Logo Text -->
 <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
   <div class="w3-display-middle" style="white-space:nowrap;">
-    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">STUDENT <span class="w3-hide-small">MANAGEMENT</span> SYSTEM - NITC</span>
+    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">DECISION <span class="w3-hide-small">SUPPORT</span> SYSTEM - NITC</span>
   </div>
 </div>
 
@@ -107,7 +97,7 @@ body, html {
       <p>National Institute of Technology, Calicut was set up in 1961 as Regional Engineering College Calicut (CREC), the ninth of its kind and the first one to be established during the Third Five-Year Plan period. Until the formation of Calicut University in 1963, the institute was affiliated with Kerala University. It was largely due to the efforts of Pattom Thanu Pillai, then Chief Minister of Kerala, that the institute came into being. Prof. S. Rajaraman, first principal of Government Engineering College, Thrissur was appointed as the special officer in 1961 to organise the activities of the college until M. V. Kesava Rao took charge as the first principal of the college. The classes were initially held at the Government Polytechnic at West Hill, before it moved to its present campus in 1963. The college started with an annual intake of 125 students for the undergraduate courses, on a campus of 120 hectares (1.2 km2).</p>
     </div>
   </div>
-  
+
 </div>
 
 <!-- Items -->
@@ -174,42 +164,41 @@ body, html {
   <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
   <div class="w3-row-padding w3-center">
     <div class="w3-col m3">
-      <img src="/w3images/p1.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
+      <img src="img/nitc1.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
     </div>
 
     <div class="w3-col m3">
-      <img src="/w3images/p2.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
+      <img src="img/nitc2.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
     </div>
 
     <div class="w3-col m3">
-      <img src="/w3images/p3.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
+      <img src="img/nitc3.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
     </div>
 
     <div class="w3-col m3">
-      <img src="/w3images/p4.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
+      <img src="img/nitc4.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
     </div>
   </div>
 
   <div class="w3-row-padding w3-center w3-section">
     <div class="w3-col m3">
-      <img src="/w3images/p5.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
+      <img src="img/nitc5.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
     </div>
 
     <div class="w3-col m3">
-      <img src="/w3images/p6.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
+      <img src="img/nitc6.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
     </div>
 
     <div class="w3-col m3">
-      <img src="/w3images/p7.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
+      <img src="img/nitc7.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
     </div>
 
     <div class="w3-col m3">
-      <img src="/w3images/p8.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
+      <img src="img/nitc8.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
     </div>
-    <a href = "#home"><button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">TOP ^</button></a>
+    <a href = "#"><button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">TOP ^</button></a>
   </div>
 </div>
-
 <!-- Modal for full size images on click-->
 <div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
   <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
@@ -231,7 +220,7 @@ body, html {
 
 <!-- Footer -->
 <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
-  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <a href="php/admin.php" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>Admin</a>
   <div class="w3-xlarge w3-section">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
     <i class="fa fa-instagram w3-hover-opacity"></i>
@@ -240,9 +229,9 @@ body, html {
     <i class="fa fa-twitter w3-hover-opacity"></i>
     <i class="fa fa-linkedin w3-hover-opacity"></i>
   </div>
-  
+
 </footer>
- 
+
 <!-- Add Google Maps -->
 <script>
 function myMap()
@@ -298,4 +287,3 @@ function toggleFunction() {
 
 </body>
 </html>
-
