@@ -63,21 +63,19 @@ width: 300px;
     <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
       <i class="fa fa-bars"></i>
     </a>
-    <a href="../home.php" class="w3-bar-item w3-button">HOME</a>
+    <a href="../index.php" class="w3-bar-item w3-button">HOME</a>
     <a href="teacher.php" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> TEACHER</a>
     <a href="student.php" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> STUDENT</a>
-    <a href="mess.php" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> MESS FEE</a>
-    <a href="attendance.php" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> ATTENDANCE</a>
     <a href="../login/logout.php" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
       LOGOUT
     </a>
   </div>
+
+  <!-- Navbar on small screens -->
  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-    <a href="../home.php" class="w3-bar-item w3-button" onclick="toggleFunction()">HOME</a>
+    <a href="../index.php" class="w3-bar-item w3-button" onclick="toggleFunction()">HOME</a>
     <a href="teacher.php" class="w3-bar-item w3-button" onclick="toggleFunction()">TEACHER</a>
     <a href="student.php" class="w3-bar-item w3-button" onclick="toggleFunction()">STUDENT</a>
-    <a href="mess.php" class="w3-bar-item w3-button" onclick="toggleFunction()">MESS FEE</a>
-    <a href="attendance.php" class="w3-bar-item w3-button">ATTENDANCE</a>
     <a href="../login/logout.php" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
       LOGOUT
     </a>
@@ -94,8 +92,8 @@ width: 300px;
     <!-- Wrapper -->
       <div id="wrapper">
 
-      <section id="intro" class="main"> 
-          
+      <section id="intro" class="main">
+
 
                   <?php
 $servername = "localhost";
@@ -294,7 +292,7 @@ $conn->close();
 ?>
 
 
-      
+
 </section>
 
 
@@ -307,7 +305,7 @@ $conn->close();
               <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
               <li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
             </ul>
-            
+
           </footer>
 
       </div>
@@ -319,7 +317,7 @@ $conn->close();
       <script src="../assets/js/main.js"></script>
 
 
- 
+
 <!-- Add Google Maps -->
 <script>
 function myMap()
@@ -372,4 +370,3 @@ function toggleFunction() {
 
 </body>
 </html>
-

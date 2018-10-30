@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 <html>
-<title>SMS - NITC</title>
+<title>DSS - NITC</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="assets/css/main.css" />
@@ -88,7 +88,7 @@ body, html {
 <!-- First Parallax Image with Logo Text -->
 <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
   <div class="w3-display-middle" style="white-space:nowrap;">
-    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity" id = "headnitc">STUDENT <span class="w3-hide-small">MANAGEMENT</span> SYSTEM - NITC</span>
+    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity" id = "headnitc">DECISION <span class="w3-hide-small">SUPPORT</span> SYSTEM - NITC</span>
   </div>
 </div>
 
@@ -108,7 +108,7 @@ body, html {
       <p>National Institute of Technology, Calicut was set up in 1961 as Regional Engineering College Calicut (CREC), the ninth of its kind and the first one to be established during the Third Five-Year Plan period. Until the formation of Calicut University in 1963, the institute was affiliated with Kerala University. It was largely due to the efforts of Pattom Thanu Pillai, then Chief Minister of Kerala, that the institute came into being. Prof. S. Rajaraman, first principal of Government Engineering College, Thrissur was appointed as the special officer in 1961 to organise the activities of the college until M. V. Kesava Rao took charge as the first principal of the college. The classes were initially held at the Government Polytechnic at West Hill, before it moved to its present campus in 1963. The college started with an annual intake of 125 students for the undergraduate courses, on a campus of 120 hectares (1.2 km2).</p>
     </div>
   </div>
-  
+
 </div>
 
 <!-- Items -->
@@ -241,9 +241,9 @@ body, html {
     <i class="fa fa-twitter w3-hover-opacity"></i>
     <i class="fa fa-linkedin w3-hover-opacity"></i>
   </div>
-  
+
 </footer>
- 
+
 <!-- Add Google Maps -->
 <script>
 function myMap()
@@ -299,4 +299,3 @@ function toggleFunction() {
 
 </body>
 </html>
-

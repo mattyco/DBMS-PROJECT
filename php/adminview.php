@@ -64,11 +64,9 @@ width: 300px;
     <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
       <i class="fa fa-bars"></i>
     </a>
-    <a href="../home.php" class="w3-bar-item w3-button">HOME</a>
+    <a href="../index.php" class="w3-bar-item w3-button">HOME</a>
     <a href="teacher.php" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> TEACHER</a>
     <a href="student.php" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> STUDENT</a>
-    <a href="mess.php" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> MESS FEE</a>
-    <a href="attendance.php" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> ATTENDANCE</a>
     <a href="../login/logout.php" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
       LOGOUT
     </a>
@@ -76,11 +74,9 @@ width: 300px;
 
   <!-- Navbar on small screens -->
  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-    <a href="../home.php" class="w3-bar-item w3-button" onclick="toggleFunction()">HOME</a>
+    <a href="../index.php" class="w3-bar-item w3-button" onclick="toggleFunction()">HOME</a>
     <a href="teacher.php" class="w3-bar-item w3-button" onclick="toggleFunction()">TEACHER</a>
     <a href="student.php" class="w3-bar-item w3-button" onclick="toggleFunction()">STUDENT</a>
-    <a href="mess.php" class="w3-bar-item w3-button" onclick="toggleFunction()">MESS FEE</a>
-    <a href="attendance.php" class="w3-bar-item w3-button">ATTENDANCE</a>
     <a href="../login/logout.php" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
       LOGOUT
     </a>
@@ -105,7 +101,7 @@ width: 300px;
 	$con = mysqli_connect($servername, $username, $password, $dbname);
 
 	// Check connection
-	if ($con->connect_error) 
+	if ($con->connect_error)
 	{
 		die("Connection failed: " . $con->connect_error);
 	}
@@ -118,26 +114,26 @@ width: 300px;
 				Add Student
 			</h2>
             <p>
-			
+
 				Enter studentID, teacherID, leaves taken and courseID, grade
-		
+
 			</p>
  			<form action="adminview.php?insert"  method = "post">
  				<p>Enter studentID&nbsp&nbsp<input type="number" name="studentID" id = "studentID"></p>
  				<p></p>
 				<p>Enter teacherID&nbsp&nbsp<input type="number" name="teacherID" id = "teacherID"></p>
  				<p></p>
- 				
+
 				<p>Enter CourseID&nbsp&nbsp<input type="number" name="courseID" id = "courseID"></p>
  				<p></p>
-				
+
  				<input type="submit" value="View Data" class="button big">
 			</form>
 		</section>';
 	}
 	else if(isset( $_GET['insert'] ))
 	{
-		
+
 
 		$get_stu="Select * from course where teacherID = $_POST[teacherID] and courseID = $_POST[courseID];" ;
 		$run_stu=mysqli_query($con,$get_stu);
@@ -176,26 +172,26 @@ width: 300px;
 					</div>
 			</div>';
 		}
-		echo '		
+		echo '
 		<section id="intro" class="main">
             <span class="icon fa-diamond major"></span>
             <h2>
 				Add Student
 			</h2>
             <p>
-			
+
 				Enter studentID, teacherID, and courseID.
-		
+
 			</p>
  			<form action="adminview.php?insert"  method = "post">
  				<p>Enter studentID&nbsp&nbsp<input type="number" name="studentID" id = "studentID"></p>
  				<p></p>
 				<p>Enter teacherID&nbsp&nbsp<input type="number" name="teacherID" id = "teacherID"></p>
  				<p></p>
- 				
+
 				<p>Enter CourseID&nbsp&nbsp<input type="number" name="courseID" id = "courseID"></p>
  				<p></p>
-				
+
  				<input type="submit" value="View Data" class="button big">
 			</form>
 		</section>';
@@ -225,19 +221,19 @@ width: 300px;
 				Add Student
 			</h2>
             <p>
-			
+
 				Enter studentID, teacherID, leaves taken and courseID, grade
-		
+
 			</p>
  			<form action="adminview.php?insert"  method = "post">
  				<p>Enter studentID&nbsp&nbsp<input type="number" name="studentID" id = "studentID"></p>
  				<p></p>
 				<p>Enter teacherID&nbsp&nbsp<input type="number" name="teacherID" id = "teacherID"></p>
  				<p></p>
- 				
+
 				<p>Enter CourseID&nbsp&nbsp<input type="number" name="courseID" id = "courseID"></p>
  				<p></p>
-				
+
  				<input type="submit" value="View Data" class="button big">
 			</form>
 		</section>';
@@ -245,16 +241,16 @@ width: 300px;
 	}
 
 	else
-	{	
+	{
 		$teacherUser=$_POST['teacherUser'];
 		$teacherPass=$_POST['teacherPass'];
-		
+
 		if($teacherUser=='krk' and $teacherPass=='2211')
 		{	//echo "HELLO1";
 			echo "<script>window.location.href='adminview.php?loggedin'</script>";
 			/*
 			header("Location: attendanceview.php?loggedin");
-		{	
+		{
 			//header("Location: attendanceview.php?loggedin");
 			header("Location: http://www.lifehacker.com");
 			echo "string";
@@ -262,7 +258,7 @@ width: 300px;
 			*/
 		}
 		else
-		{ //echo "ELSE";	
+		{ //echo "ELSE";
 			echo "<script>window.location.href='admin.php?failedlogin'</script>";
 			/*
 			header("Location: attendance.php?failedlogin");
@@ -310,7 +306,7 @@ width: 300px;
 
 ?>
 
-	  
+
     <!-- Wrapper -->
       <div id="wrapper">
 
@@ -325,7 +321,7 @@ width: 300px;
               <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
               <li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
             </ul>
-            
+
           </footer>
 
       </div>
@@ -337,7 +333,7 @@ width: 300px;
       <script src="../assets/js/main.js"></script>
 
 
- 
+
 <!-- Add Google Maps -->
 <script>
 function myMap()
@@ -390,4 +386,3 @@ function toggleFunction() {
 
 </body>
 </html>
-
