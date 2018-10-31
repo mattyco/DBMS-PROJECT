@@ -39,7 +39,7 @@ body, html {
 
 /* Third image (Contact) */
 .bgimg-3 {
-    background-image: url("img/nitc3.jpg");
+    background-image: url("img/nitc2.jpg");
     min-height: 400px;
 }
 
