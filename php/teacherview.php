@@ -1,3 +1,7 @@
+<?php
+session_start();
+ ?>
+
 <!DOCTYPE html>
 <html>
 <title>TEACHER - DSS</title>
@@ -108,8 +112,7 @@ width: 300px;
 		die("Connection failed: " . $con->connect_error);
 	}
 
-  $teacherdetails = parse_ini_file("../sample.ini");
-  $teacheruname = $teacherdetails['user'];
+  $teacheruname = $_SESSION['user'];
 
 	if(isset( $_GET['mycourses'] ))
 	{
@@ -133,10 +136,9 @@ width: 300px;
         if ($result->num_rows > 0) {
           echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Course ID</th><th>Course Name</th><th>Classroom</th><th>Slot</th></tr>";
             // output data of each row
-            file_put_contents("../sample.ini", "user = ".$teacheruname.PHP_EOL); //rewriting file
             while($row = $result->fetch_assoc()) {
                 echo "<tr><td>". $row["courseID"]."</td><td>"."<a href= teacherview.php?mycourses/".$row["courseName"].">".$row["courseName"]."</a>"."</td><td>".$row["classroom"]."</td><td>". $row["slot"]."</td></tr>";
-                file_put_contents("../sample.ini", "course[] = ".$row['courseName'].PHP_EOL, FILE_APPEND | LOCK_EX);
+                $_SESSION['course'][]=$row['courseName'];
             }
 
             echo "</table></div>";
@@ -219,14 +221,14 @@ width: 300px;
   {
     $iterated = false;
 
-    for ($i=0; $i<sizeof($teacherdetails['course']); $i++)
+    for ($i=0; $i<sizeof($_SESSION['course']); $i++)
       {
-          if (isset( $_GET['mycourses/'.$teacherdetails['course'][$i]]))
+          if (isset( $_GET['mycourses/'.$_SESSION['course'][$i]]))
             {
 
               echo '		<section id="intro" class="main">
                       <h2>
-          				'.$teacherdetails['course'][$i].'
+          				'.$_SESSION['course'][$i].'
           			</h2>
                       <p>
 
@@ -235,7 +237,7 @@ width: 300px;
                   </p>
             		</section>';
 
-                  $coursename = $teacherdetails['course'][$i];
+                  $coursename = $_SESSION['course'][$i];
 
                   $sql = "SELECT * FROM student_has_course h, student s, course c, teacher t where t.username = '$teacheruname' and c.courseName = '$coursename' and c.teacherID=t.teacherID and h.teacherID=t.teacherID and c.courseID = h.courseID and h.studentID = s.Rollno";
                   $result = $con->query($sql);
@@ -261,7 +263,8 @@ width: 300px;
 	 if (!$iterated)
 	{
 		$teacherUser=$_POST['teacherUser'];
-    file_put_contents("../sample.ini", "user = $teacherUser".PHP_EOL);
+    $_SESSION['loggedIn']=true;
+    $_SESSION['user']=$teacherUser;
     $teacherPass=$_POST['teacherPass'];
 		$get_stu="select * from teacher where username = '$teacherUser' AND password = '$teacherPass'";
 		$run_stu=mysqli_query($con,$get_stu);

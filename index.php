@@ -56,7 +56,12 @@ body, html {
 <body>
 
 <?php
-file_put_contents("sample.ini", ""); //reset login details
+// remove all session variables
+session_unset();
+
+// destroy the session
+if(isset($_SESSION))
+{session_destroy();}
  ?>
 
 <!-- Navbar (sit on top) -->
