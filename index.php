@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="css/lat.css">
 <link rel="stylesheet" href="css/font.css">
 <link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
 body, html {
@@ -70,14 +72,14 @@ if(isset($_SESSION))
     <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
       <i class="fa fa-bars"></i>
     </a>
-    <a href="index.php" class="w3-bar-item w3-button">HOME</a>
+    <a href="index.php" class="w3-bar-item w3-button w3-blue">HOME</a>
     <a href="php/teacher.php" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> TEACHER</a>
     <a href="php/student.php" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> STUDENT</a>
   </div>
 
   <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-    <a href="index.php" class="w3-bar-item w3-button" onclick="toggleFunction()">HOME</a>
+  <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium">
+    <a href="index.php" class="w3-bar-item w3-button w3-blue" onclick="toggleFunction()">HOME</a>
     <a href="php/teacher.php" class="w3-bar-item w3-button" onclick="toggleFunction()">TEACHER</a>
     <a href="php/student.php" class="w3-bar-item w3-button" onclick="toggleFunction()">STUDENT</a>
   </div>
@@ -86,7 +88,7 @@ if(isset($_SESSION))
 <!-- First Parallax Image with Logo Text -->
 <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
   <div class="w3-display-middle" style="white-space:nowrap;">
-    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">DECISION <span class="w3-hide-small">SUPPORT</span> SYSTEM - NITC</span>
+    <span class="w3-center w3-padding-large w3-white w3-xlarge w3-wide w3-animate-opacity">DECISION <span class="w3-hide-small w3-mobile">SUPPORT</span> SYSTEM - NITC</span>
   </div>
 </div>
 
@@ -251,9 +253,9 @@ window.onscroll = function() {myFunction()};
 function myFunction() {
     var navbar = document.getElementById("myNavbar");
     if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-black";
     } else {
-        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-black", "");
     }
 }
 
