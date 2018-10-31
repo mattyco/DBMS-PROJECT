@@ -11,7 +11,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Database: `sms`
+-- Database: `dss`
 --
 
 -- --------------------------------------------------------
@@ -22,10 +22,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `Sno` int(10) NOT NULL AUTO_INCREMENT,
-  `Rollno` varchar(9) NOT NULL,
+  `AdminID` varchar(9) NOT NULL,
   `password` varchar(32) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`Rollno`)
+  PRIMARY KEY (`AdminID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
@@ -184,90 +184,244 @@ CREATE TABLE `members` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mess`
---
-/*
-CREATE TABLE `mess` (
-  `messName` varchar(1) NOT NULL,
-  `messType` enum('veg','non-veg') NOT NULL,
-  `dailyCharges` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mess`
---
-
-INSERT INTO `mess` (`messName`, `messType`, `dailyCharges`) VALUES
-('A', 'veg', 59),
-('B', 'non-veg', 79);
-*/
--- --------------------------------------------------------
-
---
 -- Table structure for table `student`
 --
 
 CREATE TABLE `student` (
-  `Rollno` varchar(9) NOT NULL PRIMARY KEY,
-  `studentName` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
-  `department` varchar(45) NOT NULL,
-  `birthDate` varchar(14) NOT NULL,
-  `batch` varchar(45) NOT NULL,
-  `CGPA` int(11) DEFAULT NULL,					--NEEDED?
-  'address' varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` mediumint(8) unsigned NOT NULL auto_increment,
+  `RollNo` mediumint,
+  `studentName` varchar(255) default NULL,
+  `email` varchar(255) default NULL,
+  `department` varchar(255) default NULL,
+  `birthDate` varchar(255),
+  `batch` varchar(255) default NULL,
+  `CGPA` mediumint default NULL,
+  `address` varchar(255) default NULL,
+  PRIMARY KEY (`id`)
+) AUTO_INCREMENT=1;
 
---
--- Dumping data for table `student`
---
-
---INSERT INTO `student` (`studentID`, `studentName`, `email`, `department`, `birthDate`, `batch`, `registeredMess`, `CGPA`) VALUES
---(150020, 'Kiran', 'k@k.com', 'CSE', '221197', 'J', 'A', 7);
-
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (1,"Petra F. Workman","purus@eu.edu","ECE","1998-04-01","J",5,"P.O. Box 102, 8768 Velit. Street");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (2,"Stacey C. Munoz","arcu@luctusCurabitur.org","EEE","2001-03-21","G",7,"2213 Ut St.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (3,"Echo K. Robbins","tellus.eu@enim.org","ECE","1996-12-20","D",5,"4006 Risus. Rd.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (4,"Katelyn Castillo","Nunc.ullamcorper@sitamet.ca","CIVIL","1997-07-07","M",7,"P.O. Box 515, 8444 Montes, Av.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (5,"TaShya R. Browning","felis.orci.adipiscing@enimmi.net","EEE","1998-09-04","F",7,"221 Nunc Av.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (6,"Vielka Morris","Duis.sit@estmauris.edu","MECH","2000-07-08","K",7,"P.O. Box 723, 2284 At Rd.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (7,"Riley Slater","Suspendisse@nisi.edu","EEE","2000-05-05","G",8,"2867 Dictum Road");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (8,"Kieran Moss","purus.ac.tellus@molestie.com","CIVIL","1999-06-22","D",10,"5145 Mauris Ave");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (9,"Lawrence Z. Rich","In.tincidunt@erosturpis.ca","MECH","1996-05-17","H",10,"Ap #301-8538 Ac Rd.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (10,"Aurelia Lane","dui.Cum@Nuncsollicitudin.net","EEE","1998-09-29","A",8,"P.O. Box 914, 2401 Libero. Ave");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (11,"Howard P. Franks","malesuada@Pellentesqueultriciesdignissim.org","ECE","1997-11-26","N",9,"P.O. Box 599, 4114 Congue. Ave");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (12,"Eleanor N. Donovan","leo.Morbi.neque@dui.com","CIVIL","1997-04-19","H",7,"P.O. Box 963, 8258 Lacus. Street");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (13,"Evan Moore","consectetuer.adipiscing@ipsum.org","EEE","1997-01-27","C",9,"P.O. Box 270, 8592 Lacus Av.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (14,"Latifah N. Benjamin","malesuada.ut@dignissim.com","ECE","1995-12-17","C",5,"Ap #778-8322 Et Road");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (15,"Taylor Lawrence","Donec@consectetuer.net","EEE","1997-09-03","M",7,"Ap #840-2275 Nullam Road");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (16,"Whitney Stephens","quam@euduiCum.com","CIVIL","1996-09-01","J",8,"P.O. Box 153, 5287 Augue Rd.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (17,"Charissa B. Dillon","pede@adipiscingfringilla.edu","EEE","2001-09-23","K",7,"Ap #948-3502 Imperdiet Road");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (18,"Russell Mayer","sit.amet.ultricies@rutrumloremac.edu","EEE","1995-11-25","K",7,"7602 Aenean Avenue");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (19,"Lawrence Ford","vitae@tellusnon.ca","CSE","2001-05-15","G",9,"2612 Lobortis. Rd.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (20,"Chantale Phelps","Cras.sed.leo@feugiattellus.org","CSE","2001-06-18","I",8,"3538 Cras Rd.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (21,"Erasmus Downs","ornare.Fusce.mollis@nibhvulputatemauris.org","ECE","2000-04-17","D",5,"3668 Lacus. St.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (22,"Dustin Gordon","aliquet.lobortis@malesuadafringillaest.org","ECE","2000-07-24","A",5,"849-1015 Quam. Ave");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (23,"Gray Owen","Sed.molestie.Sed@quis.ca","ECE","1996-07-09","I",10,"5574 Nam Ave");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (24,"Rafael Dennis","Phasellus.nulla.Integer@tortor.net","ECE","1998-03-08","N",6,"P.O. Box 849, 5862 Orci. Ave");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (25,"Kyle F. Gilmore","nec.luctus.felis@blanditmattis.com","MECH","2000-06-30","E",6,"Ap #213-6527 Ultrices. Rd.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (26,"Alvin Medina","dolor.Quisque@vulputate.org","CIVIL","2001-07-16","E",8,"P.O. Box 384, 1450 Dictum St.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (27,"Ocean Snider","imperdiet.erat.nonummy@nisisem.com","CSE","1997-05-13","J",6,"4806 Odio St.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (28,"Yoshio Lee","risus.Quisque.libero@gravidanunc.com","EEE","1998-09-06","L",7,"Ap #544-3721 Nunc St.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (29,"Cailin T. Harrell","velit.Quisque.varius@afeugiattellus.org","MECH","1997-09-22","K",5,"3938 Dolor. St.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (30,"Emmanuel B. Gilliam","tincidunt.nunc.ac@dictum.net","CSE","2000-06-07","M",7,"2008 Suspendisse Av.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (31,"Chanda Parker","dui.Suspendisse.ac@nisiCum.ca","EEE","2000-08-17","L",5,"P.O. Box 362, 8982 Penatibus Av.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (32,"Justin Marks","ultrices.mauris.ipsum@nec.co.uk","CSE","1999-10-24","F",7,"Ap #436-2302 Accumsan Ave");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (33,"Anne Griffin","eu.eleifend.nec@diam.org","MECH","2000-07-25","J",6,"Ap #345-4823 Nec, Avenue");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (34,"Calvin D. Maldonado","vulputate.lacus@penatibuset.edu","CSE","1995-10-05","I",7,"P.O. Box 915, 1636 Cubilia St.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (35,"Tyrone Buckner","magna.Lorem@nislQuisque.net","MECH","2000-01-24","A",8,"602-3556 Donec Rd.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (36,"Lars Delgado","lobortis@facilisisloremtristique.ca","MECH","1998-09-29","B",7,"P.O. Box 667, 2530 Justo Av.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (37,"Kelly Joseph","Praesent.eu.dui@Maecenasiaculisaliquet.net","CIVIL","1999-05-14","K",5,"398-9925 Donec Rd.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (38,"Ignacia X. Shields","dictum.cursus.Nunc@Integermollis.co.uk","MECH","2001-04-11","I",10,"P.O. Box 526, 5654 Vulputate, Rd.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (39,"Latifah E. English","ut.odio.vel@justo.com","EEE","2000-11-10","J",5,"792-9402 Interdum Avenue");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (40,"Hasad Z. Padilla","tincidunt.nunc.ac@blanditNamnulla.org","ECE","1998-07-18","K",8,"Ap #267-7153 Erat Rd.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (41,"Aquila P. Fitzpatrick","nonummy.ipsum@eu.ca","EEE","1996-08-23","G",7,"3692 Nec Avenue");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (42,"Adena J. Skinner","dis.parturient.montes@Craspellentesque.com","ECE","1996-06-18","M",10,"9415 Sed Rd.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (43,"Griffith Bird","In.mi@amet.com","EEE","1998-05-15","I",5,"P.O. Box 295, 187 Iaculis Av.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (44,"Patricia E. Wagner","ligula.Aenean.euismod@Donecconsectetuermauris.net","ECE","2000-05-12","G",10,"529-9843 Consectetuer Av.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (45,"Graham Wheeler","nascetur.ridiculus.mus@lobortisnisi.net","EEE","2001-04-21","I",6,"3718 Posuere St.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (46,"Carl K. Zamora","sagittis@Incondimentum.edu","CSE","1996-03-07","I",6,"437-4873 Magna St.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (47,"Iliana Trevino","Phasellus.ornare@interdumenimnon.net","MECH","1996-03-30","I",6,"771-2523 Sed St.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (48,"Harrison Russo","velit.eget.laoreet@nonummy.co.uk","CSE","1997-03-14","J",5,"P.O. Box 203, 393 Sollicitudin Rd.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (49,"Lael Bell","Phasellus.libero@est.org","MECH","2001-04-17","A",9,"7281 Rhoncus. Road");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (50,"Oliver K. Hood","Pellentesque.ultricies.dignissim@risus.net","CIVIL","1996-04-07","L",10,"Ap #155-4665 Ante, Av.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (51,"Sonia D. Holt","amet.luctus@etmagnisdis.edu","ECE","1998-12-04","B",6,"P.O. Box 789, 1476 Pharetra. Rd.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (52,"Xena Clark","sapien.Cras@posuereatvelit.org","EEE","1996-02-19","B",7,"9345 Vel Street");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (53,"Ursula Green","arcu.vel@odiosempercursus.org","CIVIL","1998-11-24","B",5,"Ap #902-6198 Ac Road");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (54,"Micah T. Duke","posuere.at.velit@auctor.net","CIVIL","2001-09-24","E",6,"P.O. Box 278, 3540 Curabitur Rd.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (55,"Charles Buchanan","et@apurus.edu","CIVIL","1997-08-21","E",10,"Ap #948-2127 Faucibus Avenue");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (56,"George Pate","Aliquam@risus.co.uk","CIVIL","1998-02-24","H",6,"131-357 Suspendisse St.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (57,"Martena M. Cook","Duis@inaliquet.com","ECE","1997-05-21","K",9,"245-4677 Torquent Rd.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (58,"Grady Bush","Praesent.eu@nislsemconsequat.co.uk","CSE","2000-06-21","F",6,"920-8633 Malesuada Road");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (59,"Adele W. Yang","nisl@arcuetpede.net","ECE","1999-02-03","E",7,"8982 Arcu Street");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (60,"Slade Guzman","fringilla@egettincidunt.org","ECE","1996-04-02","B",8,"7806 Imperdiet Avenue");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (61,"Odysseus Buchanan","Duis@Sed.edu","CIVIL","1995-10-20","G",5,"5988 Commodo Road");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (62,"Nolan H. Patton","dictum.magna@pulvinar.co.uk","EEE","2001-08-27","G",7,"127 Amet Avenue");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (63,"Reagan E. Hood","Proin@vitaerisus.ca","MECH","1996-01-29","E",9,"P.O. Box 292, 6344 Nostra, Avenue");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (64,"Craig Gentry","Sed.et.libero@et.edu","CIVIL","1999-05-14","G",5,"277-5409 Auctor Road");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (65,"Nelle P. Tillman","mauris.aliquam.eu@risusquis.com","CSE","1996-08-17","E",9,"P.O. Box 963, 8997 Feugiat. Av.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (66,"Uriah Baird","adipiscing@sapienNunc.edu","ECE","1998-12-31","G",10,"P.O. Box 472, 2805 Nec Road");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (67,"Ivy E. Jacobson","neque.Morbi@pede.net","CSE","1998-08-18","K",10,"7498 Dui. St.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (68,"Caldwell Morse","tempor@necquam.co.uk","EEE","1997-07-13","E",10,"Ap #950-2932 Cursus Ave");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (69,"Hasad E. Lucas","eget.laoreet@euismodmauris.ca","ECE","1998-12-09","F",8,"Ap #368-818 Tellus. Road");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (70,"Quinlan M. Moses","cubilia.Curae@rhoncusDonecest.net","EEE","1996-03-03","J",9,"P.O. Box 990, 5709 Ac Ave");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (71,"Simon T. Harper","commodo.tincidunt@lacinia.net","EEE","1995-11-18","B",5,"Ap #304-7433 Congue, Rd.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (72,"Merritt Robertson","interdum.Curabitur@nonbibendum.org","EEE","2001-04-22","E",6,"542-2298 Quisque Av.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (73,"Armand B. Stone","risus.quis.diam@cursus.org","MECH","2001-03-01","K",8,"P.O. Box 189, 7247 Habitant St.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (74,"Guy Holland","tristique.aliquet.Phasellus@mauris.edu","CIVIL","1998-03-15","L",6,"P.O. Box 459, 7376 Dui Rd.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (75,"Hasad Z. Mathews","nonummy.ac@massaMauris.ca","CSE","2000-01-14","D",7,"Ap #871-1241 Duis Street");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (76,"Gray Mckinney","nec.eleifend.non@infelisNulla.net","EEE","1997-01-19","B",5,"6925 Arcu. Rd.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (77,"Caesar V. Pena","arcu.Sed@Nam.edu","MECH","1996-01-15","G",10,"994-1307 Magna. Rd.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (78,"Micah Z. Schmidt","eu.nibh.vulputate@ornaresagittisfelis.net","EEE","1998-07-08","K",6,"P.O. Box 927, 6394 Ac Rd.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (79,"Clementine R. Delacruz","lobortis.nisi.nibh@sodalespurusin.edu","MECH","1998-12-29","L",5,"5607 Sem, Road");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (80,"Gisela O. Bridges","facilisis.lorem.tristique@ut.co.uk","CIVIL","1995-10-10","K",5,"P.O. Box 363, 3329 Euismod St.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (81,"Cara Herrera","In.mi.pede@lacinia.ca","EEE","2000-08-22","F",9,"P.O. Box 415, 4521 Enim Rd.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (82,"Xerxes Johns","nulla.ante@rhoncusNullam.edu","CSE","1998-05-29","C",7,"968-4242 Purus, Av.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (83,"Reuben X. Huff","vitae@pellentesque.co.uk","ECE","1999-07-31","C",6,"2867 Ligula. St.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (84,"Zephania P. Snow","id.erat.Etiam@Proinnonmassa.ca","EEE","1999-02-26","N",10,"Ap #568-6947 Ac, Road");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (85,"Nichole Burris","turpis.non.enim@feugiatnec.ca","MECH","2000-03-23","G",7,"3016 Turpis. St.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (86,"Hayes O. Maddox","tempus.non@necenim.co.uk","CSE","1996-12-22","A",5,"Ap #488-6937 Nec St.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (87,"Castor U. Bell","eu.dui.Cum@sit.com","CIVIL","2000-10-13","K",6,"P.O. Box 789, 9961 Ac Av.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (88,"Channing W. Leonard","magna.nec.quam@velitPellentesque.ca","MECH","2000-10-07","C",5,"Ap #683-7581 Eget St.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (89,"Kadeem G. Armstrong","nisi@quam.net","MECH","1999-04-01","N",5,"810-8544 Phasellus St.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (90,"Castor Vega","blandit.enim.consequat@eratvitae.ca","EEE","1996-01-04","H",7,"6700 Lorem Av.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (91,"Carly U. Frost","arcu.Morbi@volutpatNulla.co.uk","CSE","1996-03-31","J",9,"P.O. Box 727, 7409 Eget Avenue");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (92,"Sasha Stuart","vulputate@acmetusvitae.org","CIVIL","1997-06-25","C",9,"106-7782 Velit. Avenue");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (93,"Gloria Mcknight","quis.pede.Praesent@Nullamlobortisquam.net","CIVIL","2001-07-11","J",5,"670-1555 Tortor Road");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (94,"Samson Kirkland","Cras.lorem.lorem@eget.com","ECE","1998-09-28","F",9,"8723 Dictum Rd.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (95,"Arden J. Foley","consectetuer.mauris@aliquetdiamSed.org","EEE","1996-04-29","A",7,"Ap #450-118 Libero St.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (96,"Leo R. Holland","lacinia.vitae@seddictumeleifend.org","MECH","1997-10-16","I",5,"490-7070 Id, Av.");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (97,"Yvonne Francis","turpis.egestas@euarcu.net","ECE","1999-06-25","F",8,"191-8635 Scelerisque Ave");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (98,"Fatima Higgins","ac@quam.org","CSE","1996-03-02","E",8,"Ap #209-8184 Eget Street");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (99,"Beverly X. Barnes","ut@sagittisplaceratCras.com","MECH","1998-07-04","G",6,"827 Dui Road");
+INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (100,"Michelle F. Sharpe","placerat@Sedet.ca","MECH","1996-02-10","N",9,"P.O. Box 657, 2366 Euismod Av.");
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `student_has_course`
 --
 
-CREATE TABLE `preregistration` (
+CREATE TABLE `student_has_course` (
   `Sno` int(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `studentID` varchar(9) NOT NULL FOREIGN KEY REFERENCES `student`(`Rollno`)
-  `courseID` varchar(5) NOT NULL FOREIGN KEY REFERENCES `course`(`courseID`),
+  `studentID` varchar(9) NOT NULL,
+  `teacherID`varchar(9) NOT NULL,
+  `courseID` varchar(5) NOT NULL,
   `leavesTaken` int(11) DEFAULT NULL,
+  `grade` varchar(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
-
 --
 -- Dumping data for table `student_has_course`
+
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (9, 88, 51, 13, 'A');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (20, 58, 57, 2, 'E');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (95, 98, 93, 10, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (12, 12, 15, 15, 'E');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (44, 66, 76, 14, 'A');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (93, 94, 1, 0, 'D');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (58, 72, 30, 2, 'C');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (94, 54, 82, 15, 'D');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (67, 16, 64, 7, 'A');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (98, 14, 34, 1, 'D');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (55, 1, 67, 7, 'E');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (25, 42, 86, 20, 'C');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (61, 91, 58, 10, 'E');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (27, 25, 21, 19, 'E');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (21, 64, 98, 18, 'D');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (24, 20, 81, 10, 'D');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (73, 60, 55, 9, 'D');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (25, 2, 84, 1, 'C');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (89, 90, 49, 14, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (85, 4, 53, 16, 'C');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (56, 11, 24, 20, 'D');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (3, 5, 99, 16, 'E');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (60, 100, 3, 17, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (52, 17, 48, 10, 'D');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (36, 66, 43, 11, 'E');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (17, 25, 15, 14, 'A');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (82, 98, 20, 0, 'E');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (49, 92, 42, 0, 'A');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (42, 23, 79, 10, 'C');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (67, 86, 100, 16, 'A');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (67, 52, 84, 3, 'A');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (23, 52, 48, 4, 'A');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (14, 44, 40, 11, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (38, 46, 96, 11, 'A');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (75, 88, 67, 18, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (5, 12, 27, 10, 'E');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (87, 94, 4, 17, 'C');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (58, 25, 33, 20, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (87, 90, 29, 13, 'C');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (98, 49, 35, 17, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (64, 86, 14, 19, 'C');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (55, 42, 43, 15, 'E');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (57, 66, 68, 0, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (81, 77, 94, 10, 'D');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (38, 11, 69, 16, 'E');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (50, 16, 26, 14, 'D');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (26, 56, 78, 0, 'C');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (33, 13, 100, 10, 'D');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (76, 52, 43, 6, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (94, 63, 6, 13, 'A');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (27, 3, 42, 11, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (50, 68, 61, 6, 'E');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (46, 91, 86, 4, 'A');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (73, 94, 44, 11, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (96, 89, 72, 9, 'A');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (90, 28, 64, 2, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (46, 79, 19, 16, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (64, 51, 73, 8, 'A');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (66, 34, 23, 20, 'E');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (45, 76, 77, 11, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (89, 63, 18, 11, 'C');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (48, 93, 30, 3, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (91, 23, 51, 9, 'D');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (80, 89, 15, 18, 'D');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (17, 91, 46, 7, 'E');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (13, 22, 72, 18, 'D');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (82, 62, 36, 12, 'E');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (50, 40, 28, 8, 'A');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (7, 14, 29, 8, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (34, 66, 51, 19, 'A');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (14, 28, 67, 1, 'E');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (89, 38, 20, 2, 'A');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (23, 66, 76, 10, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (22, 1, 96, 15, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (12, 76, 26, 10, 'C');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (42, 26, 29, 16, 'E');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (63, 93, 38, 3, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (16, 56, 32, 10, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (6, 87, 83, 1, 'D');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (62, 37, 94, 11, 'D');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (37, 42, 75, 14, 'E');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (20, 60, 41, 2, 'C');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (18, 16, 79, 8, 'C');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (34, 25, 94, 0, 'A');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (41, 77, 11, 9, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (96, 33, 58, 10, 'C');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (35, 8, 26, 18, 'A');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (15, 85, 96, 14, 'D');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (68, 52, 72, 6, 'D');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (66, 32, 49, 2, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (99, 38, 19, 17, 'D');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (20, 15, 45, 1, 'E');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (95, 6, 78, 1, 'C');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (80, 60, 76, 9, 'E');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (59, 68, 64, 11, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (89, 75, 7, 2, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (97, 78, 80, 18, 'B');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (66, 67, 84, 2, 'D');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (7, 92, 17, 9, 'A');
+insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (47, 81, 43, 18, 'A');
+
+
 --
-/*
-INSERT INTO `student_has_course` (`studentID`, `teacherID`, `courseID`, `leavesTaken`, `grade`) VALUES
-(150020, 1, 1, 3, 'S');
-*/
 -- --------------------------------------------------------
 
---
--- Table structure for table `student_taken_mess`
---
-/*
-CREATE TABLE `student_taken_mess` (
-  `studentID` int(11) NOT NULL,
-  `messName` varchar(1) DEFAULT NULL,
-  `month` enum('1','2','3','4','5','6','7','8','9','10','11','12') NOT NULL,
-  `year` varchar(4) NOT NULL,
-  `extraAmount` int(11) NOT NULL,
-  `totalAmount` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `student_taken_mess`
---
-
-INSERT INTO `student_taken_mess` (`studentID`, `messName`, `month`, `year`, `extraAmount`, `totalAmount`) VALUES
-(150020, 'A', '1', '2017', 500, 2500);
-*/
--- --------------------------------------------------------
 
 --
 -- Table structure for table `teacher`
@@ -425,12 +579,6 @@ ALTER TABLE `members`
   ADD UNIQUE KEY `email_UNIQUE` (`email`);
 
 --
--- Indexes for table `mess`
---
-ALTER TABLE `mess`
-  ADD PRIMARY KEY (`messName`);
-
---
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
@@ -443,15 +591,6 @@ ALTER TABLE `student_has_course`
   ADD KEY `studentID` (`studentID`),
   ADD KEY `teacherID` (`teacherID`),
   ADD KEY `courseID` (`courseID`);
-
---
--- Indexes for table `student_taken_mess`
---
-ALTER TABLE `student_taken_mess`
-  ADD KEY `messName` (`messName`),
-  ADD KEY `studentID` (`studentID`),
-  ADD KEY `studentID_2` (`studentID`),
-  ADD KEY `studentID_3` (`studentID`);
 
 --
 -- Indexes for table `teacher`
@@ -486,11 +625,3 @@ ALTER TABLE `student_has_course`
   ADD CONSTRAINT `fk_` FOREIGN KEY (`teacherID`) REFERENCES `teacher` (`teacherID`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_courseID` FOREIGN KEY (`courseID`) REFERENCES `course` (`courseID`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_studentID` FOREIGN KEY (`studentID`) REFERENCES `student` (`studentID`);
-
---
--- Constraints for table `student_taken_mess`
---
-ALTER TABLE `student_taken_mess`
-  ADD CONSTRAINT `fk_messname` FOREIGN KEY (`messName`) REFERENCES `mess` (`messName`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_student` FOREIGN KEY (`studentID`) REFERENCES `student` (`studentID`) ON UPDATE CASCADE;
-*/
