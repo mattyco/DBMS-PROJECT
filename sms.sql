@@ -307,116 +307,69 @@ INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`
 --
 
 CREATE TABLE `student_has_course` (
-  `Sno` int(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `Sno` int(10) NOT NULL,
   `studentID` varchar(9) NOT NULL,
-  `teacherID`varchar(9) NOT NULL,
+  `teacherID` varchar(9) NOT NULL,
   `courseID` varchar(5) NOT NULL,
   `leavesTaken` int(11) DEFAULT NULL,
   `grade` varchar(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Dumping data for table `student_has_course`
+--
 
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (9, 88, 51, 13, 'A');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (20, 58, 57, 2, 'E');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (95, 98, 93, 10, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (12, 12, 15, 15, 'E');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (44, 66, 76, 14, 'A');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (93, 94, 1, 0, 'D');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (58, 72, 30, 2, 'C');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (94, 54, 82, 15, 'D');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (67, 16, 64, 7, 'A');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (98, 14, 34, 1, 'D');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (55, 1, 67, 7, 'E');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (25, 42, 86, 20, 'C');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (61, 91, 58, 10, 'E');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (27, 25, 21, 19, 'E');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (21, 64, 98, 18, 'D');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (24, 20, 81, 10, 'D');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (73, 60, 55, 9, 'D');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (25, 2, 84, 1, 'C');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (89, 90, 49, 14, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (85, 4, 53, 16, 'C');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (56, 11, 24, 20, 'D');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (3, 5, 99, 16, 'E');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (60, 100, 3, 17, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (52, 17, 48, 10, 'D');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (36, 66, 43, 11, 'E');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (17, 25, 15, 14, 'A');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (82, 98, 20, 0, 'E');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (49, 92, 42, 0, 'A');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (42, 23, 79, 10, 'C');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (67, 86, 100, 16, 'A');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (67, 52, 84, 3, 'A');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (23, 52, 48, 4, 'A');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (14, 44, 40, 11, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (38, 46, 96, 11, 'A');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (75, 88, 67, 18, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (5, 12, 27, 10, 'E');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (87, 94, 4, 17, 'C');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (58, 25, 33, 20, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (87, 90, 29, 13, 'C');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (98, 49, 35, 17, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (64, 86, 14, 19, 'C');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (55, 42, 43, 15, 'E');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (57, 66, 68, 0, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (81, 77, 94, 10, 'D');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (38, 11, 69, 16, 'E');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (50, 16, 26, 14, 'D');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (26, 56, 78, 0, 'C');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (33, 13, 100, 10, 'D');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (76, 52, 43, 6, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (94, 63, 6, 13, 'A');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (27, 3, 42, 11, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (50, 68, 61, 6, 'E');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (46, 91, 86, 4, 'A');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (73, 94, 44, 11, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (96, 89, 72, 9, 'A');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (90, 28, 64, 2, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (46, 79, 19, 16, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (64, 51, 73, 8, 'A');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (66, 34, 23, 20, 'E');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (45, 76, 77, 11, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (89, 63, 18, 11, 'C');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (48, 93, 30, 3, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (91, 23, 51, 9, 'D');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (80, 89, 15, 18, 'D');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (17, 91, 46, 7, 'E');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (13, 22, 72, 18, 'D');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (82, 62, 36, 12, 'E');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (50, 40, 28, 8, 'A');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (7, 14, 29, 8, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (34, 66, 51, 19, 'A');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (14, 28, 67, 1, 'E');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (89, 38, 20, 2, 'A');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (23, 66, 76, 10, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (22, 1, 96, 15, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (12, 76, 26, 10, 'C');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (42, 26, 29, 16, 'E');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (63, 93, 38, 3, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (16, 56, 32, 10, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (6, 87, 83, 1, 'D');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (62, 37, 94, 11, 'D');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (37, 42, 75, 14, 'E');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (20, 60, 41, 2, 'C');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (18, 16, 79, 8, 'C');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (34, 25, 94, 0, 'A');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (41, 77, 11, 9, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (96, 33, 58, 10, 'C');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (35, 8, 26, 18, 'A');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (15, 85, 96, 14, 'D');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (68, 52, 72, 6, 'D');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (66, 32, 49, 2, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (99, 38, 19, 17, 'D');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (20, 15, 45, 1, 'E');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (95, 6, 78, 1, 'C');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (80, 60, 76, 9, 'E');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (59, 68, 64, 11, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (89, 75, 7, 2, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (97, 78, 80, 18, 'B');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (66, 67, 84, 2, 'D');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (7, 92, 17, 9, 'A');
-insert into student_has_course (studentID, teacherID, courseID, leavesTaken, grade) values (47, 81, 43, 18, 'A');
+INSERT INTO `student_has_course` (`Sno`, `studentID`, `teacherID`, `courseID`, `leavesTaken`, `grade`) VALUES
+(1, '9', '88', '51', 13, 'A'),
+(2, '20', '58', '57', 2, 'E'),
+(3, '95', '98', '93', 10, 'B'),
+(4, '12', '12', '15', 15, 'E'),
+(5, '44', '66', '76', 14, 'A'),
+(6, '93', '94', '1', 0, 'D'),
+(7, '58', '72', '30', 2, 'C'),
+(8, '94', '54', '82', 15, 'D'),
+(9, '67', '16', '64', 7, 'A'),
+(10, '98', '14', '34', 1, 'D'),
+(11, '55', '1', '6', 7, 'E'),
+(12, '25', '42', '86', 20, 'C'),
+(13, '61', '91', '58', 10, 'E'),
+(14, '27', '25', '21', 19, 'E'),
+(15, '21', '64', '98', 18, 'D'),
+(16, '24', '20', '81', 10, 'D'),
+(17, '73', '60', '55', 9, 'D'),
+(18, '25', '2', '24', 1, 'C'),
+(19, '89', '90', '49', 14, 'B'),
+(20, '85', '4', '53', 16, 'C'),
+(21, '56', '2', '24', 20, 'D'),
+(22, '3', '5', '99', 16, 'E'),
+(23, '60', '100', '3', 17, 'B'),
+(24, '52', '17', '48', 10, 'D'),
+(25, '36', '66', '43', 11, 'E');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `student_has_course`
+--
+ALTER TABLE `student_has_course`
+  ADD PRIMARY KEY (`Sno`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `student_has_course`
+--
+ALTER TABLE `student_has_course`
+  MODIFY `Sno` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
 --
