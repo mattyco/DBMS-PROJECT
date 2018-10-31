@@ -97,7 +97,7 @@ width: 300px;
 	$servername = "localhost";
 	$username = "root";
 	$password = "PASSWORD";
-	$dbname = "sakila";
+	$dbname = "dss";
 
 	// Create connection
 	$con = mysqli_connect($servername, $username, $password, $dbname);
@@ -108,8 +108,8 @@ width: 300px;
 		die("Connection failed: " . $con->connect_error);
 	}
 
-  $teacheruname = file_get_contents("../sample.ini");
-  print_r($teacheruname);
+  $teacherdetails = parse_ini_file("../sample.ini");
+  $teacheruname = $teacherdetails['user'];
 
 	if(isset( $_GET['mycourses'] ))
 	{
@@ -131,10 +131,12 @@ width: 300px;
             // output data of each row
 
         if ($result->num_rows > 0) {
-          echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Course ID</th><th>Course Name</th><th>Classroom</th><th>Slot</th><th>Teacher Name</th><th>Teacher ID</th></tr>";
+          echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Course ID</th><th>Course Name</th><th>Classroom</th><th>Slot</th></tr>";
             // output data of each row
+            file_put_contents("../sample.ini", "user = ".$teacheruname.PHP_EOL); //rewriting file
             while($row = $result->fetch_assoc()) {
-                echo "<tr><td>". $row["courseID"]."</td><td>". $row["courseName"]."</td><td>".$row["classroom"]."</td><td>". $row["slot"]."</td><td>".$row["teacherName"]."</td><td>".$row["teacherID"]."</td></tr>";
+                echo "<tr><td>". $row["courseID"]."</td><td>"."<a href= teacherview.php?mycourses/".$row["courseName"].">".$row["courseName"]."</a>"."</td><td>".$row["classroom"]."</td><td>". $row["slot"]."</td></tr>";
+                file_put_contents("../sample.ini", "course[] = ".$row['courseName'].PHP_EOL, FILE_APPEND | LOCK_EX);
             }
 
             echo "</table></div>";
@@ -213,10 +215,53 @@ width: 300px;
 		</section>';
 	}
 
-	else
+  else
+  {
+    $iterated = false;
+
+    for ($i=0; $i<sizeof($teacherdetails['course']); $i++)
+      {
+          if (isset( $_GET['mycourses/'.$teacherdetails['course'][$i]]))
+            {
+
+              echo '		<section id="intro" class="main">
+                      <h2>
+          				'.$teacherdetails['course'][$i].'
+          			</h2>
+                      <p>
+
+          				Currently enrolled students
+
+                  </p>
+            		</section>';
+
+                  $coursename = $teacherdetails['course'][$i];
+
+                  $sql = "SELECT * FROM student_has_course h, student s, course c, teacher t where t.username = '$teacheruname' and c.courseName = '$coursename' and c.teacherID=t.teacherID and h.teacherID=t.teacherID and c.courseID = h.courseID and h.studentID = s.Rollno";
+                  $result = $con->query($sql);
+
+                  if ($result->num_rows > 0) {
+                    echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Roll Number</th><th>Student Name</th><th>Department</th><th>Batch</th><th>CGPA</th></tr>";
+                      // output data of each row
+                      while($row = $result->fetch_assoc()) {
+                          echo "<tr><td>". $row["RollNo"]."</td><td>".$row["studentName"]."</td><td>".$row["department"]."</td><td>".$row["batch"]."</td><td>".$row["CGPA"]."</td></tr>";
+                      }
+
+                      echo "</table></div>";
+                  } else {
+                      echo "0 results";
+                  }
+
+              $iterated = true;
+              break;
+            }
+      };
+
+
+	 if (!$iterated)
 	{
 		$teacherUser=$_POST['teacherUser'];
-    file_put_contents("../sample.ini", $teacherUser);
+    file_put_contents("../sample.ini", "user = $teacherUser".PHP_EOL);
     $teacherPass=$_POST['teacherPass'];
 		$get_stu="select * from teacher where username = '$teacherUser' AND password = '$teacherPass'";
 		$run_stu=mysqli_query($con,$get_stu);
@@ -242,6 +287,7 @@ width: 300px;
 		}
 
 	}
+}
 	/*
 	while($row_stu=mysqli_fetch_array($run_stu))
 	{

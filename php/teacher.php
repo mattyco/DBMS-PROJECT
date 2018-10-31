@@ -55,6 +55,10 @@ body, html {
 </style>
 <body>
 
+  <?php
+  file_put_contents("../sample.ini", ""); //reset login details
+   ?>
+
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
   <div class="w3-bar" id="myNavbar">
