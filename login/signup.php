@@ -38,7 +38,7 @@
         <div id="message"></div>
       </form>
 
-      <a href="../home.php"><button class="btn btn-lg btn-primary btn-block" type="submit">Go Back to login page</button></a>
+      <a href="../index.php"><button class="btn btn-lg btn-primary btn-block" type="submit">Go Back to login page</button></a>
 
 
     </div> <!-- /container -->

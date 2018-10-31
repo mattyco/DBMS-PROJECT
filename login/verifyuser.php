@@ -41,7 +41,7 @@ if (isset($uid) && !empty(str_replace(' ', '', $uid)) && isset($verify) && !empt
     }
 } else {
     //Validation error from empty form variables
-    echo 'An error occurred... click <a href="home.php">here</a> to go back.';
+    echo 'An error occurred... click <a href="../index.php">here</a> to go back.';
 };
 
 ?>
