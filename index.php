@@ -132,28 +132,7 @@ if(isset($_SESSION))
                 <li><a href="php/student.php" class="button">More</a></li>
               </ul>
             </article>
-            <article class="item">
-              <header>
-                <a href="php/mess.php"><img src="img/nitc2.jpg" alt="" /></a>
-                <h3>Mess Fee</h3>
-              </header>
-              <p>This is the portal to update the mess dues.</p>
-              <ul class="actions">
-                <li><a href="php/mess.php" class="button">More</a></li>
-              </ul>
-            </article>
-            <article class="item">
-              <header>
-                <a href="attendance.php"><img src="img/nitc3.jpg" alt="" /></a>
-                <h3>Attendance</h3>
-              </header>
-              <p>This portal helps teachers enter attendance details of a student.</p>
-              <ul class="actions">
-                <li><a href="php/attendance.php" class="button">More</a></li>
-              </ul>
-            </article>
           </section>
-
 </div>
 
 
