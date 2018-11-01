@@ -83,7 +83,8 @@ body, html {
 <!-- Header -->
       <header id="header" class="alt">
         <div class="inner" style="z-index:inherit">
-          <h1>ADMIN Portal</h1>
+          <span class="w3-center w3-white w3-padding-large w3-xlarge w3-wide w3-animate-opacity">ADMIN PORTAL</span>
+          <p></p>
           <p>A portal for ADMINS</p>
         </div>
       </header>
@@ -110,7 +111,7 @@ body, html {
 			?>
         <!-- Banner -->
 		<section id="intro" class="main">
-            <span class="icon fa-diamond major"></span>
+            <span class="icon fa-user major"></span>
             <h2>
 				ADMIN PORTAL
 			</h2>

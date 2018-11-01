@@ -92,7 +92,8 @@ width: 300px;
 <!-- Header -->
       <header id="header" class="alt">
         <div class="inner">
-          <h1>Teacher Portal</h1>
+          <span class="w3-center w3-white w3-padding-large w3-xlarge w3-wide w3-animate-opacity">TEACHER PORTAL</span>
+          <p></p>
           <p>A portal to enter grades</p>
         </div>
       </header>
