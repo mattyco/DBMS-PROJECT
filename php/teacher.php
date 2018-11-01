@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <html>
-<title>Teacher</title>
+<title>TEACHER - DSS</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../css/w3.css">
@@ -87,7 +87,7 @@ body, html {
       <header id="header" class="alt">
         <div class="inner" style="z-index:inherit">
           <h1>Teacher Portal</h1>
-          <p>A portal to Enter Grades</p>
+          <p>A portal to enroll students into courses and modify grades and attendance</p>
         </div>
       </header>
 
@@ -118,7 +118,7 @@ body, html {
 				TEACHER PORTAL
 			</h2>
             <p>
-				This is a portal for teachers to add their students' grades.
+				This is a portal for teachers to enroll students into courses and modify grades and attendance
 
 			</p>
 
