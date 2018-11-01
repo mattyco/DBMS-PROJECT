@@ -69,7 +69,7 @@ width: 300px;
       <i class="fa fa-bars"></i>
     </a>
     <a href="studentview.php?mycourses" class="w3-bar-item w3-button"><i class="fa fa-th"></i> MY COURSES</a>
-    <a href="studentview.php?enroll" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ENROLL STUDENTS</a>
+    <a href="studentview.php?enroll" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> PRE-REGISTRATION</a>
     <a href="studentview.php?attendance" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> ATTENDANCE</a>
     <a href="studentview.php?grades" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> GRADES</a>
     <a href="../login/logout.php" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
@@ -80,7 +80,7 @@ width: 300px;
   <!-- Navbar on small screens -->
  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
    <a href="studentview.php?mycourses" class="w3-bar-item w3-button"><i class="fa fa-th"></i> MY COURSES</a>
-   <a href="studentview.php?enroll" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ENROLL STUDENTS</a>
+   <a href="studentview.php?enroll" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> PRE-REGISTRATION</a>
    <a href="studentview.php?attendance" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> ATTENDANCE</a>
    <a href="studentview.php?grades" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> GRADES</a>
    <a href="../login/logout.php" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
@@ -159,7 +159,7 @@ width: 300px;
 			// </form>
 
 	}
-	else if(isset( $_GET['attendance'] ))
+	else if(isset( $_GET['attendance'] ))//detailed with #present, absent, total, percentage, possibleLeaves
 	{
     echo '		<section id="intro" class="main">
             <h2>
@@ -167,12 +167,12 @@ width: 300px;
       </h2>
             <p>
 
-        Mark attendance for students by course
+        View attendance by course
 
         </p>
       </section>';
 
-        $sql = "SELECT * FROM course c, teacher t where t.username = '$teacheruname' and c.teacherID=t.teacherID";
+        $sql = "SELECT * FROM course c, student_has_course t where t.studentID = '$studentuname' and c.courseID=t.courseID";
         $result = $con->query($sql);
 
             // output data of each row
@@ -196,11 +196,11 @@ width: 300px;
 	{
     echo '		<section id="intro" class="main">
              <h2>
-        ENROLL STUDENTS
+        PRE-REGISTRATION
       </h2>
              <p>
 
-        Enroll students based on their pre-registration for each of your courses
+        Pre-register for each of your courses for the upcoming semester
 
          </p>
       </section>';
@@ -224,7 +224,7 @@ width: 300px;
          }
 
 	}
-  else if(isset( $_GET['grades'] ))
+  else if(isset( $_GET['grades'] ))//detailed with T1, T2, EndSem, percentage, grade
 	{
     echo '		<section id="intro" class="main">
              <h2>
@@ -232,12 +232,12 @@ width: 300px;
       </h2>
              <p>
 
-        Assign grades for students by each course
+        View grades by each course
 
          </p>
       </section>';
 
-         $sql = "SELECT * FROM course c, teacher t where t.username = '$teacheruname' and c.teacherID=t.teacherID";
+         $sql = "SELECT * FROM course c, student_has_course t where t.studentID = '$studentuname' and c.courseID=t.courseID";
          $result = $con->query($sql);
 
              // output data of each row
@@ -272,26 +272,26 @@ width: 300px;
           			</h2>
                       <p>
 
-          				Currently enrolled students
+          				Details for this course
 
                   </p>
             		</section>';
 
                   $coursename = $_SESSION['course'][$i];
 
-                  $sql = "SELECT * FROM student_has_course h, student s, course c, teacher t where t.username = '$teacheruname' and c.courseName = '$coursename' and c.teacherID=t.teacherID and h.teacherID=t.teacherID and c.courseID = h.courseID and h.studentID = s.Rollno";
+                  $sql = "SELECT * FROM student_has_course h, student s, course c, teacher t where s.RollNo = '$studentuname' and c.courseName = '$coursename' and c.teacherID=t.teacherID and h.teacherID=t.teacherID and c.courseID = h.courseID and h.studentID = s.Rollno";
                   $result = $con->query($sql);
 
                   if ($result->num_rows > 0) {
-                    echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Roll Number</th><th>Student Name</th><th>Batch</th><th>Department</th><th>CGPA</th></tr>";
+                    echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Teacher ID</th><th>Teacher Name</th><th>Designation</th><th>Department</th><th>Your Grade</th><th>#Leaves Taken</th></tr>";
                       // output data of each row
                       while($row = $result->fetch_assoc()) {
-                          echo "<tr><td>". $row["RollNo"]."</td><td>".$row["studentName"]."</td><td>".$row["batch"]."</td><td>".$row["department"]."</td><td>".$row["CGPA"]."</td></tr>";
+                          echo "<tr><td>". $row["teacherID"]."</td><td>".$row["teacherName"]."</td><td>".$row["designation"]."</td><td>".$row["department"]."</td><td>".$row["grade"]."</td><td>".$row["leavesTaken"]."</td></tr>";
                       }
 
                       echo "</table></div>";
                   } else {
-                      echo "No students have enrolled for this course";
+                      echo "Can't fetch details";
                   }
 
               $iterated = true;
@@ -306,14 +306,14 @@ width: 300px;
             			</h2>
                         <p>
 
-            				Currently enrolled students
+            				Your attendance details for this course
 
                     </p>
               		</section>';
 
                     $coursename = $_SESSION['course'][$i];
 
-                    $sql = "SELECT * FROM student_has_course h, student s, course c, teacher t where t.username = '$teacheruname' and c.courseName = '$coursename' and c.teacherID=t.teacherID and h.teacherID=t.teacherID and c.courseID = h.courseID and h.studentID = s.Rollno";
+                    $sql = "SELECT * FROM student_has_course h, student s, course c, teacher t where s.RollNo = '$studentuname' and c.courseName = '$coursename' and c.teacherID=t.teacherID and h.teacherID=t.teacherID and c.courseID = h.courseID and h.studentID = s.Rollno";
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -325,7 +325,7 @@ width: 300px;
 
                         echo "</table></div>";
                     } else {
-                        echo "No students have enrolled for this course";
+                        echo "Can't fetch details.";
                     }
 
                 $iterated = true;
@@ -340,7 +340,7 @@ width: 300px;
                     </h2>
                           <p>
 
-                      Currently enrolled students
+                      Your grade details for this course
 
                       </p>
                     </section>';
@@ -348,7 +348,7 @@ width: 300px;
                       $coursename = $_SESSION['course'][$i];
                       $_SESSION['lastVisited']="studentview.php?grades/".str_replace(' ','',$coursename);
 
-                      $sql = "SELECT * FROM student_has_course h, student s, course c, teacher t where t.username = '$teacheruname' and c.courseName = '$coursename' and c.teacherID=t.teacherID and h.teacherID=t.teacherID and c.courseID = h.courseID and h.studentID = s.Rollno";
+                      $sql = "SELECT * FROM student_has_course h, student s, course c, teacher t where s.RollNo = '$studentuname' and c.courseName = '$coursename' and c.teacherID=t.teacherID and h.teacherID=t.teacherID and c.courseID = h.courseID and h.studentID = s.Rollno";
                       $result = $con->query($sql);
 
                       if ($result->num_rows > 0) {
@@ -358,46 +358,8 @@ width: 300px;
                               echo "<tr><td>". $row["RollNo"]."</td><td>".$row["studentName"]."</td><td>".$row["batch"]."</td><td>".$row["department"]."</td><td>".$row["grade"]."</td></tr>";
                           }
                           echo "</table></div>";
-                          echo "<a href='studentview.php?grades/".str_replace(' ','',$coursename)."/edit' class='icon'><center><u>Assign/Modify Grades</u></a>";
                       } else {
-                          echo "No students have enrolled for this course";
-                      }
-
-                  $iterated = true;
-                  break;
-                }
-
-              else if (isset( $_GET['grades/'.str_replace(' ','',$_SESSION['course'][$i]).'/edit']))
-                {
-
-                  echo '		<section id="intro" class="main">
-                          <h2>
-              				'.$_SESSION['course'][$i].'
-              			</h2>
-                          <p>
-
-              				Currently enrolled students
-
-                      </p>
-                		</section>';
-
-                      $coursename = $_SESSION['course'][$i];
-                      $_SESSION['lastVisited']="studentview.php?grades/".str_replace(' ','',$coursename);
-
-                      $sql = "SELECT * FROM student_has_course h, student s, course c, teacher t where t.username = '$teacheruname' and c.courseName = '$coursename' and c.teacherID=t.teacherID and h.teacherID=t.teacherID and c.courseID = h.courseID and h.studentID = s.Rollno";
-                      $result = $con->query($sql);
-
-                      if ($result->num_rows > 0) {
-                        echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Roll Number</th><th>Student Name</th><th>Batch</th><th>Department</th><th>Grade</th></tr><form action = 'updategradesscript.php' method = 'post'>";
-                          // output data of each row
-                          while($row = $result->fetch_assoc()) {
-                              echo "<tr><td>". $row["RollNo"]."</td><td>".$row["studentName"]."</td><td>".$row["batch"]."</td><td>".$row["department"]."</td><td class='select'>".$row["grade"]."<select name=".$row["RollNo"]."><option value = 'S'>S</option><option value = 'A'>A</option><option value = 'B'>B</option><option value = 'C'>C</option><option value = 'D'>D</option><option value = 'E'>E</option><option value = 'R'>R</option><option value = 'F'>F</option><option value = 'W'>W</option><option value = 'I'>I</option></select></td></tr>";
-                          }
-                          echo "</table></div>";
-                          echo '<input type="submit" value = "submit"></form>';
-
-                      } else {
-                          echo "No students have enrolled for this course";
+                          echo "Can't fetch details";
                       }
 
                   $iterated = true;

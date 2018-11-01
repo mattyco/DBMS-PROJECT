@@ -317,20 +317,58 @@ width: 300px;
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
-                      echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Roll Number</th><th>Student Name</th><th>Batch</th><th>Department</th><th>#Absent</th></tr>";
+                      echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Roll Number</th><th>Student Name</th><th>Batch</th><th>Department</th><th>#Present</th><th>#Absent</th><th>Total #Classes</th>><th>%Attendance</th></tr>";
                         // output data of each row
                         while($row = $result->fetch_assoc()) {
-                            echo "<tr><td>". $row["RollNo"]."</td><td>".$row["studentName"]."</td><td>".$row["batch"]."</td><td>".$row["department"]."</td><td>".$row["leavesTaken"]."</td></tr>";
+                            echo "<tr><td>". $row["RollNo"]."</td><td>".$row["studentName"]."</td><td>".$row["batch"]."</td><td>".$row["department"]."</td><td>".$row["present"]."</td><td>".$row["leavesTaken"]."</td><td>".($row["present"]+$row["leavesTaken"])."</td><td>".($row["present"]*100/($row["present"]+$row['leavesTaken']))."</td></tr>";
                         }
 
                         echo "</table></div>";
+                        echo "<a href='teacherview.php?attendance/".str_replace(' ','',$coursename)."/edit' class='icon'><center><u>Modify Attendance</u></a>";
                     } else {
                         echo "No students have enrolled for this course";
                     }
 
                 $iterated = true;
                 break;
+
               }
+              else if (isset( $_GET['attendance/'.str_replace(' ','',$_SESSION['course'][$i]).'/edit']))
+                {
+
+                  echo '		<section id="intro" class="main">
+                          <h2>
+              				'.$_SESSION['course'][$i].'
+              			</h2>
+                          <p>
+
+              				Currently enrolled students
+
+                      </p>
+                		</section>';
+
+                      $coursename = $_SESSION['course'][$i];
+                      $_SESSION['lastVisited']="teacherview.php?grades/".str_replace(' ','',$coursename);
+
+                      $sql = "SELECT * FROM student_has_course h, student s, course c, teacher t where t.username = '$teacheruname' and c.courseName = '$coursename' and c.teacherID=t.teacherID and h.teacherID=t.teacherID and c.courseID = h.courseID and h.studentID = s.Rollno";
+                      $result = $con->query($sql);
+
+                      if ($result->num_rows > 0) {
+                        echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Roll Number</th><th>Student Name</th><th>Batch</th><th>Department</th><th>#Present</th><th>#Absent</th></tr><form action = 'updateattendancescript.php' method = 'post'>";
+                          // output data of each row
+                          while($row = $result->fetch_assoc()) {
+                              echo "<tr><td>". $row["RollNo"]."</td><td>".$row["studentName"]."</td><td>".$row["batch"]."</td><td>".$row["department"]."</td><td>".$row["present"]."</td><td>".$row["leavesTaken"]."</td></tr>";
+                          }
+                          echo "</table></div>";
+                          echo '<input type="submit" value = "submit"></form>';
+
+                      } else {
+                          echo "No students have enrolled for this course";
+                      }
+
+                  $iterated = true;
+                  break;
+                }
               else if (isset( $_GET['grades/'.str_replace(' ','',$_SESSION['course'][$i])]))
                 {
 
