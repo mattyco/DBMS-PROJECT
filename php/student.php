@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <html>
-<title>Student Details</title>
+<title>STUDENT - DSS</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../css/w3.css">
@@ -60,6 +60,15 @@ width: 100%;
 </style>
 <body>
 
+  <?php
+  // remove all session variables
+  session_unset();
+
+  // destroy the session
+  if(isset($_SESSION))
+  {session_destroy();}
+   ?>
+
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
   <div class="w3-bar" id="myNavbar">
@@ -93,33 +102,44 @@ width: 100%;
         </div>
       </header>
 
-    <!-- Wrapper -->
       <div id="wrapper">
 
+          <?php
+
+      if(isset( $_GET['failedLogin'] ))
+      {
+        echo"failed";
+        echo '
+        <div class="w3-container">
+          <div class="w3-panel w3-card w3-red w3-display-container">
+            <span onclick="this.parentElement.style.display='."'none'".'"
+            class="w3-button w3-red w3-large w3-display-topright">&times;</span>
+            <h3 style="color:white">Login Failed</h3>
+            <p>Please try again. If error persists, contact admin.</p>
+            </div>
+        </div>';
+      }
+
+      ?>
         <!-- Banner -->
-          <section id="intro" class="main">
+      <section id="intro" class="main">
             <span class="icon fa-diamond major"></span>
-            <h2>STUDENT PORTAL</h2>
-            <p>This is a portal for all the students to view their transcripts, mess dues and attendance status</p>
- 			<form action="studentview.php"  method = "post"; >
- 				<p>Enter Roll Number</p><input type="text" name="roll" id = "roll1" >
- 				<br>
+            <h2>
+        STUDENT PORTAL
+      </h2>
+            <p>
+        This is a portal for all students of NITC
 
- 				<input type="submit" value="View Data" class="button big">
+      </p>
 
-			</form>
-          </section>
-
-        <!-- Main -->
-        <!--
-          <section id="main" class="main">
-            <header>
-              <h2>Lorem ipsum dolor</h2>
-            </header>
-            <p>Fusce malesuada efficitur venenatis. Pellentesque tempor leo sed massa hendrerit hendrerit. In sed feugiat est, eu congue elit. Ut porta magna vel felis sodales vulputate. Donec faucibus dapibus lacus non ornare. Etiam eget neque id metus gravida tristique ac quis erat. Aenean quis aliquet sem. Ut ut elementum sem. Suspendisse eleifend ut est non dapibus. Nulla porta, neque quis pretium sagittis, tortor lacus elementum metus, in imperdiet ante lorem vitae ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eget neque id metus gravida tristique ac quis erat. Aenean quis aliquet sem. Ut ut elementum sem. Suspendisse eleifend ut est non dapibus. Nulla porta, neque quis pretium sagittis, tortor lacus elementum metus, in imperdiet ante lorem vitae ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-          </section>
-        -->
-
+      <form action="studentview.php"  method = "post"; >
+        <p>Enter Roll Number</p><input type="text" name="studentUser" id = "studentUser">
+        <br>
+        <p>Enter Password</p><input type="password" name="studentPass" id = "studentPass">
+        <br>
+        <input type="submit" value="View Data" class="button big">
+      </form>
+      </section>
         <!-- Footer -->
           <footer id="footer">
             <ul class="icons">

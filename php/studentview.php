@@ -1,10 +1,13 @@
+<?php
+session_start();
+ ?>
+
 <!DOCTYPE html>
 <html>
-<title>Student Details</title>
+<title>STUDENT - DSS</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../css/w3.css">
-
 <link rel="stylesheet" href="../css/lat.css">
 <link rel="stylesheet" href="../css/font.css">
 <link rel="stylesheet" href="../assets/css/main.css" />
@@ -18,6 +21,8 @@ body, html {
 #roll1{
 text-align: right;
 width: 300px;
+
+
 }
 /* Create a Parallax Effect */
 .bgimg-1, .bgimg-2, .bgimg-3 {
@@ -63,9 +68,10 @@ width: 300px;
     <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
       <i class="fa fa-bars"></i>
     </a>
-    <a href="../index.php" class="w3-bar-item w3-button">HOME</a>
-    <a href="teacher.php" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> TEACHER</a>
-    <a href="student.php" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> STUDENT</a>
+    <a href="studentview.php?mycourses" class="w3-bar-item w3-button"><i class="fa fa-th"></i> MY COURSES</a>
+    <a href="studentview.php?enroll" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ENROLL STUDENTS</a>
+    <a href="studentview.php?attendance" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> ATTENDANCE</a>
+    <a href="studentview.php?grades" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> GRADES</a>
     <a href="../login/logout.php" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
       LOGOUT
     </a>
@@ -73,227 +79,441 @@ width: 300px;
 
   <!-- Navbar on small screens -->
  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-    <a href="../index.php" class="w3-bar-item w3-button" onclick="toggleFunction()">HOME</a>
-    <a href="teacher.php" class="w3-bar-item w3-button" onclick="toggleFunction()">TEACHER</a>
-    <a href="student.php" class="w3-bar-item w3-button" onclick="toggleFunction()">STUDENT</a>
-    <a href="../login/logout.php" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
+   <a href="studentview.php?mycourses" class="w3-bar-item w3-button"><i class="fa fa-th"></i> MY COURSES</a>
+   <a href="studentview.php?enroll" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ENROLL STUDENTS</a>
+   <a href="studentview.php?attendance" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> ATTENDANCE</a>
+   <a href="studentview.php?grades" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> GRADES</a>
+   <a href="../login/logout.php" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
       LOGOUT
     </a>
   </div>
 </div>
 
+<!-- Header -->
       <header id="header" class="alt">
         <div class="inner">
           <h1>Student Portal</h1>
-          <p>A portal for all students of NITC</p>
+          <p>A portal to enter grades</p>
         </div>
       </header>
 
-    <!-- Wrapper -->
-      <div id="wrapper">
+	  <?php
+	$servername = "localhost";
+	$username = "root";
+	$password = "PASSWORD";
+	$dbname = "dss";
 
-      <section id="intro" class="main">
+	// Create connection
+	$con = mysqli_connect($servername, $username, $password, $dbname);
+	// Check connection
+	if ($con->connect_error)
+	{
+		die("Connection failed: " . $con->connect_error);
+	}
+
+  $studentuname = $_SESSION['user'];
+
+	if(isset( $_GET['mycourses'] ))
+	{
+
+		echo '		<section id="intro" class="main">
+            <h2>
+				MY COURSES
+			</h2>
+            <p>
+
+				List of courses
+
+        </p>
+  		</section>';
+
+        $sql = "SELECT * FROM course c, student_has_course s where s.studentID = '$studentuname' and c.courseID = s.courseID";
+        $result = $con->query($sql);
+
+            // output data of each row
+
+        if ($result->num_rows > 0) {
+          echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Course ID</th><th>Course Name</th><th>Classroom</th><th>Slot</th></tr>";
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "<tr><td>". $row["courseID"]."</td><td>"."<a href= studentview.php?mycourses/".str_replace(' ','',$row["courseName"]).">".$row["courseName"]."</a>"."</td><td>".$row["classroom"]."</td><td>". $row["slot"]."</td></tr>";
+                $_SESSION['course'][]=$row["courseName"];
+            }
+
+            echo "</table></div>";
+        } else {
+            echo "Currently taking no courses";
+        }
+
+      //   <form action="teacherview.php?insert"  method = "post">
+ 			// 	<p>Enter studentID&nbsp&nbsp<input type="number" name="studentID" id = "studentID"></p>
+ 			// 	<p></p>
+			// 	<p>Enter teacherID&nbsp&nbsp<input type="number" name="teacherID" id = "teacherID"></p>
+ 			// 	<p></p>
+			// 	<p>Enter CourseID&nbsp&nbsp<input type="number" name="courseID" id = "courseID"></p>
+ 			// 	<p></p>
+ 			// 	<p>Enter Grade&nbsp&nbsp<input type="text" name="grade" id = "grade"></p>
+ 			// 	<p></p>
+      //
+ 			// 	<input type="submit" value="View Data" class="button big">
+			// </form>
+
+	}
+	else if(isset( $_GET['attendance'] ))
+	{
+    echo '		<section id="intro" class="main">
+            <h2>
+        ATTENDANCE
+      </h2>
+            <p>
+
+        Mark attendance for students by course
+
+        </p>
+      </section>';
+
+        $sql = "SELECT * FROM course c, teacher t where t.username = '$teacheruname' and c.teacherID=t.teacherID";
+        $result = $con->query($sql);
+
+            // output data of each row
+
+        if ($result->num_rows > 0) {
+          echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Course ID</th><th>Course Name</th><th>Classroom</th><th>Slot</th></tr>";
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "<tr><td>". $row["courseID"]."</td><td>"."<a href= studentview.php?attendance/".str_replace(' ','',$row["courseName"]).">".$row["courseName"]."</a>"."</td><td>".$row["classroom"]."</td><td>". $row["slot"]."</td></tr>";
+                $_SESSION['course'][]=$row["courseName"];
+            }
+
+            echo "</table></div>";
+        } else {
+            echo "Currently taking no courses";
+        }
 
 
-                  <?php
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "sms";
+	}
+  else if(isset( $_GET['enroll'] ))
+	{
+    echo '		<section id="intro" class="main">
+             <h2>
+        ENROLL STUDENTS
+      </h2>
+             <p>
 
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+        Enroll students based on their pre-registration for each of your courses
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+         </p>
+      </section>';
+
+         $sql = "SELECT * FROM course c, teacher t where t.username = '$teacheruname' and c.teacherID=t.teacherID";
+         $result = $con->query($sql);
+
+             // output data of each row
+
+         if ($result->num_rows > 0) {
+           echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Course ID</th><th>Course Name</th><th>Classroom</th><th>Slot</th></tr>";
+             // output data of each row
+             while($row = $result->fetch_assoc()) {
+                 echo "<tr><td>". $row["courseID"]."</td><td>"."<a href= studentview.php?enroll/".str_replace(' ','',$row["courseName"]).">".$row["courseName"]."</a>"."</td><td>".$row["classroom"]."</td><td>". $row["slot"]."</td></tr>";
+                 $_SESSION['course'][]=$row["courseName"];
+             }
+
+             echo "</table></div>";
+         } else {
+             echo "Currently taking no courses";
+         }
+
+	}
+  else if(isset( $_GET['grades'] ))
+	{
+    echo '		<section id="intro" class="main">
+             <h2>
+        GRADES
+      </h2>
+             <p>
+
+        Assign grades for students by each course
+
+         </p>
+      </section>';
+
+         $sql = "SELECT * FROM course c, teacher t where t.username = '$teacheruname' and c.teacherID=t.teacherID";
+         $result = $con->query($sql);
+
+             // output data of each row
+
+         if ($result->num_rows > 0) {
+           echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Course ID</th><th>Course Name</th><th>Classroom</th><th>Slot</th></tr>";
+             // output data of each row
+             while($row = $result->fetch_assoc()) {
+                 echo "<tr><td>". $row["courseID"]."</td><td>"."<a href= studentview.php?grades/".str_replace(' ','',$row["courseName"]).">".$row["courseName"]."</a>"."</td><td>".$row["classroom"]."</td><td>". $row["slot"]."</td></tr>";
+                 $_SESSION['course'][]=$row["courseName"];
+             }
+
+             echo "</table></div>";
+         } else {
+             echo "Currently taking no courses";
+         }
+
+	}
+
+  else
+  {
+    $iterated = false;
+
+    for ($i=0; $i<sizeof($_SESSION['course']); $i++)
+      {
+          if (isset( $_GET['mycourses/'.str_replace(' ','',$_SESSION['course'][$i])]))
+            {
+
+              echo '		<section id="intro" class="main">
+                      <h2>
+          				'.$_SESSION['course'][$i].'
+          			</h2>
+                      <p>
+
+          				Currently enrolled students
+
+                  </p>
+            		</section>';
+
+                  $coursename = $_SESSION['course'][$i];
+
+                  $sql = "SELECT * FROM student_has_course h, student s, course c, teacher t where t.username = '$teacheruname' and c.courseName = '$coursename' and c.teacherID=t.teacherID and h.teacherID=t.teacherID and c.courseID = h.courseID and h.studentID = s.Rollno";
+                  $result = $con->query($sql);
+
+                  if ($result->num_rows > 0) {
+                    echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Roll Number</th><th>Student Name</th><th>Batch</th><th>Department</th><th>CGPA</th></tr>";
+                      // output data of each row
+                      while($row = $result->fetch_assoc()) {
+                          echo "<tr><td>". $row["RollNo"]."</td><td>".$row["studentName"]."</td><td>".$row["batch"]."</td><td>".$row["department"]."</td><td>".$row["CGPA"]."</td></tr>";
+                      }
+
+                      echo "</table></div>";
+                  } else {
+                      echo "No students have enrolled for this course";
+                  }
+
+              $iterated = true;
+              break;
+            }
+            else if (isset( $_GET['attendance/'.str_replace(' ','',$_SESSION['course'][$i])]))
+              {
+
+                echo '		<section id="intro" class="main">
+                        <h2>
+            				'.$_SESSION['course'][$i].'
+            			</h2>
+                        <p>
+
+            				Currently enrolled students
+
+                    </p>
+              		</section>';
+
+                    $coursename = $_SESSION['course'][$i];
+
+                    $sql = "SELECT * FROM student_has_course h, student s, course c, teacher t where t.username = '$teacheruname' and c.courseName = '$coursename' and c.teacherID=t.teacherID and h.teacherID=t.teacherID and c.courseID = h.courseID and h.studentID = s.Rollno";
+                    $result = $con->query($sql);
+
+                    if ($result->num_rows > 0) {
+                      echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Roll Number</th><th>Student Name</th><th>Batch</th><th>Department</th><th>#Absent</th></tr>";
+                        // output data of each row
+                        while($row = $result->fetch_assoc()) {
+                            echo "<tr><td>". $row["RollNo"]."</td><td>".$row["studentName"]."</td><td>".$row["batch"]."</td><td>".$row["department"]."</td><td>".$row["leavesTaken"]."</td></tr>";
+                        }
+
+                        echo "</table></div>";
+                    } else {
+                        echo "No students have enrolled for this course";
+                    }
+
+                $iterated = true;
+                break;
+              }
+              else if (isset( $_GET['grades/'.str_replace(' ','',$_SESSION['course'][$i])]))
+                {
+
+                  echo '		<section id="intro" class="main">
+                          <h2>
+                      '.$_SESSION['course'][$i].'
+                    </h2>
+                          <p>
+
+                      Currently enrolled students
+
+                      </p>
+                    </section>';
+
+                      $coursename = $_SESSION['course'][$i];
+                      $_SESSION['lastVisited']="studentview.php?grades/".str_replace(' ','',$coursename);
+
+                      $sql = "SELECT * FROM student_has_course h, student s, course c, teacher t where t.username = '$teacheruname' and c.courseName = '$coursename' and c.teacherID=t.teacherID and h.teacherID=t.teacherID and c.courseID = h.courseID and h.studentID = s.Rollno";
+                      $result = $con->query($sql);
+
+                      if ($result->num_rows > 0) {
+                        echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Roll Number</th><th>Student Name</th><th>Batch</th><th>Department</th><th>Grade</th></tr>";
+                          // output data of each row
+                          while($row = $result->fetch_assoc()) {
+                              echo "<tr><td>". $row["RollNo"]."</td><td>".$row["studentName"]."</td><td>".$row["batch"]."</td><td>".$row["department"]."</td><td>".$row["grade"]."</td></tr>";
+                          }
+                          echo "</table></div>";
+                          echo "<a href='studentview.php?grades/".str_replace(' ','',$coursename)."/edit' class='icon'><center><u>Assign/Modify Grades</u></a>";
+                      } else {
+                          echo "No students have enrolled for this course";
+                      }
+
+                  $iterated = true;
+                  break;
+                }
+
+              else if (isset( $_GET['grades/'.str_replace(' ','',$_SESSION['course'][$i]).'/edit']))
+                {
+
+                  echo '		<section id="intro" class="main">
+                          <h2>
+              				'.$_SESSION['course'][$i].'
+              			</h2>
+                          <p>
+
+              				Currently enrolled students
+
+                      </p>
+                		</section>';
+
+                      $coursename = $_SESSION['course'][$i];
+                      $_SESSION['lastVisited']="studentview.php?grades/".str_replace(' ','',$coursename);
+
+                      $sql = "SELECT * FROM student_has_course h, student s, course c, teacher t where t.username = '$teacheruname' and c.courseName = '$coursename' and c.teacherID=t.teacherID and h.teacherID=t.teacherID and c.courseID = h.courseID and h.studentID = s.Rollno";
+                      $result = $con->query($sql);
+
+                      if ($result->num_rows > 0) {
+                        echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Roll Number</th><th>Student Name</th><th>Batch</th><th>Department</th><th>Grade</th></tr><form action = 'updategradesscript.php' method = 'post'>";
+                          // output data of each row
+                          while($row = $result->fetch_assoc()) {
+                              echo "<tr><td>". $row["RollNo"]."</td><td>".$row["studentName"]."</td><td>".$row["batch"]."</td><td>".$row["department"]."</td><td class='select'>".$row["grade"]."<select name=".$row["RollNo"]."><option value = 'S'>S</option><option value = 'A'>A</option><option value = 'B'>B</option><option value = 'C'>C</option><option value = 'D'>D</option><option value = 'E'>E</option><option value = 'R'>R</option><option value = 'F'>F</option><option value = 'W'>W</option><option value = 'I'>I</option></select></td></tr>";
+                          }
+                          echo "</table></div>";
+                          echo '<input type="submit" value = "submit"></form>';
+
+                      } else {
+                          echo "No students have enrolled for this course";
+                      }
+
+                  $iterated = true;
+                  break;
+                }
+                else if (isset( $_GET['enroll/'.str_replace(' ','',$_SESSION['course'][$i])]))
+                  {
+
+                    echo '		<section id="intro" class="main">
+                            <h2>
+                				'.$_SESSION['course'][$i].'
+                			</h2>
+                            <p>
+
+                				Currently enrolled students
+
+                        </p>
+                  		</section>';
+
+                        $coursename = $_SESSION['course'][$i];
+
+                        $sql = "SELECT * FROM student_has_course h, student s, course c, teacher t where t.username = '$teacheruname' and c.courseName = '$coursename' and c.teacherID=t.teacherID and h.teacherID=t.teacherID and c.courseID = h.courseID and h.studentID = s.Rollno";
+                        $result = $con->query($sql);
+
+                        if ($result->num_rows > 0) {
+                          echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Roll Number</th><th>Student Name</th><th>Department</th><th>Batch</th><th>CGPA</th></tr>";
+                            // output data of each row
+                            while($row = $result->fetch_assoc()) {
+                                echo "<tr><td>". $row["RollNo"]."</td><td>".$row["studentName"]."</td><td>".$row["department"]."</td><td>".$row["batch"]."</td><td>".$row["CGPA"]."</td></tr>";
+                            }
+
+                            echo "</table></div>";
+                        } else {
+                            echo "No students have enrolled for this course";
+                        }
+
+                    $iterated = true;
+                    break;
+                  }
+      };
+
+
+	 if (!$iterated)
+	{
+		$studentUser=$_POST['studentUser'];
+    $_SESSION['loggedIn']=true;
+    $_SESSION['user']=$studentUser;
+    $studentPass=$_POST['studentPass'];
+		$get_stu="select * from student where RollNo = '$studentUser' AND password = '$studentPass'";
+		$run_stu=mysqli_query($con,$get_stu);
+		if(mysqli_num_rows($run_stu)>0)
+		{
+			echo "<script>window.location.href='studentview.php?mycourses'</script>";
+			/*
+			header("Location: teacherview.php?loggedin");
+		{
+			//header("Location: teacherview.php?loggedin");
+			header("Location: http://www.lifehacker.com");
+			echo "string";
+			die();
+			*/
+		}
+		else
+		{
+			echo "<script>window.location.href='student.php?failedlogin'</script>";
+			/*
+			header("Location: attendance.php?failedlogin");
+			die();
+			*/
+		}
+
+	}
 }
+	/*
+	while($row_stu=mysqli_fetch_array($run_stu))
+	{
+	$course=$row_stu['courseID'];
+	$leaves = $row_stu['leavesTaken'];
 
 
+	$get_stu2="select * from course where courseID = ".$course.";";
+	$run_stu2=mysqli_query($con,$get_stu2);
 
 
+	while($row_stu=mysqli_fetch_array($run_stu2))
+	{
+	$courseid=$row_stu['courseID'];
 
-$get_stu="select * from student where studentID = ".$_POST['roll'].";";
-$run_stu=mysqli_query($conn,$get_stu);
+	$coursename=$row_stu['courseName'];
+	$possible=$row_stu['possibleLeaves'];
+	$left = $possible - $leaves;
 
-echo '<table>
-    <tr>
-        <th>NAME</th>
-        <th>EMAIL</th>
-        <th>DEPARTMENT</th>
-        <th>BATCH</th>
-    </tr>';
+	echo "<div>
 
-while($row_stu=mysqli_fetch_array($run_stu))
-{
-$name=$row_stu['studentName'];
+	<p>Course ID          : $course</p>
+	<p>COURSE NAME        : $coursename</p>
+	<p>LEAVES REMAINING   : $left</p>
 
-$email=$row_stu['email'];
-$department=$row_stu['department'];
+	X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X<p></p>
 
-$batch=$row_stu['batch'];
-echo "
-<tr>
-  <td>$name</td>
-  <td>$email</td>
-  <td>$department</td>
-  <td>$batch</td>
+	</div>";
+	}
+	}
 
-</tr>";
-}
+	*/
 
-
-echo "</table>";
-
-
-
-
-$get_stu="select * from student_has_course where studentID = ".$_POST['roll'].";";
-$run_stu=mysqli_query($conn,$get_stu);
-
-echo '<table>
-    <tr>
-        <th>COURSE ID</th>
-        <th>COURSE NAME</th>
-        <th>GRADE</th>
-        <th>CREDITS</th>
-    </tr>';
-
-while($row_stu=mysqli_fetch_array($run_stu))
-{
-$course=$row_stu['courseID'];
-$grades = $row_stu['grade'];
-
-
-$get_stu2="select * from course where courseID = ".$course.";";
-$run_stu2=mysqli_query($conn,$get_stu2);
-
-
-
-
-while($row_stu=mysqli_fetch_array($run_stu2))
-{
-$courseid=$row_stu['courseID'];
-
-$coursename=$row_stu['courseName'];
-$credits=$row_stu['credits'];
-
-echo "
-
-<tr>
-
-<td>$course</td>
-
-<td>$coursename</td>
-<td>$grades</td>
-<td>$credits</td>
-</tr>
-
-";
-}
-}
-
-echo "</table>";
-
-
-
-
-
-$get_stu="select * from student_taken_mess where studentID = ".$_POST['roll'].";";
-$run_stu=mysqli_query($conn,$get_stu);
-
-echo '<table>
-    <tr>
-        <th>MESS NAME</th>
-        <th>MONTH</th>
-        <th>YEAR</th>
-        <th>EXTRA</th>
-        <th>TOTAL</th>
-    </tr>';
-
-while($row_stu=mysqli_fetch_array($run_stu))
-{
-$messname=$row_stu['messName'];
-
-$month=$row_stu['month'];
-$year=$row_stu['year'];
-
-$extra=$row_stu['extraAmount'];
-$total=$row_stu['totalAmount'];
-echo "<tr>
-
-<td>$messname</td>
-<td>$month</td>
-<td>$year</td>
-<td>$extra</td>
-<td>$total</td>
-
-</td>";
-}
-
-echo "</table>";
-
-
-
-
-
-
-$get_stu="select * from student_has_course where studentID = ".$_POST['roll'].";";
-$run_stu=mysqli_query($conn,$get_stu);
-
-echo '<table text-align:center>
-    <tr>
-        <th>COURSE ID</th>
-        <th>COURSE NAME</th>
-        <th>LEAVES REMAINING</th>
-    </tr>';
-
-
-while($row_stu=mysqli_fetch_array($run_stu))
-{
-$course=$row_stu['courseID'];
-$leaves = $row_stu['leavesTaken'];
-
-
-$get_stu2="select * from course where courseID = ".$course.";";
-$run_stu2=mysqli_query($conn,$get_stu2);
-
-
-while($row_stu=mysqli_fetch_array($run_stu2))
-{
-$courseid=$row_stu['courseID'];
-
-$coursename=$row_stu['courseName'];
-$possible=$row_stu['possibleLeaves'];
-$left = $possible - $leaves;
-
-echo "<tr>
-<td>$courseid</td>
-<td>$coursename</td>
-<td>$left</td>
-</td>";
-
-
-
-
-}
-}
-
-echo "</table>";
-
-
-
-
-
-$conn->close();
+	$con->close();
 
 
 
 ?>
 
 
+    <!-- Wrapper -->
+      <div id="wrapper">
 
-</section>
 
 
         <!-- Footer -->
