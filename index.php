@@ -109,7 +109,6 @@ if(isset($_SESSION))
   <p>Set in a picturesque landscape at the foothills of the Western Ghats, National Institute of Technology Calicut (NITC) is located about 22 kilometers north-east of Calicut City. National Institute of Technology Calicut is a Technical Institution of national importance set up by an Act of parliament(Act 29 of 2007) namely, the National Institute of technology Act 2007, which received the assent of the President of India on 5th June,2007.</p>
   <div class="w3-row">
     <div class="w3-col m6 w3-center w3-padding-large">
-      <p><b><i class="fa fa-user w3-margin-right"></i>National Institute of Technology Calicut</b></p><br>
       <img src="img/nitc2.jpg" class="w3-round w3-image w3-hover-opacity-off" alt="Photo of Me" width="500" height="333">
     </div>
 
@@ -142,7 +141,7 @@ if(isset($_SESSION))
         <a href="php/teacher.php"><img src="img/nitc1.jpg" class="w3-round w3-image w3-hover-opacity-off" alt="" /></a>
         <h3>Teacher Portal</h3>
       </header>
-          <p>This portal helps teachers update grades of a student.</p>
+          <p>This portal helps teachers update grades of a student and attendence. Teachers can also manage their courses through this page.</p>
           <ul class="actions">
           <li><a href="php/teacher.php" class="button">More</a></li>
           </ul>
@@ -152,7 +151,7 @@ if(isset($_SESSION))
         <a href="php/student.php"><img src="img/nitc4.jpg" alt="" /></a>
         <h3>Student Portal</h3>
       </header>
-        <p>This is the portal for students to view their mess dues, grades in all courses and attendance shortage.</p>
+        <p>This is the portal for students to view their pre-registration, courses, attendance and grades.</p>
         <ul class="actions">
         <li><a href="php/student.php" class="button">More</a></li>
         </ul>
