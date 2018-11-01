@@ -97,7 +97,8 @@ width: 100%;
 <!-- Header -->
       <header id="header" class="alt">
         <div class="inner">
-          <h1>Student Portal</h1>
+          <span class="w3-center w3-white w3-padding-large w3-xlarge w3-wide w3-animate-opacity">STUDENT PORTAL</span>
+          <p></p>
           <p>A portal for all students of NITC</p>
         </div>
       </header>
