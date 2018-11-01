@@ -130,7 +130,7 @@ if(isset($_SESSION))
 <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
 <div class="w3-content w3-container w3-padding-64" id="about_dss">
   <h3 class="w3-center">ABOUT DSS</h3>
-    <p>This project is a prototype for the Decision Support System for Course Registration at NIT Calicut and it is restricted to within the college premises. This project will be implemented under the guidance of course faculty, and will be of great use to the students, faculty and administration by efficiently automating the currently cumbersome registration process.</p>  
+    <p>This project is a prototype for the Decision Support System for Course Registration at NIT Calicut and it is restricted to within the college premises. This project will be implemented under the guidance of course faculty, and will be of great use to the students, faculty and administration by efficiently automating the currently cumbersome registration process.</p>
 </div>
 
 <!-- Items -->
