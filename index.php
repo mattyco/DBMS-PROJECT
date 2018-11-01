@@ -29,20 +29,20 @@ body, html {
 
 /* First image (Logo. Full height) */
 .bgimg-1 {
-    background-image: url('img/nitc1.jpg');
-    min-height: 100%;
+    background-image: url('img/bgd.jpg');
+    min-height: 400px;
 }
 
 /* Second image (Portfolio) */
 .bgimg-2 {
-    background-image: url("img/nitc2.jpg");
-    min-height: 400px;
+    background-image: url("img/bgd.jpg");
+    min-height: 200px;
 }
 
 /* Third image (Contact) */
 .bgimg-3 {
-    background-image: url("img/nitc2.jpg");
-    min-height: 400px;
+    background-image: url("img/bgd.jpg");
+    min-height: 200px;
 }
 
 .w3-wide {letter-spacing: 10px;}
@@ -68,7 +68,7 @@ if(isset($_SESSION))
 
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
-  <div class="w3-bar" id="myNavbar">
+  <div class="w3-bar w3-text-black" id="myNavbar">
     <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
       <i class="fa fa-bars"></i>
     </a>
@@ -78,7 +78,7 @@ if(isset($_SESSION))
   </div>
 
   <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium">
+  <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-text-black w3-hide-medium">
     <a href="index.php" class="w3-bar-item w3-button w3-blue" onclick="toggleFunction()">HOME</a>
     <a href="php/teacher.php" class="w3-bar-item w3-button" onclick="toggleFunction()">TEACHER</a>
     <a href="php/student.php" class="w3-bar-item w3-button" onclick="toggleFunction()">STUDENT</a>
@@ -87,16 +87,26 @@ if(isset($_SESSION))
 
 <!-- First Parallax Image with Logo Text -->
 <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
-  <div class="w3-display-middle" style="white-space:nowrap;">
-    <span class="w3-center w3-padding-large w3-white w3-xlarge w3-wide w3-animate-opacity">DECISION <span class="w3-hide-small w3-mobile">SUPPORT</span> SYSTEM - NITC</span>
+  <div class="w3-image w3-display-topright" id="nitc_logo">
+    <a href="http://www.nitc.ac.in">
+      <img src="img/logo.jpg" class="w3-round w3-image" width="100" height="100" alt="logo">
+    </a>
+
   </div>
+  <div class="w3-display-middle w3-hide-small" style="white-space:nowrap;">
+      <span class="w3-center w3-white w3-padding-large w3-xlarge w3-wide w3-animate-opacity">DECISION <span class="w3-hide-small w3-mobile">SUPPORT</span> SYSTEM - NITC</span>
+  </div>
+  <div class="w3-display-middle w3-hide-large" style="white-space:nowrap;">
+      <span class="w3-center w3-white w3-mobile w3-animate-opacity">DECISION <span class="w3-hide-small w3-mobile">SUPPORT</span> SYSTEM - NITC</span>
+  </div>
+
 </div>
 
 <!-- Container (About Section) -->
 <div class="w3-content w3-container w3-padding-64" id="about">
   <h3 class="w3-center">ABOUT NITC</h3>
   <p class="w3-center"><em>National Institute of Technology Calicut</em></p>
-  <p>Set in a picturesque landscape at the foothills of the Western Ghats, National Institute of Technology Calicut (NITC) is located about 22 kilometers north-east of Calicut City. National Institute of Technology Calicut is a Technical Institution of national importance set up by an Act of parliament(Act 29 of 2007) namely, the National Institute of technology Act 2007, which received the assent of the President of India on 5th June,2007. The provision of the Act have come into force with effect from 15th August,2007 as per Notification S.O.1384(E) dated 9th August, 2007 of the MHRD(Dept. of Higher Education),New Delhi. As per the provision of the said Act, this Institution runs on non profitable basis.</p>
+  <p>Set in a picturesque landscape at the foothills of the Western Ghats, National Institute of Technology Calicut (NITC) is located about 22 kilometers north-east of Calicut City. National Institute of Technology Calicut is a Technical Institution of national importance set up by an Act of parliament(Act 29 of 2007) namely, the National Institute of technology Act 2007, which received the assent of the President of India on 5th June,2007.</p>
   <div class="w3-row">
     <div class="w3-col m6 w3-center w3-padding-large">
       <p><b><i class="fa fa-user w3-margin-right"></i>National Institute of Technology Calicut</b></p><br>
@@ -105,103 +115,55 @@ if(isset($_SESSION))
 
     <!-- Hide this text on small devices -->
     <div class="w3-col m6 w3-hide-small w3-padding-large">
-      <p>National Institute of Technology, Calicut was set up in 1961 as Regional Engineering College Calicut (CREC), the ninth of its kind and the first one to be established during the Third Five-Year Plan period. Until the formation of Calicut University in 1963, the institute was affiliated with Kerala University. It was largely due to the efforts of Pattom Thanu Pillai, then Chief Minister of Kerala, that the institute came into being. Prof. S. Rajaraman, first principal of Government Engineering College, Thrissur was appointed as the special officer in 1961 to organise the activities of the college until M. V. Kesava Rao took charge as the first principal of the college. The classes were initially held at the Government Polytechnic at West Hill, before it moved to its present campus in 1963. The college started with an annual intake of 125 students for the undergraduate courses, on a campus of 120 hectares (1.2 km2).</p>
+      <p>National Institute of Technology, Calicut was set up in 1961 as Regional Engineering College Calicut (CREC), the ninth of its kind and the first one to be established during the Third Five-Year Plan period. Until the formation of Calicut University in 1963, the institute was affiliated with Kerala University. It was largely due to the efforts of Pattom Thanu Pillai, then Chief Minister of Kerala, that the institute came into being.</p>
     </div>
   </div>
 
 </div>
-
-<!-- Items -->
-<div id="wrapper">
-          <section class="main items">
-            <article class="item">
-              <header>
-                <a href="php/teacher.php"><img src="img/nitc1.jpg" class="w3-round w3-image w3-hover-opacity-off" alt="" /></a>
-                <h3>Teacher Portal</h3>
-              </header>
-              <p>This portal helps teachers update grades of a student.</p>
-              <ul class="actions">
-                <li><a href="php/teacher.php" class="button">More</a></li>
-              </ul>
-            </article>
-            <article class="item">
-              <header>
-                <a href="php/student.php"><img src="img/nitc4.jpg" alt="" /></a>
-                <h3>Student Portal</h3>
-              </header>
-              <p>This is the portal for students to view their mess dues, grades in all courses and attendance shortage.</p>
-              <ul class="actions">
-                <li><a href="php/student.php" class="button">More</a></li>
-              </ul>
-            </article>
-          </section>
-</div>
-
-
 
 <!-- Second Parallax Image with Portfolio Text -->
 <div class="bgimg-2 w3-display-container w3-opacity-min">
   <div class="w3-display-middle">
-    <span class="w3-xxlarge w3-text-white w3-wide">INFRASTRUCTURE</span>
+    <span class="w3-xxlarge w3-text-black w3-wide">ABOUT DSS</span>
   </div>
 </div>
 
-<!-- Container (Portfolio Section) -->
-<div class="w3-content w3-container w3-padding-64" id="portfolio">
-  <h3 class="w3-center">INFRASTRUCTURE</h3>
-  <p class="w3-center"><em>Here are some images from around campus<br> Click on the images to make them bigger</em></p><br>
-
-  <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
-  <div class="w3-row-padding w3-center">
-    <div class="w3-col m3">
-      <img src="img/nitc1.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="img/nitc2.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="img/nitc3.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="img/nitc4.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
-    </div>
-  </div>
-
-  <div class="w3-row-padding w3-center w3-section">
-    <div class="w3-col m3">
-      <img src="img/nitc5.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="img/nitc6.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="img/nitc7.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
-    </div>
-
-    <div class="w3-col m3">
-      <img src="img/nitc8.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
-    </div>
-    <a href = "#"><button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">TOP ^</button></a>
-  </div>
+<!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
+<div class="w3-content w3-container w3-padding-64" id="about_dss">
+  <h3 class="w3-center">ABOUT DSS</h3>
+    <p>This project is a prototype for the Decision Support System for Course Registration at NIT Calicut and it is restricted to within the college premises. This project will be implemented under the guidance of course faculty, and will be of great use to the students, faculty and administration by efficiently automating the currently cumbersome registration process.</p>  
 </div>
-<!-- Modal for full size images on click-->
-<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
-  <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
-  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-    <img id="img01" class="w3-image">
-    <p id="caption" class="w3-opacity w3-large"></p>
-  </div>
+
+<!-- Items -->
+<div id="wrapper">
+  <section class="main items">
+    <article class="item">
+      <header>
+        <a href="php/teacher.php"><img src="img/nitc1.jpg" class="w3-round w3-image w3-hover-opacity-off" alt="" /></a>
+        <h3>Teacher Portal</h3>
+      </header>
+          <p>This portal helps teachers update grades of a student.</p>
+          <ul class="actions">
+          <li><a href="php/teacher.php" class="button">More</a></li>
+          </ul>
+    </article>
+    <article class="item">
+      <header>
+        <a href="php/student.php"><img src="img/nitc4.jpg" alt="" /></a>
+        <h3>Student Portal</h3>
+      </header>
+        <p>This is the portal for students to view their mess dues, grades in all courses and attendance shortage.</p>
+        <ul class="actions">
+        <li><a href="php/student.php" class="button">More</a></li>
+        </ul>
+      </article>
+  </section>
 </div>
 
 <!-- Third Parallax Image with Portfolio Text -->
 <div class="bgimg-3 w3-display-container w3-opacity-min">
   <div class="w3-display-middle">
-     <span class="w3-xxlarge w3-text-white w3-wide">CONTACT</span>
+     <span class="w3-xxlarge w3-text-black w3-wide">CONTACT</span>
   </div>
 </div>
 
@@ -252,10 +214,10 @@ function onClick(element) {
 window.onscroll = function() {myFunction()};
 function myFunction() {
     var navbar = document.getElementById("myNavbar");
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
         navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-black";
     } else {
-        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-black", "");
+        navbar.className = "w3-bar" + " w3-animate-top" + "w3-text-black";
     }
 }
 
