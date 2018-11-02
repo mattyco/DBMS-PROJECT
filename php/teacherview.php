@@ -430,7 +430,7 @@ width: 300px;
                         echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Roll Number</th><th>Student Name</th><th>Batch</th><th>Department</th><th>Midterm Test 1</th><th>Midterm Test 2</th><th>Project/Assignment(s) (if any)</th><th>End semester exam</th><th>Grade</th></tr><form action = 'updategradesscript.php' method = 'post'>";
                           // output data of each row
                           while($row = $result->fetch_assoc()) {
-                                echo "<tr><td>". $row["RollNo"]."</td><td>".$row["studentName"]."</td><td>".$row["batch"]."</td><td>".$row["department"]."</td><td>".$row["T1"]."<input name='".$row['RollNo']."_t1' type='number' min=0 value=".$row['T1']."> </td><td>".$row["T2"]."<input name='".$row['RollNo']."_t2' type='number' min=0 value=".$row['T2']."></td><td>".$row["ProjectAssignment"]."<input name='".$row['RollNo']."_pr' type='number' min=0 value=".$row['ProjectAssignment']."></td><td>".$row["EndSem"]."<input name='".$row['RollNo']."_end' type='number' min=0 value=".$row['EndSem']."></td><td class='select'>".$row['grade']."<select name='".$row["RollNo"]."_g'><option value = NULL>-</option><option value = 'S'>S</option><option value = 'A'>A</option><option value = 'B'>B</option><option value = 'C'>C</option><option value = 'D'>D</option><option value = 'E'>E</option><option value = 'R'>R</option><option value = 'F'>F</option><option value = 'W'>W</option><option value = 'I'>I</option></select></td></tr>";
+                                echo "<tr><td>". $row["RollNo"]."</td><td>".$row["studentName"]."</td><td>".$row["batch"]."</td><td>".$row["department"]."</td><td>".$row["T1"]."<input name='".$row['RollNo']."_t1' type='number' min=0 value=".$row['T1']."> </td><td>".$row["T2"]."<input name='".$row['RollNo']."_t2' type='number' min=0 value=".$row['T2']."></td><td>".$row["ProjectAssignment"]."<input name='".$row['RollNo']."_pr' type='number' min=0 value=".$row['ProjectAssignment']."></td><td>".$row["EndSem"]."<input name='".$row['RollNo']."_end' type='number' min=0 value=".$row['EndSem']."></td><td class='select'>".$row['grade']."<select name='".$row["RollNo"]."_g'><option value = 'NULL'>-</option><option value = 'S'>S</option><option value = 'A'>A</option><option value = 'B'>B</option><option value = 'C'>C</option><option value = 'D'>D</option><option value = 'E'>E</option><option value = 'R'>R</option><option value = 'F'>F</option><option value = 'W'>W</option><option value = 'I'>I</option></select></td></tr>";
                           }
                           echo "</table></div>";
                           echo '<input type="submit" value = "submit"></form>';
@@ -556,7 +556,7 @@ width: 300px;
 
 
         <!-- Footer -->
-  
+
       </div>
 
     <!-- Scripts -->

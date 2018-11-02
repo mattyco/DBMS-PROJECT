@@ -69,6 +69,7 @@ if ($conn->connect_error)
            }
            if ($col=='g')
              {
+                if($_POST[$i]=='NULL'){$_POST[$i] = NULL;}
                  $sql = "UPDATE student_has_course SET grade='$_POST[$i]' WHERE studentID=$roll";
                  if ($conn->query($sql) === TRUE) {
                      $iterated=true;
