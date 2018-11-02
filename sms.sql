@@ -188,118 +188,123 @@ CREATE TABLE `members` (
 --
 
 CREATE TABLE `student` (
-  `id` mediumint(8) unsigned NOT NULL auto_increment,
-  `RollNo` mediumint,
-  `studentName` varchar(255) default NULL,
-  `email` varchar(255) default NULL,
-  `department` varchar(255) default NULL,
-  `birthDate` varchar(255),
-  `batch` varchar(255) default NULL,
-  `CGPA` mediumint default NULL,
-  `address` varchar(255) default NULL,
-  PRIMARY KEY (`id`)
-) AUTO_INCREMENT=1;
+  `id` mediumint(8) UNSIGNED NOT NULL,
+  `RollNo` mediumint(9) DEFAULT NULL,
+  `studentName` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `department` varchar(255) DEFAULT NULL,
+  `birthDate` varchar(255) DEFAULT NULL,
+  `batch` varchar(255) DEFAULT NULL,
+  `CGPA` mediumint(9) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT 'password'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (1,"Petra F. Workman","purus@eu.edu","ECE","1998-04-01","J",5,"P.O. Box 102, 8768 Velit. Street");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (2,"Stacey C. Munoz","arcu@luctusCurabitur.org","EEE","2001-03-21","G",7,"2213 Ut St.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (3,"Echo K. Robbins","tellus.eu@enim.org","ECE","1996-12-20","D",5,"4006 Risus. Rd.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (4,"Katelyn Castillo","Nunc.ullamcorper@sitamet.ca","CIVIL","1997-07-07","M",7,"P.O. Box 515, 8444 Montes, Av.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (5,"TaShya R. Browning","felis.orci.adipiscing@enimmi.net","EEE","1998-09-04","F",7,"221 Nunc Av.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (6,"Vielka Morris","Duis.sit@estmauris.edu","MECH","2000-07-08","K",7,"P.O. Box 723, 2284 At Rd.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (7,"Riley Slater","Suspendisse@nisi.edu","EEE","2000-05-05","G",8,"2867 Dictum Road");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (8,"Kieran Moss","purus.ac.tellus@molestie.com","CIVIL","1999-06-22","D",10,"5145 Mauris Ave");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (9,"Lawrence Z. Rich","In.tincidunt@erosturpis.ca","MECH","1996-05-17","H",10,"Ap #301-8538 Ac Rd.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (10,"Aurelia Lane","dui.Cum@Nuncsollicitudin.net","EEE","1998-09-29","A",8,"P.O. Box 914, 2401 Libero. Ave");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (11,"Howard P. Franks","malesuada@Pellentesqueultriciesdignissim.org","ECE","1997-11-26","N",9,"P.O. Box 599, 4114 Congue. Ave");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (12,"Eleanor N. Donovan","leo.Morbi.neque@dui.com","CIVIL","1997-04-19","H",7,"P.O. Box 963, 8258 Lacus. Street");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (13,"Evan Moore","consectetuer.adipiscing@ipsum.org","EEE","1997-01-27","C",9,"P.O. Box 270, 8592 Lacus Av.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (14,"Latifah N. Benjamin","malesuada.ut@dignissim.com","ECE","1995-12-17","C",5,"Ap #778-8322 Et Road");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (15,"Taylor Lawrence","Donec@consectetuer.net","EEE","1997-09-03","M",7,"Ap #840-2275 Nullam Road");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (16,"Whitney Stephens","quam@euduiCum.com","CIVIL","1996-09-01","J",8,"P.O. Box 153, 5287 Augue Rd.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (17,"Charissa B. Dillon","pede@adipiscingfringilla.edu","EEE","2001-09-23","K",7,"Ap #948-3502 Imperdiet Road");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (18,"Russell Mayer","sit.amet.ultricies@rutrumloremac.edu","EEE","1995-11-25","K",7,"7602 Aenean Avenue");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (19,"Lawrence Ford","vitae@tellusnon.ca","CSE","2001-05-15","G",9,"2612 Lobortis. Rd.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (20,"Chantale Phelps","Cras.sed.leo@feugiattellus.org","CSE","2001-06-18","I",8,"3538 Cras Rd.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (21,"Erasmus Downs","ornare.Fusce.mollis@nibhvulputatemauris.org","ECE","2000-04-17","D",5,"3668 Lacus. St.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (22,"Dustin Gordon","aliquet.lobortis@malesuadafringillaest.org","ECE","2000-07-24","A",5,"849-1015 Quam. Ave");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (23,"Gray Owen","Sed.molestie.Sed@quis.ca","ECE","1996-07-09","I",10,"5574 Nam Ave");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (24,"Rafael Dennis","Phasellus.nulla.Integer@tortor.net","ECE","1998-03-08","N",6,"P.O. Box 849, 5862 Orci. Ave");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (25,"Kyle F. Gilmore","nec.luctus.felis@blanditmattis.com","MECH","2000-06-30","E",6,"Ap #213-6527 Ultrices. Rd.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (26,"Alvin Medina","dolor.Quisque@vulputate.org","CIVIL","2001-07-16","E",8,"P.O. Box 384, 1450 Dictum St.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (27,"Ocean Snider","imperdiet.erat.nonummy@nisisem.com","CSE","1997-05-13","J",6,"4806 Odio St.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (28,"Yoshio Lee","risus.Quisque.libero@gravidanunc.com","EEE","1998-09-06","L",7,"Ap #544-3721 Nunc St.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (29,"Cailin T. Harrell","velit.Quisque.varius@afeugiattellus.org","MECH","1997-09-22","K",5,"3938 Dolor. St.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (30,"Emmanuel B. Gilliam","tincidunt.nunc.ac@dictum.net","CSE","2000-06-07","M",7,"2008 Suspendisse Av.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (31,"Chanda Parker","dui.Suspendisse.ac@nisiCum.ca","EEE","2000-08-17","L",5,"P.O. Box 362, 8982 Penatibus Av.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (32,"Justin Marks","ultrices.mauris.ipsum@nec.co.uk","CSE","1999-10-24","F",7,"Ap #436-2302 Accumsan Ave");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (33,"Anne Griffin","eu.eleifend.nec@diam.org","MECH","2000-07-25","J",6,"Ap #345-4823 Nec, Avenue");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (34,"Calvin D. Maldonado","vulputate.lacus@penatibuset.edu","CSE","1995-10-05","I",7,"P.O. Box 915, 1636 Cubilia St.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (35,"Tyrone Buckner","magna.Lorem@nislQuisque.net","MECH","2000-01-24","A",8,"602-3556 Donec Rd.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (36,"Lars Delgado","lobortis@facilisisloremtristique.ca","MECH","1998-09-29","B",7,"P.O. Box 667, 2530 Justo Av.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (37,"Kelly Joseph","Praesent.eu.dui@Maecenasiaculisaliquet.net","CIVIL","1999-05-14","K",5,"398-9925 Donec Rd.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (38,"Ignacia X. Shields","dictum.cursus.Nunc@Integermollis.co.uk","MECH","2001-04-11","I",10,"P.O. Box 526, 5654 Vulputate, Rd.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (39,"Latifah E. English","ut.odio.vel@justo.com","EEE","2000-11-10","J",5,"792-9402 Interdum Avenue");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (40,"Hasad Z. Padilla","tincidunt.nunc.ac@blanditNamnulla.org","ECE","1998-07-18","K",8,"Ap #267-7153 Erat Rd.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (41,"Aquila P. Fitzpatrick","nonummy.ipsum@eu.ca","EEE","1996-08-23","G",7,"3692 Nec Avenue");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (42,"Adena J. Skinner","dis.parturient.montes@Craspellentesque.com","ECE","1996-06-18","M",10,"9415 Sed Rd.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (43,"Griffith Bird","In.mi@amet.com","EEE","1998-05-15","I",5,"P.O. Box 295, 187 Iaculis Av.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (44,"Patricia E. Wagner","ligula.Aenean.euismod@Donecconsectetuermauris.net","ECE","2000-05-12","G",10,"529-9843 Consectetuer Av.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (45,"Graham Wheeler","nascetur.ridiculus.mus@lobortisnisi.net","EEE","2001-04-21","I",6,"3718 Posuere St.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (46,"Carl K. Zamora","sagittis@Incondimentum.edu","CSE","1996-03-07","I",6,"437-4873 Magna St.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (47,"Iliana Trevino","Phasellus.ornare@interdumenimnon.net","MECH","1996-03-30","I",6,"771-2523 Sed St.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (48,"Harrison Russo","velit.eget.laoreet@nonummy.co.uk","CSE","1997-03-14","J",5,"P.O. Box 203, 393 Sollicitudin Rd.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (49,"Lael Bell","Phasellus.libero@est.org","MECH","2001-04-17","A",9,"7281 Rhoncus. Road");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (50,"Oliver K. Hood","Pellentesque.ultricies.dignissim@risus.net","CIVIL","1996-04-07","L",10,"Ap #155-4665 Ante, Av.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (51,"Sonia D. Holt","amet.luctus@etmagnisdis.edu","ECE","1998-12-04","B",6,"P.O. Box 789, 1476 Pharetra. Rd.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (52,"Xena Clark","sapien.Cras@posuereatvelit.org","EEE","1996-02-19","B",7,"9345 Vel Street");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (53,"Ursula Green","arcu.vel@odiosempercursus.org","CIVIL","1998-11-24","B",5,"Ap #902-6198 Ac Road");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (54,"Micah T. Duke","posuere.at.velit@auctor.net","CIVIL","2001-09-24","E",6,"P.O. Box 278, 3540 Curabitur Rd.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (55,"Charles Buchanan","et@apurus.edu","CIVIL","1997-08-21","E",10,"Ap #948-2127 Faucibus Avenue");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (56,"George Pate","Aliquam@risus.co.uk","CIVIL","1998-02-24","H",6,"131-357 Suspendisse St.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (57,"Martena M. Cook","Duis@inaliquet.com","ECE","1997-05-21","K",9,"245-4677 Torquent Rd.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (58,"Grady Bush","Praesent.eu@nislsemconsequat.co.uk","CSE","2000-06-21","F",6,"920-8633 Malesuada Road");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (59,"Adele W. Yang","nisl@arcuetpede.net","ECE","1999-02-03","E",7,"8982 Arcu Street");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (60,"Slade Guzman","fringilla@egettincidunt.org","ECE","1996-04-02","B",8,"7806 Imperdiet Avenue");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (61,"Odysseus Buchanan","Duis@Sed.edu","CIVIL","1995-10-20","G",5,"5988 Commodo Road");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (62,"Nolan H. Patton","dictum.magna@pulvinar.co.uk","EEE","2001-08-27","G",7,"127 Amet Avenue");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (63,"Reagan E. Hood","Proin@vitaerisus.ca","MECH","1996-01-29","E",9,"P.O. Box 292, 6344 Nostra, Avenue");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (64,"Craig Gentry","Sed.et.libero@et.edu","CIVIL","1999-05-14","G",5,"277-5409 Auctor Road");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (65,"Nelle P. Tillman","mauris.aliquam.eu@risusquis.com","CSE","1996-08-17","E",9,"P.O. Box 963, 8997 Feugiat. Av.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (66,"Uriah Baird","adipiscing@sapienNunc.edu","ECE","1998-12-31","G",10,"P.O. Box 472, 2805 Nec Road");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (67,"Ivy E. Jacobson","neque.Morbi@pede.net","CSE","1998-08-18","K",10,"7498 Dui. St.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (68,"Caldwell Morse","tempor@necquam.co.uk","EEE","1997-07-13","E",10,"Ap #950-2932 Cursus Ave");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (69,"Hasad E. Lucas","eget.laoreet@euismodmauris.ca","ECE","1998-12-09","F",8,"Ap #368-818 Tellus. Road");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (70,"Quinlan M. Moses","cubilia.Curae@rhoncusDonecest.net","EEE","1996-03-03","J",9,"P.O. Box 990, 5709 Ac Ave");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (71,"Simon T. Harper","commodo.tincidunt@lacinia.net","EEE","1995-11-18","B",5,"Ap #304-7433 Congue, Rd.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (72,"Merritt Robertson","interdum.Curabitur@nonbibendum.org","EEE","2001-04-22","E",6,"542-2298 Quisque Av.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (73,"Armand B. Stone","risus.quis.diam@cursus.org","MECH","2001-03-01","K",8,"P.O. Box 189, 7247 Habitant St.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (74,"Guy Holland","tristique.aliquet.Phasellus@mauris.edu","CIVIL","1998-03-15","L",6,"P.O. Box 459, 7376 Dui Rd.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (75,"Hasad Z. Mathews","nonummy.ac@massaMauris.ca","CSE","2000-01-14","D",7,"Ap #871-1241 Duis Street");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (76,"Gray Mckinney","nec.eleifend.non@infelisNulla.net","EEE","1997-01-19","B",5,"6925 Arcu. Rd.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (77,"Caesar V. Pena","arcu.Sed@Nam.edu","MECH","1996-01-15","G",10,"994-1307 Magna. Rd.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (78,"Micah Z. Schmidt","eu.nibh.vulputate@ornaresagittisfelis.net","EEE","1998-07-08","K",6,"P.O. Box 927, 6394 Ac Rd.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (79,"Clementine R. Delacruz","lobortis.nisi.nibh@sodalespurusin.edu","MECH","1998-12-29","L",5,"5607 Sem, Road");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (80,"Gisela O. Bridges","facilisis.lorem.tristique@ut.co.uk","CIVIL","1995-10-10","K",5,"P.O. Box 363, 3329 Euismod St.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (81,"Cara Herrera","In.mi.pede@lacinia.ca","EEE","2000-08-22","F",9,"P.O. Box 415, 4521 Enim Rd.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (82,"Xerxes Johns","nulla.ante@rhoncusNullam.edu","CSE","1998-05-29","C",7,"968-4242 Purus, Av.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (83,"Reuben X. Huff","vitae@pellentesque.co.uk","ECE","1999-07-31","C",6,"2867 Ligula. St.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (84,"Zephania P. Snow","id.erat.Etiam@Proinnonmassa.ca","EEE","1999-02-26","N",10,"Ap #568-6947 Ac, Road");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (85,"Nichole Burris","turpis.non.enim@feugiatnec.ca","MECH","2000-03-23","G",7,"3016 Turpis. St.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (86,"Hayes O. Maddox","tempus.non@necenim.co.uk","CSE","1996-12-22","A",5,"Ap #488-6937 Nec St.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (87,"Castor U. Bell","eu.dui.Cum@sit.com","CIVIL","2000-10-13","K",6,"P.O. Box 789, 9961 Ac Av.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (88,"Channing W. Leonard","magna.nec.quam@velitPellentesque.ca","MECH","2000-10-07","C",5,"Ap #683-7581 Eget St.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (89,"Kadeem G. Armstrong","nisi@quam.net","MECH","1999-04-01","N",5,"810-8544 Phasellus St.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (90,"Castor Vega","blandit.enim.consequat@eratvitae.ca","EEE","1996-01-04","H",7,"6700 Lorem Av.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (91,"Carly U. Frost","arcu.Morbi@volutpatNulla.co.uk","CSE","1996-03-31","J",9,"P.O. Box 727, 7409 Eget Avenue");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (92,"Sasha Stuart","vulputate@acmetusvitae.org","CIVIL","1997-06-25","C",9,"106-7782 Velit. Avenue");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (93,"Gloria Mcknight","quis.pede.Praesent@Nullamlobortisquam.net","CIVIL","2001-07-11","J",5,"670-1555 Tortor Road");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (94,"Samson Kirkland","Cras.lorem.lorem@eget.com","ECE","1998-09-28","F",9,"8723 Dictum Rd.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (95,"Arden J. Foley","consectetuer.mauris@aliquetdiamSed.org","EEE","1996-04-29","A",7,"Ap #450-118 Libero St.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (96,"Leo R. Holland","lacinia.vitae@seddictumeleifend.org","MECH","1997-10-16","I",5,"490-7070 Id, Av.");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (97,"Yvonne Francis","turpis.egestas@euarcu.net","ECE","1999-06-25","F",8,"191-8635 Scelerisque Ave");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (98,"Fatima Higgins","ac@quam.org","CSE","1996-03-02","E",8,"Ap #209-8184 Eget Street");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (99,"Beverly X. Barnes","ut@sagittisplaceratCras.com","MECH","1998-07-04","G",6,"827 Dui Road");
-INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`batch`,`CGPA`,`address`) VALUES (100,"Michelle F. Sharpe","placerat@Sedet.ca","MECH","1996-02-10","N",9,"P.O. Box 657, 2366 Euismod Av.");
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`id`, `RollNo`, `studentName`, `email`, `department`, `birthDate`, `batch`, `CGPA`, `address`, `password`) VALUES
+(1, 1, 'Petra F. Workman', 'purus@eu.edu', 'ECE', '1998-04-01', 'J', 5, 'P.O. Box 102, 8768 Velit. Street', 'password'),
+(2, 2, 'Stacey C. Munoz', 'arcu@luctusCurabitur.org', 'EEE', '2001-03-21', 'G', 7, '2213 Ut St.', 'password'),
+(3, 3, 'Echo K. Robbins', 'tellus.eu@enim.org', 'ECE', '1996-12-20', 'D', 5, '4006 Risus. Rd.', 'password'),
+(4, 4, 'Katelyn Castillo', 'Nunc.ullamcorper@sitamet.ca', 'CIVIL', '1997-07-07', 'M', 7, 'P.O. Box 515, 8444 Montes, Av.', 'password'),
+(5, 5, 'TaShya R. Browning', 'felis.orci.adipiscing@enimmi.net', 'EEE', '1998-09-04', 'F', 7, '221 Nunc Av.', 'password'),
+(6, 6, 'Vielka Morris', 'Duis.sit@estmauris.edu', 'MECH', '2000-07-08', 'K', 7, 'P.O. Box 723, 2284 At Rd.', 'password'),
+(7, 7, 'Riley Slater', 'Suspendisse@nisi.edu', 'EEE', '2000-05-05', 'G', 8, '2867 Dictum Road', 'password'),
+(8, 8, 'Kieran Moss', 'purus.ac.tellus@molestie.com', 'CIVIL', '1999-06-22', 'D', 10, '5145 Mauris Ave', 'password'),
+(9, 9, 'Lawrence Z. Rich', 'In.tincidunt@erosturpis.ca', 'MECH', '1996-05-17', 'H', 10, 'Ap #301-8538 Ac Rd.', 'password'),
+(10, 10, 'Aurelia Lane', 'dui.Cum@Nuncsollicitudin.net', 'EEE', '1998-09-29', 'A', 8, 'P.O. Box 914, 2401 Libero. Ave', 'password'),
+(11, 11, 'Howard P. Franks', 'malesuada@Pellentesqueultriciesdignissim.org', 'ECE', '1997-11-26', 'N', 9, 'P.O. Box 599, 4114 Congue. Ave', 'password'),
+(12, 12, 'Eleanor N. Donovan', 'leo.Morbi.neque@dui.com', 'CIVIL', '1997-04-19', 'H', 7, 'P.O. Box 963, 8258 Lacus. Street', 'password'),
+(13, 13, 'Evan Moore', 'consectetuer.adipiscing@ipsum.org', 'EEE', '1997-01-27', 'C', 9, 'P.O. Box 270, 8592 Lacus Av.', 'password'),
+(14, 14, 'Latifah N. Benjamin', 'malesuada.ut@dignissim.com', 'ECE', '1995-12-17', 'C', 5, 'Ap #778-8322 Et Road', 'password'),
+(15, 15, 'Taylor Lawrence', 'Donec@consectetuer.net', 'EEE', '1997-09-03', 'M', 7, 'Ap #840-2275 Nullam Road', 'password'),
+(16, 16, 'Whitney Stephens', 'quam@euduiCum.com', 'CIVIL', '1996-09-01', 'J', 8, 'P.O. Box 153, 5287 Augue Rd.', 'password'),
+(17, 17, 'Charissa B. Dillon', 'pede@adipiscingfringilla.edu', 'EEE', '2001-09-23', 'K', 7, 'Ap #948-3502 Imperdiet Road', 'password'),
+(18, 18, 'Russell Mayer', 'sit.amet.ultricies@rutrumloremac.edu', 'EEE', '1995-11-25', 'K', 7, '7602 Aenean Avenue', 'password'),
+(19, 19, 'Lawrence Ford', 'vitae@tellusnon.ca', 'CSE', '2001-05-15', 'G', 9, '2612 Lobortis. Rd.', 'password'),
+(20, 20, 'Chantale Phelps', 'Cras.sed.leo@feugiattellus.org', 'CSE', '2001-06-18', 'I', 8, '3538 Cras Rd.', 'password'),
+(21, 21, 'Erasmus Downs', 'ornare.Fusce.mollis@nibhvulputatemauris.org', 'ECE', '2000-04-17', 'D', 5, '3668 Lacus. St.', 'password'),
+(22, 22, 'Dustin Gordon', 'aliquet.lobortis@malesuadafringillaest.org', 'ECE', '2000-07-24', 'A', 5, '849-1015 Quam. Ave', 'password'),
+(23, 23, 'Gray Owen', 'Sed.molestie.Sed@quis.ca', 'ECE', '1996-07-09', 'I', 10, '5574 Nam Ave', 'password'),
+(24, 24, 'Rafael Dennis', 'Phasellus.nulla.Integer@tortor.net', 'ECE', '1998-03-08', 'N', 6, 'P.O. Box 849, 5862 Orci. Ave', 'password'),
+(25, 25, 'Kyle F. Gilmore', 'nec.luctus.felis@blanditmattis.com', 'MECH', '2000-06-30', 'E', 6, 'Ap #213-6527 Ultrices. Rd.', 'password'),
+(26, 26, 'Alvin Medina', 'dolor.Quisque@vulputate.org', 'CIVIL', '2001-07-16', 'E', 8, 'P.O. Box 384, 1450 Dictum St.', 'password'),
+(27, 27, 'Ocean Snider', 'imperdiet.erat.nonummy@nisisem.com', 'CSE', '1997-05-13', 'J', 6, '4806 Odio St.', 'password'),
+(28, 28, 'Yoshio Lee', 'risus.Quisque.libero@gravidanunc.com', 'EEE', '1998-09-06', 'L', 7, 'Ap #544-3721 Nunc St.', 'password'),
+(29, 29, 'Cailin T. Harrell', 'velit.Quisque.varius@afeugiattellus.org', 'MECH', '1997-09-22', 'K', 5, '3938 Dolor. St.', 'password'),
+(30, 30, 'Emmanuel B. Gilliam', 'tincidunt.nunc.ac@dictum.net', 'CSE', '2000-06-07', 'M', 7, '2008 Suspendisse Av.', 'password'),
+(31, 31, 'Chanda Parker', 'dui.Suspendisse.ac@nisiCum.ca', 'EEE', '2000-08-17', 'L', 5, 'P.O. Box 362, 8982 Penatibus Av.', 'password'),
+(32, 32, 'Justin Marks', 'ultrices.mauris.ipsum@nec.co.uk', 'CSE', '1999-10-24', 'F', 7, 'Ap #436-2302 Accumsan Ave', 'password'),
+(33, 33, 'Anne Griffin', 'eu.eleifend.nec@diam.org', 'MECH', '2000-07-25', 'J', 6, 'Ap #345-4823 Nec, Avenue', 'password'),
+(34, 34, 'Calvin D. Maldonado', 'vulputate.lacus@penatibuset.edu', 'CSE', '1995-10-05', 'I', 7, 'P.O. Box 915, 1636 Cubilia St.', 'password'),
+(35, 35, 'Tyrone Buckner', 'magna.Lorem@nislQuisque.net', 'MECH', '2000-01-24', 'A', 8, '602-3556 Donec Rd.', 'password'),
+(36, 36, 'Lars Delgado', 'lobortis@facilisisloremtristique.ca', 'MECH', '1998-09-29', 'B', 7, 'P.O. Box 667, 2530 Justo Av.', 'password'),
+(37, 37, 'Kelly Joseph', 'Praesent.eu.dui@Maecenasiaculisaliquet.net', 'CIVIL', '1999-05-14', 'K', 5, '398-9925 Donec Rd.', 'password'),
+(38, 38, 'Ignacia X. Shields', 'dictum.cursus.Nunc@Integermollis.co.uk', 'MECH', '2001-04-11', 'I', 10, 'P.O. Box 526, 5654 Vulputate, Rd.', 'password'),
+(39, 39, 'Latifah E. English', 'ut.odio.vel@justo.com', 'EEE', '2000-11-10', 'J', 5, '792-9402 Interdum Avenue', 'password'),
+(40, 40, 'Hasad Z. Padilla', 'tincidunt.nunc.ac@blanditNamnulla.org', 'ECE', '1998-07-18', 'K', 8, 'Ap #267-7153 Erat Rd.', 'password'),
+(41, 41, 'Aquila P. Fitzpatrick', 'nonummy.ipsum@eu.ca', 'EEE', '1996-08-23', 'G', 7, '3692 Nec Avenue', 'password'),
+(42, 42, 'Adena J. Skinner', 'dis.parturient.montes@Craspellentesque.com', 'ECE', '1996-06-18', 'M', 10, '9415 Sed Rd.', 'password'),
+(43, 43, 'Griffith Bird', 'In.mi@amet.com', 'EEE', '1998-05-15', 'I', 5, 'P.O. Box 295, 187 Iaculis Av.', 'password'),
+(44, 44, 'Patricia E. Wagner', 'ligula.Aenean.euismod@Donecconsectetuermauris.net', 'ECE', '2000-05-12', 'G', 10, '529-9843 Consectetuer Av.', 'password'),
+(45, 45, 'Graham Wheeler', 'nascetur.ridiculus.mus@lobortisnisi.net', 'EEE', '2001-04-21', 'I', 6, '3718 Posuere St.', 'password'),
+(46, 46, 'Carl K. Zamora', 'sagittis@Incondimentum.edu', 'CSE', '1996-03-07', 'I', 6, '437-4873 Magna St.', 'password'),
+(47, 47, 'Iliana Trevino', 'Phasellus.ornare@interdumenimnon.net', 'MECH', '1996-03-30', 'I', 6, '771-2523 Sed St.', 'password'),
+(48, 48, 'Harrison Russo', 'velit.eget.laoreet@nonummy.co.uk', 'CSE', '1997-03-14', 'J', 5, 'P.O. Box 203, 393 Sollicitudin Rd.', 'password'),
+(49, 49, 'Lael Bell', 'Phasellus.libero@est.org', 'MECH', '2001-04-17', 'A', 9, '7281 Rhoncus. Road', 'password'),
+(50, 50, 'Oliver K. Hood', 'Pellentesque.ultricies.dignissim@risus.net', 'CIVIL', '1996-04-07', 'L', 10, 'Ap #155-4665 Ante, Av.', 'password'),
+(51, 51, 'Sonia D. Holt', 'amet.luctus@etmagnisdis.edu', 'ECE', '1998-12-04', 'B', 6, 'P.O. Box 789, 1476 Pharetra. Rd.', 'password'),
+(52, 52, 'Xena Clark', 'sapien.Cras@posuereatvelit.org', 'EEE', '1996-02-19', 'B', 7, '9345 Vel Street', 'password'),
+(53, 53, 'Ursula Green', 'arcu.vel@odiosempercursus.org', 'CIVIL', '1998-11-24', 'B', 5, 'Ap #902-6198 Ac Road', 'password'),
+(54, 54, 'Micah T. Duke', 'posuere.at.velit@auctor.net', 'CIVIL', '2001-09-24', 'E', 6, 'P.O. Box 278, 3540 Curabitur Rd.', 'password'),
+(55, 55, 'Charles Buchanan', 'et@apurus.edu', 'CIVIL', '1997-08-21', 'E', 10, 'Ap #948-2127 Faucibus Avenue', 'password'),
+(56, 56, 'George Pate', 'Aliquam@risus.co.uk', 'CIVIL', '1998-02-24', 'H', 6, '131-357 Suspendisse St.', 'password'),
+(57, 57, 'Martena M. Cook', 'Duis@inaliquet.com', 'ECE', '1997-05-21', 'K', 9, '245-4677 Torquent Rd.', 'password'),
+(58, 58, 'Grady Bush', 'Praesent.eu@nislsemconsequat.co.uk', 'CSE', '2000-06-21', 'F', 6, '920-8633 Malesuada Road', 'password'),
+(59, 59, 'Adele W. Yang', 'nisl@arcuetpede.net', 'ECE', '1999-02-03', 'E', 7, '8982 Arcu Street', 'password'),
+(60, 60, 'Slade Guzman', 'fringilla@egettincidunt.org', 'ECE', '1996-04-02', 'B', 8, '7806 Imperdiet Avenue', 'password'),
+(61, 61, 'Odysseus Buchanan', 'Duis@Sed.edu', 'CIVIL', '1995-10-20', 'G', 5, '5988 Commodo Road', 'password'),
+(62, 62, 'Nolan H. Patton', 'dictum.magna@pulvinar.co.uk', 'EEE', '2001-08-27', 'G', 7, '127 Amet Avenue', 'password'),
+(63, 63, 'Reagan E. Hood', 'Proin@vitaerisus.ca', 'MECH', '1996-01-29', 'E', 9, 'P.O. Box 292, 6344 Nostra, Avenue', 'password'),
+(64, 64, 'Craig Gentry', 'Sed.et.libero@et.edu', 'CIVIL', '1999-05-14', 'G', 5, '277-5409 Auctor Road', 'password'),
+(65, 65, 'Nelle P. Tillman', 'mauris.aliquam.eu@risusquis.com', 'CSE', '1996-08-17', 'E', 9, 'P.O. Box 963, 8997 Feugiat. Av.', 'password'),
+(66, 66, 'Uriah Baird', 'adipiscing@sapienNunc.edu', 'ECE', '1998-12-31', 'G', 10, 'P.O. Box 472, 2805 Nec Road', 'password'),
+(67, 67, 'Ivy E. Jacobson', 'neque.Morbi@pede.net', 'CSE', '1998-08-18', 'K', 10, '7498 Dui. St.', 'password'),
+(68, 68, 'Caldwell Morse', 'tempor@necquam.co.uk', 'EEE', '1997-07-13', 'E', 10, 'Ap #950-2932 Cursus Ave', 'password'),
+(69, 69, 'Hasad E. Lucas', 'eget.laoreet@euismodmauris.ca', 'ECE', '1998-12-09', 'F', 8, 'Ap #368-818 Tellus. Road', 'password'),
+(70, 70, 'Quinlan M. Moses', 'cubilia.Curae@rhoncusDonecest.net', 'EEE', '1996-03-03', 'J', 9, 'P.O. Box 990, 5709 Ac Ave', 'password'),
+(71, 71, 'Simon T. Harper', 'commodo.tincidunt@lacinia.net', 'EEE', '1995-11-18', 'B', 5, 'Ap #304-7433 Congue, Rd.', 'password'),
+(72, 72, 'Merritt Robertson', 'interdum.Curabitur@nonbibendum.org', 'EEE', '2001-04-22', 'E', 6, '542-2298 Quisque Av.', 'password'),
+(73, 73, 'Armand B. Stone', 'risus.quis.diam@cursus.org', 'MECH', '2001-03-01', 'K', 8, 'P.O. Box 189, 7247 Habitant St.', 'password'),
+(74, 74, 'Guy Holland', 'tristique.aliquet.Phasellus@mauris.edu', 'CIVIL', '1998-03-15', 'L', 6, 'P.O. Box 459, 7376 Dui Rd.', 'password'),
+(75, 75, 'Hasad Z. Mathews', 'nonummy.ac@massaMauris.ca', 'CSE', '2000-01-14', 'D', 7, 'Ap #871-1241 Duis Street', 'password'),
+(76, 76, 'Gray Mckinney', 'nec.eleifend.non@infelisNulla.net', 'EEE', '1997-01-19', 'B', 5, '6925 Arcu. Rd.', 'password'),
+(77, 77, 'Caesar V. Pena', 'arcu.Sed@Nam.edu', 'MECH', '1996-01-15', 'G', 10, '994-1307 Magna. Rd.', 'password'),
+(78, 78, 'Micah Z. Schmidt', 'eu.nibh.vulputate@ornaresagittisfelis.net', 'EEE', '1998-07-08', 'K', 6, 'P.O. Box 927, 6394 Ac Rd.', 'password'),
+(79, 79, 'Clementine R. Delacruz', 'lobortis.nisi.nibh@sodalespurusin.edu', 'MECH', '1998-12-29', 'L', 5, '5607 Sem, Road', 'password'),
+(80, 80, 'Gisela O. Bridges', 'facilisis.lorem.tristique@ut.co.uk', 'CIVIL', '1995-10-10', 'K', 5, 'P.O. Box 363, 3329 Euismod St.', 'password'),
+(81, 81, 'Cara Herrera', 'In.mi.pede@lacinia.ca', 'EEE', '2000-08-22', 'F', 9, 'P.O. Box 415, 4521 Enim Rd.', 'password'),
+(82, 82, 'Xerxes Johns', 'nulla.ante@rhoncusNullam.edu', 'CSE', '1998-05-29', 'C', 7, '968-4242 Purus, Av.', 'password'),
+(83, 83, 'Reuben X. Huff', 'vitae@pellentesque.co.uk', 'ECE', '1999-07-31', 'C', 6, '2867 Ligula. St.', 'password'),
+(84, 84, 'Zephania P. Snow', 'id.erat.Etiam@Proinnonmassa.ca', 'EEE', '1999-02-26', 'N', 10, 'Ap #568-6947 Ac, Road', 'password'),
+(85, 85, 'Nichole Burris', 'turpis.non.enim@feugiatnec.ca', 'MECH', '2000-03-23', 'G', 7, '3016 Turpis. St.', 'password'),
+(86, 86, 'Hayes O. Maddox', 'tempus.non@necenim.co.uk', 'CSE', '1996-12-22', 'A', 5, 'Ap #488-6937 Nec St.', 'password'),
+(87, 87, 'Castor U. Bell', 'eu.dui.Cum@sit.com', 'CIVIL', '2000-10-13', 'K', 6, 'P.O. Box 789, 9961 Ac Av.', 'password'),
+(88, 88, 'Channing W. Leonard', 'magna.nec.quam@velitPellentesque.ca', 'MECH', '2000-10-07', 'C', 5, 'Ap #683-7581 Eget St.', 'password'),
+(89, 89, 'Kadeem G. Armstrong', 'nisi@quam.net', 'MECH', '1999-04-01', 'N', 5, '810-8544 Phasellus St.', 'password'),
+(90, 90, 'Castor Vega', 'blandit.enim.consequat@eratvitae.ca', 'EEE', '1996-01-04', 'H', 7, '6700 Lorem Av.', 'password'),
+(91, 91, 'Carly U. Frost', 'arcu.Morbi@volutpatNulla.co.uk', 'CSE', '1996-03-31', 'J', 9, 'P.O. Box 727, 7409 Eget Avenue', 'password'),
+(92, 92, 'Sasha Stuart', 'vulputate@acmetusvitae.org', 'CIVIL', '1997-06-25', 'C', 9, '106-7782 Velit. Avenue', 'password'),
+(93, 93, 'Gloria Mcknight', 'quis.pede.Praesent@Nullamlobortisquam.net', 'CIVIL', '2001-07-11', 'J', 5, '670-1555 Tortor Road', 'password'),
+(94, 94, 'Samson Kirkland', 'Cras.lorem.lorem@eget.com', 'ECE', '1998-09-28', 'F', 9, '8723 Dictum Rd.', 'password'),
+(95, 95, 'Arden J. Foley', 'consectetuer.mauris@aliquetdiamSed.org', 'EEE', '1996-04-29', 'A', 7, 'Ap #450-118 Libero St.', 'password'),
+(96, 96, 'Leo R. Holland', 'lacinia.vitae@seddictumeleifend.org', 'MECH', '1997-10-16', 'I', 5, '490-7070 Id, Av.', 'password'),
+(97, 97, 'Yvonne Francis', 'turpis.egestas@euarcu.net', 'ECE', '1999-06-25', 'F', 8, '191-8635 Scelerisque Ave', 'password'),
+(98, 98, 'Fatima Higgins', 'ac@quam.org', 'CSE', '1996-03-02', 'E', 8, 'Ap #209-8184 Eget Street', 'password'),
+(99, 99, 'Beverly X. Barnes', 'ut@sagittisplaceratCras.com', 'MECH', '1998-07-04', 'G', 6, '827 Dui Road', 'password'),
+(100, 100, 'Michelle F. Sharpe', 'placerat@Sedet.ca', 'MECH', '1996-02-10', 'N', 9, 'P.O. Box 657, 2366 Euismod Av.', 'password');
 -- --------------------------------------------------------
 
 --
@@ -311,119 +316,125 @@ INSERT INTO `student` (`RollNo`,`studentName`,`email`,`department`,`birthDate`,`
 --
 
 CREATE TABLE `student_has_course` (
-  `Sno` int(10) NOT NULL DEFAULT '0',
-  `studentID` varchar(9) CHARACTER SET latin1 NOT NULL,
-  `courseID` varchar(5) CHARACTER SET latin1 NOT NULL,
+  `Sno` int(10) NOT NULL,
+  `studentID` varchar(9) NOT NULL,
+  `teacherID` varchar(9) NOT NULL,
+  `courseID` varchar(5) NOT NULL,
   `leavesTaken` int(11) DEFAULT NULL,
-  `grade` varchar(1) CHARACTER SET latin1 DEFAULT NULL,
-  `teacherID` varchar(9) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `grade` varchar(1) DEFAULT NULL,
+  `present` int(2) DEFAULT '0',
+  `T1` int(2) DEFAULT '0',
+  `T2` int(2) DEFAULT '0',
+  `ProjectAssignment` int(2) DEFAULT '0',
+  `EndSem` int(2) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student_has_course`
 --
 
-INSERT INTO `student_has_course` (`Sno`, `studentID`, `courseID`, `leavesTaken`, `grade`, `teacherID`) VALUES
-(6, '93', '1', 0, 'D', '3'),
-(23, '60', '3', 17, 'B', '33'),
-(37, '87', '4', 17, 'C', '18'),
-(11, '55', '6', 7, 'E', '1'),
-(50, '94', '6', 13, 'A', '1'),
-(74, '22', '6', 15, 'B', '1'),
-(96, '89', '7', 2, 'B', '27'),
-(85, '41', '11', 9, 'B', '56'),
-(41, '64', '14', 19, 'C', '72'),
-(4, '12', '15', 15, 'E', '85'),
-(26, '17', '15', 14, 'A', '85'),
-(64, '80', '15', 18, 'D', '85'),
-(99, '7', '17', 9, 'A', '96'),
-(61, '89', '18', 11, 'C', '40'),
-(57, '46', '19', 16, 'B', '42'),
-(91, '99', '19', 17, 'D', '42'),
-(27, '82', '20', 0, 'E', '99'),
-(72, '89', '20', 2, 'A', '99'),
-(14, '27', '21', 19, 'E', '97'),
-(59, '66', '23', 20, 'E', '63'),
-(18, '25', '24', 1, 'C', '2'),
-(21, '56', '24', 20, 'D', '2'),
-(46, '50', '26', 14, 'D', '2'),
-(75, '12', '26', 10, 'C', '2'),
-(87, '35', '26', 18, 'A', '2'),
-(36, '5', '27', 10, 'E', '29'),
-(68, '50', '28', 8, 'A', '41'),
-(39, '87', '29', 13, 'C', '87'),
-(69, '7', '29', 8, 'B', '87'),
-(76, '42', '29', 16, 'E', '87'),
-(7, '58', '30', 2, 'C', '50'),
-(62, '48', '30', 3, 'B', '50'),
-(78, '16', '32', 10, 'B', '47'),
-(38, '58', '33', 20, 'B', '28'),
-(10, '98', '34', 1, 'D', '56'),
-(40, '98', '35', 17, 'B', '33'),
-(67, '82', '36', 12, 'E', '47'),
-(77, '63', '38', 3, 'B', '69'),
-(33, '14', '40', 11, 'B', '92'),
-(82, '20', '41', 2, 'C', '20'),
-(28, '49', '42', 0, 'A', '3'),
-(51, '27', '42', 11, 'B', '3'),
-(25, '36', '43', 11, 'E', '29'),
-(42, '55', '43', 15, 'E', '29'),
-(49, '76', '43', 6, 'B', '29'),
-(100, '47', '43', 18, 'A', '29'),
-(54, '73', '44', 11, 'B', '28'),
-(92, '20', '45', 1, 'E', '24'),
-(65, '17', '46', 7, 'E', '43'),
-(24, '52', '48', 10, 'D', '94'),
-(32, '23', '48', 4, 'A', '94'),
-(19, '89', '49', 14, 'B', '11'),
-(90, '66', '49', 2, 'B', '11'),
-(1, '9', '51', 13, 'A', '37'),
-(63, '91', '51', 9, 'D', '37'),
-(70, '34', '51', 19, 'A', '37'),
-(20, '85', '53', 16, 'C', '56'),
-(17, '73', '55', 9, 'D', '42'),
-(2, '20', '57', 2, 'E', '24'),
-(13, '61', '58', 10, 'E', '93'),
-(86, '96', '58', 10, 'C', '93'),
-(52, '50', '61', 6, 'E', '64'),
-(9, '67', '64', 7, 'A', '71'),
-(56, '90', '64', 2, 'B', '71'),
-(95, '59', '64', 11, 'B', '71'),
-(35, '75', '67', 18, 'B', '68'),
-(71, '14', '67', 1, 'E', '68'),
-(43, '57', '68', 0, 'B', '45'),
-(45, '38', '69', 16, 'E', '17'),
-(55, '96', '72', 9, 'A', '72'),
-(66, '13', '72', 18, 'D', '72'),
-(89, '68', '72', 6, 'D', '72'),
-(58, '64', '73', 8, 'A', '52'),
-(81, '37', '75', 14, 'E', '58'),
-(5, '44', '76', 14, 'A', '14'),
-(73, '23', '76', 10, 'B', '14'),
-(94, '80', '76', 9, 'E', '14'),
-(60, '45', '77', 11, 'B', '51'),
-(47, '26', '78', 0, 'C', '81'),
-(93, '95', '78', 1, 'C', '81'),
-(29, '42', '79', 10, 'C', '91'),
-(83, '18', '79', 8, 'C', '91'),
-(97, '97', '80', 18, 'B', '8'),
-(16, '24', '81', 10, 'D', '81'),
-(8, '94', '82', 15, 'D', '7'),
-(79, '6', '83', 1, 'D', '37'),
-(31, '67', '84', 3, 'A', '23'),
-(98, '66', '84', 2, 'D', '23'),
-(12, '25', '86', 20, 'C', '77'),
-(53, '46', '86', 4, 'A', '77'),
-(3, '95', '93', 10, 'B', '18'),
-(44, '81', '94', 10, 'D', '69'),
-(80, '62', '94', 11, 'D', '69'),
-(84, '34', '94', 0, 'A', '69'),
-(34, '38', '96', 11, 'A', '69'),
-(88, '15', '96', 14, 'D', '69'),
-(15, '21', '98', 18, 'D', '7'),
-(22, '3', '99', 16, 'E', '40'),
-(30, '67', '100', 16, 'A', '40'),
-(48, '33', '100', 10, 'D', '40');
+INSERT INTO `student_has_course` (`Sno`, `studentID`, `teacherID`, `courseID`, `leavesTaken`, `grade`, `present`, `T1`, `T2`, `ProjectAssignment`, `EndSem`) VALUES
+(1, '9', '37', '51', 13, 'A', 0, 0, 0, 0, 0),
+(2, '20', '24', '57', 2, 'E', 0, 0, 0, 0, 0),
+(3, '95', '18', '93', 10, 'B', 0, 0, 0, 0, 0),
+(4, '12', '85', '15', 15, 'A', 0, 0, 0, 0, 0),
+(5, '44', '14', '76', 14, 'A', 0, 0, 0, 0, 0),
+(6, '93', '3', '1', 0, 'D', 0, 0, 0, 0, 0),
+(7, '58', '50', '30', 2, 'C', 0, 0, 0, 0, 0),
+(8, '94', '7', '82', 5, 'C', 6, 8, 9, 10, 11),
+(9, '67', '71', '64', 7, 'A', 0, 0, 0, 0, 0),
+(10, '98', '56', '34', 1, 'D', 0, 0, 0, 0, 0),
+(11, '55', '1', '6', 2, 'A', 6, 4, 5, 6, 7),
+(12, '25', '77', '86', 20, 'E', 0, 0, 0, 0, 0),
+(13, '61', '93', '58', 10, 'E', 0, 0, 0, 0, 0),
+(14, '27', '97', '21', 19, 'E', 0, 0, 0, 0, 0),
+(15, '21', '7', '98', 18, 'D', 0, 0, 0, 0, 0),
+(16, '24', '81', '81', 10, 'D', 0, 0, 0, 0, 0),
+(17, '73', '42', '55', 9, 'D', 0, 0, 0, 0, 0),
+(18, '25', '2', '24', 1, 'E', 0, 0, 0, 0, 0),
+(19, '89', '11', '49', 14, 'B', 0, 0, 0, 0, 0),
+(20, '85', '56', '53', 16, 'C', 0, 0, 0, 0, 0),
+(21, '56', '2', '24', 20, 'F', 0, 0, 0, 0, 0),
+(22, '3', '40', '99', 16, 'E', 0, 0, 0, 0, 0),
+(23, '60', '33', '3', 17, 'B', 0, 0, 0, 0, 0),
+(24, '52', '94', '48', 10, 'D', 0, 0, 0, 0, 0),
+(25, '36', '29', '43', 11, 'E', 0, 0, 0, 0, 0),
+(26, '17', '85', '15', 14, 'A', 0, 0, 0, 0, 0),
+(27, '82', '99', '20', 0, 'E', 0, 0, 0, 0, 0),
+(28, '49', '3', '42', 0, 'A', 0, 0, 0, 0, 0),
+(29, '42', '91', '79', 10, 'C', 0, 0, 0, 0, 0),
+(30, '67', '40', '100', 16, 'A', 0, 0, 0, 0, 0),
+(31, '67', '23', '84', 3, 'A', 0, 0, 0, 0, 0),
+(32, '23', '94', '48', 4, 'A', 0, 0, 0, 0, 0),
+(33, '14', '92', '40', 11, 'B', 0, 0, 0, 0, 0),
+(34, '38', '69', '96', 11, 'A', 0, 0, 0, 0, 0),
+(35, '75', '68', '67', 18, 'B', 0, 0, 0, 0, 0),
+(36, '5', '29', '27', 10, 'E', 0, 0, 0, 0, 0),
+(37, '87', '18', '4', 17, 'C', 0, 0, 0, 0, 0),
+(38, '58', '28', '33', 20, 'B', 0, 0, 0, 0, 0),
+(39, '87', '87', '29', 13, 'C', 0, 0, 0, 0, 0),
+(40, '98', '33', '35', 17, 'B', 0, 0, 0, 0, 0),
+(41, '64', '72', '14', 19, 'C', 0, 0, 0, 0, 0),
+(42, '55', '29', '43', 2, 'A', 6, 4, 5, 6, 7),
+(43, '57', '45', '68', 0, 'B', 0, 0, 0, 0, 0),
+(44, '81', '69', '94', 10, 'D', 0, 0, 0, 0, 0),
+(45, '38', '17', '69', 16, 'E', 0, 0, 0, 0, 0),
+(46, '50', '2', '26', 14, 'A', 0, 0, 0, 0, 0),
+(47, '26', '81', '78', 0, 'C', 0, 0, 0, 0, 0),
+(48, '33', '40', '100', 10, 'D', 0, 0, 0, 0, 0),
+(49, '76', '29', '43', 6, 'B', 0, 0, 0, 0, 0),
+(50, '94', '1', '6', 5, 'C', 6, 8, 9, 10, 11),
+(51, '27', '3', '42', 11, 'B', 0, 0, 0, 0, 0),
+(52, '50', '64', '61', 6, 'A', 0, 0, 0, 0, 0),
+(53, '46', '77', '86', 4, 'A', 0, 0, 0, 0, 0),
+(54, '73', '28', '44', 11, 'B', 0, 0, 0, 0, 0),
+(55, '96', '72', '72', 9, 'A', 0, 0, 0, 0, 0),
+(56, '90', '71', '64', 2, 'B', 0, 0, 0, 0, 0),
+(57, '46', '42', '19', 16, 'B', 0, 0, 0, 0, 0),
+(58, '64', '52', '73', 8, 'A', 0, 0, 0, 0, 0),
+(59, '66', '63', '23', 20, 'E', 0, 0, 0, 0, 0),
+(60, '45', '51', '77', 11, 'B', 0, 0, 0, 0, 0),
+(61, '89', '40', '18', 11, 'C', 0, 0, 0, 0, 0),
+(62, '48', '50', '30', 3, 'B', 0, 0, 0, 0, 0),
+(63, '91', '37', '51', 9, 'D', 0, 0, 0, 0, 0),
+(64, '80', '85', '15', 18, 'D', 0, 0, 0, 0, 0),
+(65, '17', '43', '46', 7, 'E', 0, 0, 0, 0, 0),
+(66, '13', '72', '72', 18, 'D', 0, 0, 0, 0, 0),
+(67, '82', '47', '36', 12, 'E', 0, 0, 0, 0, 0),
+(68, '50', '41', '28', 8, 'A', 0, 0, 0, 0, 0),
+(69, '7', '87', '29', 8, 'B', 0, 0, 0, 0, 0),
+(70, '34', '37', '51', 19, 'A', 0, 0, 0, 0, 0),
+(71, '14', '68', '67', 1, 'E', 0, 0, 0, 0, 0),
+(72, '89', '99', '20', 2, 'A', 0, 0, 0, 0, 0),
+(73, '23', '14', '76', 10, 'B', 0, 0, 0, 0, 0),
+(74, '22', '1', '6', 3, 'S', 6, 0, 1, 2, 3),
+(75, '12', '2', '26', 10, 'A', 0, 0, 0, 0, 0),
+(76, '42', '87', '29', 16, 'E', 0, 0, 0, 0, 0),
+(77, '63', '69', '38', 3, 'B', 0, 0, 0, 0, 0),
+(78, '16', '47', '32', 10, 'B', 0, 0, 0, 0, 0),
+(79, '6', '37', '83', 1, 'D', 0, 0, 0, 0, 0),
+(80, '62', '69', '94', 11, 'D', 0, 0, 0, 0, 0),
+(81, '37', '58', '75', 14, 'E', 0, 0, 0, 0, 0),
+(82, '20', '20', '41', 2, 'C', 0, 0, 0, 0, 0),
+(83, '18', '91', '79', 8, 'C', 0, 0, 0, 0, 0),
+(84, '34', '69', '94', 0, 'A', 0, 0, 0, 0, 0),
+(85, '41', '56', '11', 9, 'B', 0, 0, 0, 0, 0),
+(86, '96', '93', '58', 10, 'C', 0, 0, 0, 0, 0),
+(87, '35', '2', '26', 18, 'A', 0, 0, 0, 0, 0),
+(88, '15', '69', '96', 14, 'D', 0, 0, 0, 0, 0),
+(89, '68', '72', '72', 6, 'D', 0, 0, 0, 0, 0),
+(90, '66', '11', '49', 2, 'B', 0, 0, 0, 0, 0),
+(91, '99', '42', '19', 17, 'D', 0, 0, 0, 0, 0),
+(92, '20', '24', '45', 1, 'E', 0, 0, 0, 0, 0),
+(93, '95', '81', '78', 1, 'C', 0, 0, 0, 0, 0),
+(94, '80', '14', '76', 9, 'E', 0, 0, 0, 0, 0),
+(95, '59', '71', '64', 11, 'B', 0, 0, 0, 0, 0),
+(96, '89', '27', '7', 2, 'B', 0, 0, 0, 0, 0),
+(97, '97', '8', '80', 18, 'B', 0, 0, 0, 0, 0),
+(98, '66', '23', '84', 2, 'D', 0, 0, 0, 0, 0),
+(99, '7', '96', '17', 9, 'A', 0, 0, 0, 0, 0),
+(100, '47', '29', '43', 18, 'A', 0, 0, 0, 0, 0);
+
 
 
 --
