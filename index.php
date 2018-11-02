@@ -72,14 +72,14 @@ if(isset($_SESSION))
     <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
       <i class="fa fa-bars"></i>
     </a>
-    <a href="index.php" class="w3-bar-item w3-button w3-blue">HOME</a>
-    <a href="php/teacher.php" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> TEACHER</a>
-    <a href="php/student.php" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> STUDENT</a>
+    <a href="index.php" class="w3-bar-item w3-button w3-light-grey w3-hover-blue w3-opacity-min">HOME</a>
+    <a href="php/teacher.php" class="w3-bar-item w3-button w3-hide-small w3-text-black"><i class="fa fa-user"></i> TEACHER</a>
+    <a href="php/student.php" class="w3-bar-item w3-button w3-hide-small w3-text-black"><i class="fa fa-th"></i> STUDENT</a>
   </div>
 
   <!-- Navbar on small screens -->
   <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-text-black w3-hide-medium">
-    <a href="index.php" class="w3-bar-item w3-button w3-blue" onclick="toggleFunction()">HOME</a>
+    <a href="index.php" class="w3-bar-item w3-button w3-light-grey" onclick="toggleFunction()">HOME</a>
     <a href="php/teacher.php" class="w3-bar-item w3-button" onclick="toggleFunction()">TEACHER</a>
     <a href="php/student.php" class="w3-bar-item w3-button" onclick="toggleFunction()">STUDENT</a>
   </div>
@@ -170,12 +170,15 @@ if(isset($_SESSION))
 
 
 <!-- Footer -->
-<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
-  <a href="php/admin.php" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>Admin</a>
+<footer class="w3-center w3-white w3-padding-64 w3-opacity w3-hover-opacity-off">
+  <p><i class="fa fa-envelope w3-hover-opacity"></i> vineetjc@yahoo.com | <i class="fa fa-github w3-hover-opacity"></i> github.com/vineetjc<br>
+    <i class="fa fa-envelope w3-hover-opacity"></i> pranavasishmenon@gmail.com | <i class="fa fa-github w3-hover-opacity"></i> github.com/Pranav-AM<br>
+    <i class="fa fa-envelope w3-hover-opacity"></i> mathewg98@gmail.com | <i class="fa fa-github w3-hover-opacity"></i> github.com/mattyco<br>
+  </p>
+  <a href="php/admin.php" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>Admin Login</a>
   <div class="w3-xlarge w3-section">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
     <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
     <i class="fa fa-pinterest-p w3-hover-opacity"></i>
     <i class="fa fa-twitter w3-hover-opacity"></i>
     <i class="fa fa-linkedin w3-hover-opacity"></i>
@@ -214,7 +217,7 @@ window.onscroll = function() {myFunction()};
 function myFunction() {
     var navbar = document.getElementById("myNavbar");
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-black";
+        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
     } else {
         navbar.className = "w3-bar" + " w3-animate-top" + "w3-text-black";
     }

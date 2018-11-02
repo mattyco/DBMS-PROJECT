@@ -124,7 +124,7 @@ width: 100%;
       ?>
         <!-- Banner -->
       <section id="intro" class="main">
-            <span class="icon fa-diamond major"></span>
+            <span class="icon fa-user major"></span>
             <h2>
         STUDENT PORTAL
       </h2>
