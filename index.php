@@ -171,18 +171,11 @@ if(isset($_SESSION))
 
 <!-- Footer -->
 <footer class="w3-center w3-white w3-padding-64 w3-opacity w3-hover-opacity-off">
-  <p><i class="fa fa-envelope w3-hover-opacity"></i> vineetjc@yahoo.com | <i class="fa fa-github w3-hover-opacity"></i> github.com/vineetjc<br>
-    <i class="fa fa-envelope w3-hover-opacity"></i> pranavasishmenon@gmail.com | <i class="fa fa-github w3-hover-opacity"></i> github.com/Pranav-AM<br>
-    <i class="fa fa-envelope w3-hover-opacity"></i> mathewg98@gmail.com | <i class="fa fa-github w3-hover-opacity"></i> github.com/mattyco<br>
+  <p><a href="mailto:vineetjc@yahoo.com"><i class="fa fa-envelope w3-hover-opacity"></i> vineetjc@yahoo.com</a> | <a href="https://github.com/vineetjc"><i class="fa fa-github w3-hover-opacity"></i> github.com/vineetjc<br></a>
+    <a href="mailto:pranavasishmenon@gmail.com"><i class="fa fa-envelope w3-hover-opacity"></i> pranavasishmenon@gmail.com</a> | <a href="https://github.com/Pranav-AM"><i class="fa fa-github w3-hover-opacity"></i> github.com/Pranav-AM<br></a>
+    <a href="mailto:mathewg98@gmail.com"><i class="fa fa-envelope w3-hover-opacity"></i> mathewg98@gmail.com</a> | <a href="https://github.com/mattyco"><i class="fa fa-github w3-hover-opacity"></i> github.com/mattyco<br></a>
   </p>
-  <a href="php/admin.php" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>Admin Login</a>
-  <div class="w3-xlarge w3-section">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
-  </div>
+  <a href="php/admin.php" class="w3-button w3-light-grey"><i class="w3-margin-center"></i>Admin Login</a>  
 
 </footer>
 
