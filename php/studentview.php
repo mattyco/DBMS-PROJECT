@@ -69,7 +69,7 @@ width: 300px;
       <i class="fa fa-bars"></i>
     </a>
     <a href="studentview.php?mycourses" class="w3-bar-item w3-button"><i class="fa fa-th"></i> MY COURSES</a>
-    <a href="studentview.php?enroll" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> PRE-REGISTRATION</a>
+    <a href="studentview.php?prereg" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> PRE-REGISTRATION</a>
     <a href="studentview.php?attendance" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> ATTENDANCE</a>
     <a href="studentview.php?grades" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> GRADES</a>
     <a href="../login/logout.php" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
@@ -80,7 +80,7 @@ width: 300px;
   <!-- Navbar on small screens -->
  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
    <a href="studentview.php?mycourses" class="w3-bar-item w3-button"><i class="fa fa-th"></i> MY COURSES</a>
-   <a href="studentview.php?enroll" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> PRE-REGISTRATION</a>
+   <a href="studentview.php?prereg" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> PRE-REGISTRATION</a>
    <a href="studentview.php?attendance" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> ATTENDANCE</a>
    <a href="studentview.php?grades" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> GRADES</a>
    <a href="../login/logout.php" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
@@ -104,11 +104,11 @@ width: 300px;
 	$dbname = "dss";
 
 	// Create connection
-	$con = mysqli_connect($servername, $username, $password, $dbname);
+	$conn = mysqli_connect($servername, $username, $password, $dbname);
 	// Check connection
-	if ($con->connect_error)
+	if ($conn->connect_error)
 	{
-		die("Connection failed: " . $con->connect_error);
+		die("Connection failed: " . $conn->connect_error);
 	}
 
   $studentuname = $_SESSION['user'];
@@ -128,7 +128,7 @@ width: 300px;
   		</section>';
 
         $sql = "SELECT * FROM course c, student_has_course s where s.studentID = '$studentuname' and c.courseID = s.courseID";
-        $result = $con->query($sql);
+        $result = $conn->query($sql);
 
             // output data of each row
 
@@ -173,7 +173,7 @@ width: 300px;
       </section>';
 
         $sql = "SELECT * FROM course c, student_has_course t where t.studentID = '$studentuname' and c.courseID=t.courseID";
-        $result = $con->query($sql);
+        $result = $conn->query($sql);
 
             // output data of each row
 
@@ -192,7 +192,7 @@ width: 300px;
 
 
 	}
-  else if(isset( $_GET['enroll'] ))
+  else if(isset( $_GET['prereg'] ))
 	{
     echo '		<section id="intro" class="main">
              <h2>
@@ -206,7 +206,7 @@ width: 300px;
       </section>';
 
          $sql = "SELECT * FROM course c, teacher t where t.username = '$teacheruname' and c.teacherID=t.teacherID";
-         $result = $con->query($sql);
+         $result = $conn->query($sql);
 
              // output data of each row
 
@@ -214,7 +214,7 @@ width: 300px;
            echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Course ID</th><th>Course Name</th><th>Classroom</th><th>Slot</th></tr>";
              // output data of each row
              while($row = $result->fetch_assoc()) {
-                 echo "<tr><td>". $row["courseID"]."</td><td>"."<a href= studentview.php?enroll/".str_replace(' ','',$row["courseName"]).">".$row["courseName"]."</a>"."</td><td>".$row["classroom"]."</td><td>". $row["slot"]."</td></tr>";
+                 echo "<tr><td>". $row["courseID"]."</td><td>"."<a href= studentview.php?prereg/".str_replace(' ','',$row["courseName"]).">".$row["courseName"]."</a>"."</td><td>".$row["classroom"]."</td><td>". $row["slot"]."</td></tr>";
                  $_SESSION['course'][]=$row["courseName"];
              }
 
@@ -238,7 +238,7 @@ width: 300px;
       </section>';
 
          $sql = "SELECT * FROM course c, student_has_course t where t.studentID = '$studentuname' and c.courseID=t.courseID";
-         $result = $con->query($sql);
+         $result = $conn->query($sql);
 
              // output data of each row
 
@@ -280,13 +280,13 @@ width: 300px;
                   $coursename = $_SESSION['course'][$i];
 
                   $sql = "SELECT * FROM student_has_course h, student s, course c, teacher t where s.RollNo = '$studentuname' and c.courseName = '$coursename' and c.teacherID=t.teacherID and h.teacherID=t.teacherID and c.courseID = h.courseID and h.studentID = s.Rollno";
-                  $result = $con->query($sql);
+                  $result = $conn->query($sql);
 
                   if ($result->num_rows > 0) {
-                    echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Teacher ID</th><th>Teacher Name</th><th>Designation</th><th>Department</th><th>Your Grade</th><th>#Leaves Taken</th></tr>";
+                    echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Teacher ID</th><th>Teacher Name</th><th>Designation</th><th>Department</th><th>Your Grade</th><th>%Attendance</th></tr>";
                       // output data of each row
                       while($row = $result->fetch_assoc()) {
-                          echo "<tr><td>". $row["teacherID"]."</td><td>".$row["teacherName"]."</td><td>".$row["designation"]."</td><td>".$row["department"]."</td><td>".$row["grade"]."</td><td>".$row["leavesTaken"]."</td></tr>";
+                          echo "<tr><td>". $row["teacherID"]."</td><td>".$row["teacherName"]."</td><td>".$row["designation"]."</td><td>".$row["department"]."</td><td>".$row["grade"]."</td><td>".($row['present']*100/($row["leavesTaken"]+$row['present']))."</td></tr>";
                       }
 
                       echo "</table></div>";
@@ -314,13 +314,13 @@ width: 300px;
                     $coursename = $_SESSION['course'][$i];
 
                     $sql = "SELECT * FROM student_has_course h, student s, course c, teacher t where s.RollNo = '$studentuname' and c.courseName = '$coursename' and c.teacherID=t.teacherID and h.teacherID=t.teacherID and c.courseID = h.courseID and h.studentID = s.Rollno";
-                    $result = $con->query($sql);
+                    $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
-                      echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Roll Number</th><th>Student Name</th><th>Batch</th><th>Department</th><th>#Absent</th></tr>";
+                      echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Roll Number</th><th>Student Name</th><th>Batch</th><th>Department</th><th>#Present</th><th>#Absent</th><th>#Possible Leaves</th><th>%Attendance</th></tr>";
                         // output data of each row
                         while($row = $result->fetch_assoc()) {
-                            echo "<tr><td>". $row["RollNo"]."</td><td>".$row["studentName"]."</td><td>".$row["batch"]."</td><td>".$row["department"]."</td><td>".$row["leavesTaken"]."</td></tr>";
+                            echo "<tr><td>". $row["RollNo"]."</td><td>".$row["studentName"]."</td><td>".$row["batch"]."</td><td>".$row["department"]."</td><td>".$row["present"]."</td><td>".$row["leavesTaken"]."</td><td>".$row["possibleLeaves"]."</td><td>".($row['present']*100/($row['present']+$row["leavesTaken"]))."</td></tr>";
                         }
 
                         echo "</table></div>";
@@ -349,13 +349,13 @@ width: 300px;
                       $_SESSION['lastVisited']="studentview.php?grades/".str_replace(' ','',$coursename);
 
                       $sql = "SELECT * FROM student_has_course h, student s, course c, teacher t where s.RollNo = '$studentuname' and c.courseName = '$coursename' and c.teacherID=t.teacherID and h.teacherID=t.teacherID and c.courseID = h.courseID and h.studentID = s.Rollno";
-                      $result = $con->query($sql);
+                      $result = $conn->query($sql);
 
                       if ($result->num_rows > 0) {
-                        echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Roll Number</th><th>Student Name</th><th>Batch</th><th>Department</th><th>Grade</th></tr>";
+                        echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Roll Number</th><th>Student Name</th><th>Batch</th><th>Department</th><th>Midterm Test 1</th><th>Midterm Test 2</th><th>Project/Assignment(s) (if any)</th><th>End semester exam</th><th>Total</th><th>Grade</th></tr>";
                           // output data of each row
                           while($row = $result->fetch_assoc()) {
-                              echo "<tr><td>". $row["RollNo"]."</td><td>".$row["studentName"]."</td><td>".$row["batch"]."</td><td>".$row["department"]."</td><td>".$row["grade"]."</td></tr>";
+                              echo "<tr><td>". $row["RollNo"]."</td><td>".$row["studentName"]."</td><td>".$row["batch"]."</td><td>".$row["department"]."</td><td>".$row["T1"]."</td><td>".$row["T2"]."</td><td>".$row["ProjectAssignment"]."</td><td>".$row["EndSem"]."</td><td>".($row['T1']+$row['T2']+$row['ProjectAssignment']+$row["EndSem"])."</td><td>".$row["grade"]."</td></tr>";
                           }
                           echo "</table></div>";
                       } else {
@@ -365,7 +365,7 @@ width: 300px;
                   $iterated = true;
                   break;
                 }
-                else if (isset( $_GET['enroll/'.str_replace(' ','',$_SESSION['course'][$i])]))
+                else if (isset( $_GET['prereg/'.str_replace(' ','',$_SESSION['course'][$i])]))
                   {
 
                     echo '		<section id="intro" class="main">
@@ -382,7 +382,7 @@ width: 300px;
                         $coursename = $_SESSION['course'][$i];
 
                         $sql = "SELECT * FROM student_has_course h, student s, course c, teacher t where t.username = '$teacheruname' and c.courseName = '$coursename' and c.teacherID=t.teacherID and h.teacherID=t.teacherID and c.courseID = h.courseID and h.studentID = s.Rollno";
-                        $result = $con->query($sql);
+                        $result = $conn->query($sql);
 
                         if ($result->num_rows > 0) {
                           echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Roll Number</th><th>Student Name</th><th>Department</th><th>Batch</th><th>CGPA</th></tr>";
@@ -409,7 +409,7 @@ width: 300px;
     $_SESSION['user']=$studentUser;
     $studentPass=$_POST['studentPass'];
 		$get_stu="select * from student where RollNo = '$studentUser' AND password = '$studentPass'";
-		$run_stu=mysqli_query($con,$get_stu);
+		$run_stu=mysqli_query($conn,$get_stu);
 		if(mysqli_num_rows($run_stu)>0)
 		{
 			echo "<script>window.location.href='studentview.php?mycourses'</script>";
@@ -466,7 +466,7 @@ width: 300px;
 
 	*/
 
-	$con->close();
+	$conn->close();
 
 
 
