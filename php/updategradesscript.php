@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 $servername = "localhost";
@@ -7,30 +6,81 @@ $password = "PASSWORD";
 $dbname = "dss";
 
 // Create connection
-$con = mysqli_connect($servername, $username, $password, $dbname);
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 // Check connection
-if ($con->connect_error)
+if ($conn->connect_error)
 {
-  die("Connection failed: " . $con->connect_error);
+  die("Connection failed: " . $conn->connect_error);
 }
-//print_r();
-foreach (array_keys($_POST) as $i){
 
-$iterated = true;
-$sql = "UPDATE student_has_course SET grade='$_POST[$i]' WHERE studentID=$i";
-if ($con->query($sql) === TRUE) {
-    $iterated=true;
-    }
-else {
-    $iterated=false;
-    echo "Error updating record: " . $conn->error;
-    break;
-        }
-}
-if($iterated){echo "Record updated successfully";}
+ foreach (array_keys($_POST) as $i){
+   $temparr = (explode("_",$i));
+   $roll=$temparr[0];
+   $col=$temparr[1];
 
-//header("Location: /teacherview.php?grades"); /* Redirect browser */
-echo "<script>window.location.href='".$_SESSION['lastVisited']."'</script>";
-exit();
+   $iterated = true;
+   if ($col=='t1')
+     {
+         $sql = "UPDATE student_has_course SET T1=$_POST[$i] WHERE studentID=$roll";
+         if ($conn->query($sql) === TRUE) {
+             $iterated=true;
+         }
+         else {
+             $iterated=false;
+             echo "Error updating record: " . $conn->error;
+             break;
+         }
+     }
+    if ($col=='t2')
+       {
+           $sql = "UPDATE student_has_course SET T2=$_POST[$i] WHERE studentID=$roll";
+           if ($conn->query($sql) === TRUE) {
+               $iterated=true;
+           }
+           else {
+               $iterated=false;
+               echo "Error updating record: " . $conn->error;
+               break;
+           }
+       }
+       if ($col=='pr')
+         {
+             $sql = "UPDATE student_has_course SET ProjectAssignment=$_POST[$i] WHERE studentID=$roll";
+             if ($conn->query($sql) === TRUE) {
+                 $iterated=true;
+             }
+             else {
+                 $iterated=false;
+                 echo "Error updating record: " . $conn->error;
+                 break;
+             }
+         }
+         if ($col=='end')
+           {
+               $sql = "UPDATE student_has_course SET EndSem=$_POST[$i] WHERE studentID=$roll";
+               if ($conn->query($sql) === TRUE) {
+                   $iterated=true;
+               }
+               else {
+                   $iterated=false;
+                   echo "Error updating record: " . $conn->error;
+                   break;
+               }
+           }
+           if ($col=='g')
+             {
+                 $sql = "UPDATE student_has_course SET grade='$_POST[$i]' WHERE studentID=$roll";
+                 if ($conn->query($sql) === TRUE) {
+                     $iterated=true;
+                 }
+                 else {
+                     $iterated=false;
+                     echo "Error updating record: " . $conn->error;
+                     break;
+                 }
+             }
+ }
 
- ?>
+if($iterated){echo "<script>window.location.href='updatesuccessscript.php'</script>";}
+else{echo "<script>window.location.href='updatefailscript.php'</script>";}
+?>

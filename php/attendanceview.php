@@ -88,7 +88,8 @@ width: 300px;
 <!-- Header -->
       <header id="header" class="alt">
         <div class="inner">
-          <h1>Student Portal</h1>
+          <span class="w3-center w3-white w3-padding-large w3-xlarge w3-wide w3-animate-opacity">STUDENT PORTAL</span>
+          <p></p>
           <p>A portal for all students of NITC</p>
         </div>
       </header>
@@ -110,7 +111,7 @@ width: 300px;
 	if(isset( $_GET['loggedin'] ))
 	{
 		echo '		<section id="intro" class="main">
-            <span class="icon fa-diamond major"></span>
+            <span class="icon fa-user major"></span>
             <h2>
 				Add Attendance
 			</h2>
@@ -177,7 +178,7 @@ width: 300px;
 		}
 		echo '
 		<section id="intro" class="main">
-            <span class="icon fa-diamond major"></span>
+            <span class="icon fa-user major"></span>
             <h2>
 				Add Attendance
 			</h2>

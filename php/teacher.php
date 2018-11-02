@@ -5,7 +5,7 @@
 <title>TEACHER - DSS</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="../css/w3.css">
+ <link rel="stylesheet" href="../css/w3.css">
 <link rel="stylesheet" href="../css/lat.css">
 <link rel="stylesheet" href="../css/font.css">
 <link rel="stylesheet" href="../assets/css/main.css" />
@@ -84,14 +84,16 @@ body, html {
 </div>
 
 <!-- Header -->
-      <header id="header" class="alt">
-        <div class="inner" style="z-index:inherit">
-          <h1>Teacher Portal</h1>
-          <p>A portal to enroll students into courses and modify grades and attendance</p>
-        </div>
-      </header>
+<header id="header" class="alt">
+  <div class="w3-display-middle w3-hide-small" style="white-space:nowrap;">
+    <span class="w3-center w3-white w3-padding-large w3-xlarge w3-wide w3-animate-opacity">TEACHER PORTAL</span>
+    <p></p>
+    <p>A Portal for Teachers</p>
+  </div>
+</header>
 
-    <!-- Wrapper -->
+
+<!-- Wrapper -->
       <div id="wrapper">
 
 	  			<?php
@@ -113,7 +115,7 @@ body, html {
 			?>
         <!-- Banner -->
 		<section id="intro" class="main">
-            <span class="icon fa-diamond major"></span>
+            <span class="icon fa-user major"></span>
             <h2>
 				TEACHER PORTAL
 			</h2>
@@ -155,7 +157,7 @@ body, html {
 
 
 <!-- Add Google Maps -->
-<script>
+<!--script>
 function myMap()
 {
   myCenter=new google.maps.LatLng(41.878114, -87.629798);
@@ -172,13 +174,15 @@ function myMap()
   marker.setMap(map);
 }
 
-// Modal Image Gallery
+
+/*
 function onClick(element) {
   document.getElementById("img01").src = element.src;
   document.getElementById("modal01").style.display = "block";
   var captionText = document.getElementById("caption");
   captionText.innerHTML = element.alt;
-}
+}*/
+
 
 // Change style of navbar on scroll
 window.onscroll = function() {myFunction()};
@@ -200,7 +204,7 @@ function toggleFunction() {
         x.className = x.className.replace(" w3-show", "");
     }
 }
-</script>
+</script-->
 <script src="../scripts/google.js"></script>
 
 
