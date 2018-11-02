@@ -72,14 +72,14 @@ if(isset($_SESSION))
     <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
       <i class="fa fa-bars"></i>
     </a>
-    <a href="index.php" class="w3-bar-item w3-button w3-blue">HOME</a>
-    <a href="php/teacher.php" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> TEACHER</a>
-    <a href="php/student.php" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> STUDENT</a>
+    <a href="index.php" class="w3-bar-item w3-button w3-light-grey w3-hover-blue w3-opacity-min">HOME</a>
+    <a href="php/teacher.php" class="w3-bar-item w3-button w3-hide-small w3-text-black"><i class="fa fa-user"></i> TEACHER</a>
+    <a href="php/student.php" class="w3-bar-item w3-button w3-hide-small w3-text-black"><i class="fa fa-th"></i> STUDENT</a>
   </div>
 
   <!-- Navbar on small screens -->
   <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-text-black w3-hide-medium">
-    <a href="index.php" class="w3-bar-item w3-button w3-blue" onclick="toggleFunction()">HOME</a>
+    <a href="index.php" class="w3-bar-item w3-button w3-light-grey" onclick="toggleFunction()">HOME</a>
     <a href="php/teacher.php" class="w3-bar-item w3-button" onclick="toggleFunction()">TEACHER</a>
     <a href="php/student.php" class="w3-bar-item w3-button" onclick="toggleFunction()">STUDENT</a>
   </div>
@@ -217,7 +217,7 @@ window.onscroll = function() {myFunction()};
 function myFunction() {
     var navbar = document.getElementById("myNavbar");
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-black";
+        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
     } else {
         navbar.className = "w3-bar" + " w3-animate-top" + "w3-text-black";
     }
