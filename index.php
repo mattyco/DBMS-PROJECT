@@ -172,10 +172,10 @@ if(isset($_SESSION))
 <!-- Footer -->
 <footer class="w3-center w3-white w3-padding-64 w3-opacity w3-hover-opacity-off">
   <p><i class="fa fa-envelope w3-hover-opacity"></i> vineetjc@yahoo.com | <i class="fa fa-github w3-hover-opacity"></i> github.com/vineetjc<br>
-    <i class="fa fa-envelope w3-hover-opacity"></i> pranavasishmenon@gmail.com | <i class="fa fa-github w3-hover-opacity"></i> github.com/PranavAM<br>
-    <i class="fa fa-envelope w3-hover-opacity"></i> mathewg98@gmail.com | <i class="fa fa-github w3-hover-opacity"></i> github.com/Mattyco<br>
+    <i class="fa fa-envelope w3-hover-opacity"></i> pranavasishmenon@gmail.com | <i class="fa fa-github w3-hover-opacity"></i> github.com/Pranav-AM<br>
+    <i class="fa fa-envelope w3-hover-opacity"></i> mathewg98@gmail.com | <i class="fa fa-github w3-hover-opacity"></i> github.com/mattyco<br>
   </p>
-  <a href="php/admin.php" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>Admin</a>
+  <a href="php/admin.php" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>Admin Login</a>
   <div class="w3-xlarge w3-section">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
     <i class="fa fa-instagram w3-hover-opacity"></i>
