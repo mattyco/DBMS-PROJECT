@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <html>
-<title>ADMIN</title>
+<title>ADMIN - DSS</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../css/w3.css">
@@ -121,9 +121,9 @@ body, html {
 			</p>
 
  			<form action="adminview.php"  method = "post"; >
- 				<p>Enter Username</p><input type="text" name="teacherUser" id = "teacherUser">
+ 				<p>Enter Admin ID</p><input type="text" name="adminUser" id = "adminUser">
  				<br>
- 				<p>Enter Password</p><input type="password" name="teacherPass" id = "teacherPass">
+ 				<p>Enter Password</p><input type="password" name="adminPass" id = "adminPass">
  				<br>
  				<input type="submit" value="View Data" class="button big">
 			</form>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>Admin</title>
+<title>ADMIN - DSS</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../css/w3.css">
@@ -94,16 +94,16 @@ width: 300px;
   <?php
 	$servername = "localhost";
 	$username = "root";
-	$password = "root";
-	$dbname = "sms";
+	$password = "PASSWORD";
+	$dbname = "dss";
 
 	// Create connection
-	$con = mysqli_connect($servername, $username, $password, $dbname);
+	$conn = mysqli_connect($servername, $username, $password, $dbname);
 
 	// Check connection
-	if ($con->connect_error)
+	if ($conn->connect_error)
 	{
-		die("Connection failed: " . $con->connect_error);
+		die("Connection failed: " . $conn->connect_error);
 	}
 
 	if(isset( $_GET['loggedin'] ))
@@ -111,24 +111,14 @@ width: 300px;
 		echo '		<section id="intro" class="main">
             <span class="icon fa-diamond major"></span>
             <h2>
-				Add Student
+				CHANGE THIS
 			</h2>
             <p>
 
-				Enter studentID, teacherID, leaves taken and courseID, grade
+				Change this
 
 			</p>
- 			<form action="adminview.php?insert"  method = "post">
- 				<p>Enter studentID&nbsp&nbsp<input type="number" name="studentID" id = "studentID"></p>
- 				<p></p>
-				<p>Enter teacherID&nbsp&nbsp<input type="number" name="teacherID" id = "teacherID"></p>
- 				<p></p>
-
-				<p>Enter CourseID&nbsp&nbsp<input type="number" name="courseID" id = "courseID"></p>
- 				<p></p>
-
- 				<input type="submit" value="View Data" class="button big">
-			</form>
+ 		LOL HI
 		</section>';
 	}
 	else if(isset( $_GET['insert'] ))
@@ -136,7 +126,7 @@ width: 300px;
 
 
 		$get_stu="Select * from course where teacherID = $_POST[teacherID] and courseID = $_POST[courseID];" ;
-		$run_stu=mysqli_query($con,$get_stu);
+		$run_stu=mysqli_query($conn,$get_stu);
 		if(mysqli_num_rows($run_stu)<=0)
 		{
 			echo "<script>window.location.href='adminview.php?mismatch'</script>";
@@ -146,7 +136,7 @@ width: 300px;
 		else
 		{
 		$get_stu="INSERT INTO student_has_course VALUES ($_POST[studentID], $_POST[teacherID], $_POST[courseID], 'NULL', 'NULL') " ;
-		$run_stu=mysqli_query($con,$get_stu);
+		$run_stu=mysqli_query($conn,$get_stu);
 		if($run_stu)
 		{
 			echo '
@@ -242,10 +232,13 @@ width: 300px;
 
 	else
 	{
-		$teacherUser=$_POST['teacherUser'];
-		$teacherPass=$_POST['teacherPass'];
-
-		if($teacherUser=='krk' and $teacherPass=='2211')
+		$adminUser=$_POST['adminUser'];
+		$adminPass=$_POST['adminPass'];
+    $_SESSION['loggedIn']=true;
+    $_SESSION['user']=$adminUser;
+    $get_stu="select * from admin where AdminID = '$adminUser' AND password = '$adminPass'";
+    $run_stu=mysqli_query($conn,$get_stu);
+    if(mysqli_num_rows($run_stu)>0)
 		{	//echo "HELLO1";
 			echo "<script>window.location.href='adminview.php?loggedin'</script>";
 			/*
@@ -300,7 +293,7 @@ width: 300px;
 
 	*/
 
-	$con->close();
+	$conn->close();
 
 
 
@@ -313,7 +306,7 @@ width: 300px;
 
 
         <!-- Footer -->
-    
+
       </div>
 
     <!-- Scripts -->

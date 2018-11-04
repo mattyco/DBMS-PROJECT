@@ -21,13 +21,42 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `Sno` int(10) NOT NULL AUTO_INCREMENT,
+  `Sno` int(10) NOT NULL,
   `AdminID` varchar(9) NOT NULL,
   `password` varchar(32) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`AdminID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+  `AdminName` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`Sno`, `AdminID`, `password`, `email`, `AdminName`) VALUES
+(2, 'mattyco', 'password', 'mathewg98@gmail.com', 'Mathew George'),
+(3, 'Pranav-AM', 'password', 'pranavasishmenon@gmail.com', 'Pranav Asish Menon'),
+(1, 'vineetjc', 'password', 'vineetjc@yahoo.com', 'Vineet Jiji Cherian');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`AdminID`),
+  ADD KEY `Sno` (`Sno`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `Sno` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 -- --------------------------------------------------------
 
 --
