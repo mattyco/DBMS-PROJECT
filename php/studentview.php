@@ -318,10 +318,10 @@ width: 300px;
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
-                      echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Roll Number</th><th>Student Name</th><th>Batch</th><th>Department</th><th>#Present</th><th>#Absent</th><th>#Possible Leaves</th><th>%Attendance</th></tr>";
+                      echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Roll Number</th><th>Student Name</th><th>Batch</th><th>Department</th><th>#Present</th><th>#Absent</th><th>#Possible Leaves</th><th>Total #Classes</th><th>%Attendance</th></tr>";
                         // output data of each row
                         while($row = $result->fetch_assoc()) {
-                            echo "<tr><td>". $row["RollNo"]."</td><td>".$row["studentName"]."</td><td>".$row["batch"]."</td><td>".$row["department"]."</td><td>".$row["present"]."</td><td>".$row["leavesTaken"]."</td><td>".$row["possibleLeaves"]."</td><td>".($row['present']*100/($row['present']+$row["leavesTaken"]))."</td></tr>";
+                            echo "<tr><td>". $row["RollNo"]."</td><td>".$row["studentName"]."</td><td>".$row["batch"]."</td><td>".$row["department"]."</td><td>".$row["present"]."</td><td>".$row["leavesTaken"]."</td><td>".$row["possibleLeaves"]."</td><td>".($row["present"]+$row["leavesTaken"])."</td><td>".($row['present']*100/($row['present']+$row["leavesTaken"]))."</td></tr>";
                         }
 
                         echo "</table></div>";
@@ -480,7 +480,7 @@ width: 300px;
 
 
         <!-- Footer -->
-    
+
       </div>
 
     <!-- Scripts -->

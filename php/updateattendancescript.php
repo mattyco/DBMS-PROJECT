@@ -45,6 +45,7 @@ foreach (array_keys($_POST) as $i){
       }
 }
 
-if($iterated){echo "<script>window.location.href='updatesuccessscript.php'</script>";}
-else{echo "<script>window.location.href='updatefailscript.php'</script>";}
+if($iterated){$_SESSION['actionsuccess']=1;}
+else{$_SESSION['actionsuccess']=0;}
+echo "<script>window.location.href='".$_SESSION['lastVisited']."'</script>"; 
 ?>

@@ -21,13 +21,43 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `Sno` int(10) NOT NULL AUTO_INCREMENT,
+  `Sno` int(10) NOT NULL,
   `AdminID` varchar(9) NOT NULL,
   `password` varchar(32) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`AdminID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+  `AdminName` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`Sno`, `AdminID`, `password`, `email`, `AdminName`) VALUES
+(2, 'mattyco', 'password', 'mathewg98@gmail.com', 'Mathew George'),
+(3, 'Pranav-AM', 'password', 'pranavasishmenon@gmail.com', 'Pranav Asish Menon'),
+(1, 'vineetjc', 'password', 'vineetjc@yahoo.com', 'Vineet Jiji Cherian');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`AdminID`),
+  ADD UNIQUE KEY `AdminID` (`AdminID`),
+  ADD KEY `Sno` (`Sno`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `Sno` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 -- --------------------------------------------------------
 
 --
@@ -195,7 +225,7 @@ CREATE TABLE `student` (
   `department` varchar(255) DEFAULT NULL,
   `birthDate` varchar(255) DEFAULT NULL,
   `batch` varchar(255) DEFAULT NULL,
-  `CGPA` mediumint(9) DEFAULT NULL,
+  `CGPA` decimal(4,2) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT 'password'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -445,8 +475,7 @@ INSERT INTO `student_has_course` (`Sno`, `studentID`, `teacherID`, `courseID`, `
 -- Indexes for table `student_has_course`
 --
 ALTER TABLE `student_has_course`
-  ADD PRIMARY KEY (`Sno`);
-
+  ADD UNIQUE KEY `studentID` (`studentID`,`teacherID`,`courseID`);
 --
 -- AUTO_INCREMENT for dumped tables
 --
@@ -605,7 +634,7 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `course`
   ADD PRIMARY KEY (`courseID`),
-  ADD KEY `teacherID` (`teacherID`);
+  ADD UNIQUE KEY `courseID` (`courseID`);
 
 --
 -- Indexes for table `loginAttempts`
@@ -626,7 +655,9 @@ ALTER TABLE `members`
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
-  ADD PRIMARY KEY (`studentID`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `RollNo` (`RollNo`);
+
 
 --
 -- Indexes for table `student_has_course`
