@@ -19,9 +19,9 @@ if ($conn->connect_error)
    $col=$temparr[1];
 
    $iterated = true;
-   if ($col=='t1')
+   if ($col=='rn')
      {
-         $sql = "UPDATE student_has_course SET T1=$_POST[$i] WHERE studentID=$roll";
+         $sql = "UPDATE student SET RollNo=$_POST[$i] WHERE RollNo=$roll";
          if ($conn->query($sql) === TRUE) {
              $iterated=true;
          }
@@ -31,9 +31,9 @@ if ($conn->connect_error)
              break;
          }
      }
-    if ($col=='t2')
+    if ($col=='name')
        {
-           $sql = "UPDATE student_has_course SET T2=$_POST[$i] WHERE studentID=$roll";
+           $sql = "UPDATE student SET studentName='$_POST[$i]' WHERE RollNo=$roll";
            if ($conn->query($sql) === TRUE) {
                $iterated=true;
            }
@@ -43,9 +43,9 @@ if ($conn->connect_error)
                break;
            }
        }
-       if ($col=='pr')
+       if ($col=='email')
          {
-             $sql = "UPDATE student_has_course SET ProjectAssignment=$_POST[$i] WHERE studentID=$roll";
+             $sql = "UPDATE student SET email='$_POST[$i]' WHERE RollNo=$roll";
              if ($conn->query($sql) === TRUE) {
                  $iterated=true;
              }
@@ -55,9 +55,9 @@ if ($conn->connect_error)
                  break;
              }
          }
-         if ($col=='end')
+         if ($col=='dept')
            {
-               $sql = "UPDATE student_has_course SET EndSem=$_POST[$i] WHERE studentID=$roll";
+               $sql = "UPDATE student SET department='$_POST[$i]' WHERE RollNo=$roll";
                if ($conn->query($sql) === TRUE) {
                    $iterated=true;
                }
@@ -67,10 +67,9 @@ if ($conn->connect_error)
                    break;
                }
            }
-           if ($col=='g')
+           if ($col=='bday')
              {
-                if($_POST[$i]=='NULL'){$_POST[$i] = NULL;}
-                 $sql = "UPDATE student_has_course SET grade='$_POST[$i]' WHERE studentID=$roll";
+                 $sql = "UPDATE student SET birthDate='$_POST[$i]' WHERE RollNo=$roll";
                  if ($conn->query($sql) === TRUE) {
                      $iterated=true;
                  }
@@ -80,6 +79,42 @@ if ($conn->connect_error)
                      break;
                  }
              }
+             if ($col=='batch')
+               {
+                   $sql = "UPDATE student SET batch='$_POST[$i]' WHERE RollNo=$roll";
+                   if ($conn->query($sql) === TRUE) {
+                       $iterated=true;
+                   }
+                   else {
+                       $iterated=false;
+                       echo "Error updating record: " . $conn->error;
+                       break;
+                   }
+               }
+               if ($col=='gp')
+                 {
+                     $sql = "UPDATE student SET CGPA='$_POST[$i]' WHERE RollNo=$roll";
+                     if ($conn->query($sql) === TRUE) {
+                         $iterated=true;
+                     }
+                     else {
+                         $iterated=false;
+                         echo "Error updating record: " . $conn->error;
+                         break;
+                     }
+                 }
+                 if ($col=='add')
+                   {
+                       $sql = "UPDATE student SET address='$_POST[$i]' WHERE RollNo=$roll";
+                       if ($conn->query($sql) === TRUE) {
+                           $iterated=true;
+                       }
+                       else {
+                           $iterated=false;
+                           echo "Error updating record: " . $conn->error;
+                           break;
+                       }
+                   }
  }
 
  if($iterated){$_SESSION['actionsuccess']=1;}
