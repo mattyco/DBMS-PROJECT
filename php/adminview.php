@@ -272,7 +272,7 @@ width: 300px;
           echo '<center><input type="submit" value = "submit"></center></form>';
 
       } else {
-          echo "No students have enrolled for this course";
+          echo "Can't fetch student records";
       }
 
   }
@@ -285,13 +285,34 @@ width: 300px;
       </h2>
             <p>
 
-        Edit details of students
+        Remove details of student(s)
 
         </p>
-      </section>
+      </section>';
+
+      $_SESSION['lastVisited']="adminview.php?studentlist";
+
+      $sql = "SELECT * FROM student";
+      $result = $conn->query($sql);
+
+      if ($result->num_rows > 0) {
+        echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Roll Number</th><th>Student Name</th><th>Email</th><th>Department</th><th>Birth Date</th><th>Batch</th><th>CGPA</th><th>Address</th><th>Check to remove record</th></tr><form action='adminview.php?studentlist/remove'  method = 'post'>";
+          // output data of each row
+          while($row = $result->fetch_assoc()) {
+              echo "<tr><td>".$row["RollNo"]."</td><td>".$row["studentName"]."</td><td>". $row["email"]."</td><td>". $row["department"]."</td><td>". $row["birthDate"]."</td><td>". $row["batch"]."</td><td>". $row["CGPA"]."</td><td>". $row["address"]."</td><td><input type='checkbox' name='".$row['RollNo']."' /></td></tr>";
+          }
+
+          echo "</table></div>";
+          echo '<center><input type="submit" value = "submit"></center></form>';
 
 
-    <form action="adminview.php?studentlist/remove"  method = "post">
+
+      } else {
+          echo "Can't fetch student records";
+      }
+
+
+    '<form action="adminview.php?studentlist/remove"  method = "post">
     		<center><input type="submit" value="View Data" class="button big"></center>
     	</form>';
 
@@ -299,17 +320,22 @@ width: 300px;
 
   else if(isset($_GET['studentlist/remove']))
   {
-    $get_stu = "INSERT INTO student (RollNo, studentName, email, department, birthDate, batch, address, password) VALUES ($studentrollno, '$studentname', '$studentemail', '$studentdept', $studentdob, '$studentbranch', '$studentaddress', $stupass)";
-    $run_stu = mysqli_query($conn, $get_stu);
-    if($run_stu)
+    foreach(array_keys($_POST) as $i)
     {
-      $_SESSION['actionsuccess']=1;
+      echo $i;
+      $get_stu = "DELETE FROM student WHERE RollNo =$i";
+      $run_stu = mysqli_query($conn, $get_stu);
+      if($run_stu)
+      {
+        $_SESSION['actionsuccess']=1;
+      }
+      else
+      {
+        $_SESSION['actionsuccess']=0;
+        break;
+      }
     }
-    else
-    {
-      $_SESSION['actionsuccess']=0;
-    }
-    echo "<script>window.location.href='adminview.php?studentlist'</script>";
+     echo "<script>window.location.href='adminview.php?studentlist'</script>";
   }
 
 
@@ -375,6 +401,148 @@ width: 300px;
             echo "Can not fetch teacher records";
         }
 	}
+
+  else if(isset( $_GET['teacherlist/add'] ))
+  {
+    echo '		<section id="intro" class="main">
+            <h2>
+        REGISTER NEW TEACHER
+      </h2>
+            <p>
+
+        Add new teacher details
+
+        </p>
+      </section>
+
+
+    <form action="adminview.php?teacherlist/insert"  method = "post">
+    		<p><center>Enter Teacher ID&nbsp&nbsp</center><input type="number" name="teacherID" id = "teacherID"></p>
+    		<p><center>Enter TeacherName&nbsp&nbsp</center><input type="text" name="teacherName" id = "teacherName"></p>
+    		<p><center>Enter Email&nbsp&nbsp</center><input type="email" name="email" id = "email"></p>
+    		<p><center>Enter Department&nbsp&nbsp</center><input type="text" name="department" id = "department"></p>
+        <p><center>Enter Birth Date&nbsp&nbsp<input type="date" name="birthDate" id = "birthDate"></center></p>
+    		<p><center>Enter Start Date&nbsp&nbsp</center><input type="date" name="startDate" id = "startDate"></p>
+    		<p><center>Enter Designation&nbsp&nbsp</center><input type="text" name="designation" id = "designation"></p>
+
+    		<center><input type="submit" value="View Data" class="button big"></center>
+    	</form>';
+
+  }
+
+  else if(isset($_GET['teacherlist/insert']))
+  {
+    $teacherid = $_POST['teacherID'];
+    $teachername = $_POST['teacherName'];
+    $teacheremail = $_POST['email'];
+    $teacherdept = $_POST["department"];
+    $teacherdob = $_POST['birthDate'];
+    $teacherstartdate = $_POST["startDate"];
+    $teacherpost = $_POST["designation"];
+    $teachpass = 'password';
+    $teachuser = explode('@', $teacheremail)[0];
+    echo $teachuser;
+    $get_stu = "INSERT INTO teacher (teacherID, username, email, password, teacherName, startDate, birthDate, department, designation) VALUES ($teacherid, '$teachuser', '$teacheremail', $teachpass, '$teachername', $teacherstartdate, $teacherdob, '$teacherdept', '$teacherpost')";
+    $run_stu = mysqli_query($conn, $get_stu);
+    if($run_stu)
+    {
+      $_SESSION['actionsuccess']=1;
+    }
+    else
+    {
+      $_SESSION['actionsuccess']=0;
+    }
+    echo "<script>window.location.href='adminview.php?teacherlist'</script>";
+  }
+
+  else if(isset( $_GET['teacherlist/edit'] ))
+  {
+    echo '		<section id="intro" class="main">
+            <h2>
+        MODIFY TEACHER RECORDS
+      </h2>
+            <p>
+
+        Edit details of teachers
+
+        </p>
+      </section>';
+
+      $_SESSION['lastVisited']="adminview.php?teacherlist";
+
+      $sql = "SELECT * FROM teacher";
+      $result = $conn->query($sql);
+
+      if ($result->num_rows > 0) {
+        echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Teacher ID</th><th>Teacher Name</th><th>Email</th><th>Start Date</th><th>Birth Date</th><th>Department</th><th>Designation</th></tr><form action='teachermodify.php'  method = 'post'>";
+          // output data of each row
+          while($row = $result->fetch_assoc()) {
+                echo "<tr><td><input name='".$row['teacherID']."_tid' type='number' value=".$row['teacherID'].">".$row["teacherID"]."</td><td><input name='".$row['teacherID']."_name' type='text' value='".$row['teacherName']."'>".$row["teacherName"]."</td><td><input name='".$row['teacherID']."_email' type='email' value=".$row['email'].">". $row["email"]."</td><td><input name='".$row['teacherID']."_startdate' type='date' value=".$row['startDate'].">". $row["startDate"]."</td><td><input name='".$row['teacherID']."_bday' type='date' value=".$row['birthDate'].">". $row["birthDate"]."</td><td class='select'>". $row["department"]."<select name='".$row["teacherID"]."_dept'><option selected = '$row[department]'>$row[department]</option><option value = 'CSE'>CSE</option><option value = 'ECE'>ECE</option><option value = 'EEE'>EEE</option><option value = 'MECH'>MECH</option><option value = 'BT'>BT</option><option value = 'EP'>EP</option><option value = 'CHEM'>CHEM</option></select></td><td class='select'>". $row["designation"]."<select name='".$row["teacherID"]."_post'><option selected = '$row[designation]'>$row[designation]</option><option value = 'Assistant Professor'>Assistant Professor</option><option value = 'Professor'>Professor</option><option value = 'HOD'>HOD</option></select></td></tr>";
+          }
+          echo "</table></div>";
+          echo '<center><input type="submit" value = "submit"></center></form>';
+
+      } else {
+          echo "Can't fetch teacher records";
+      }
+
+  }
+
+  else if(isset( $_GET['teacherlist/delete'] ))
+  {
+    echo '		<section id="intro" class="main">
+            <h2>
+        DELETE TEACHER RECORDS
+      </h2>
+            <p>
+
+        Remove details of teacher(s)
+
+        </p>
+      </section>';
+
+      $_SESSION['lastVisited']="adminview.php?teacherlist";
+
+      $sql = "SELECT * FROM teacher";
+      $result = $conn->query($sql);
+
+      if ($result->num_rows > 0) {
+        echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Teacher ID</th><th>Teacher Name</th><th>Email</th><th>Start Date</th><th>Birth Date</th><th>Department</th><th>Designation</th><th>Check to remove record</th></tr><form action='adminview.php?teacherlist/remove'  method = 'post'>";
+          // output data of each row
+          while($row = $result->fetch_assoc()) {
+            echo "<tr><td>".$row["teacherID"]."</td><td>".$row["teacherName"]."</td><td>". $row["email"]."</td><td>". $row["startDate"]."</td><td>". $row["birthDate"]."</td><td>". $row["department"]."</td><td>". $row["designation"]."</td><td><input type='checkbox' name='".$row['teacherID']."' /></td></tr>";
+          }
+
+          echo "</table></div>";
+          echo '<center><input type="submit" value = "submit"></center></form>';
+
+
+
+      } else {
+          echo "Can't fetch teacher data";
+      }
+  }
+
+  else if(isset($_GET['teacherlist/remove']))
+  {
+    foreach(array_keys($_POST) as $i)
+    {
+      echo $i;
+      $get_stu = "DELETE FROM teacher WHERE teacherID =$i";
+      $run_stu = mysqli_query($conn, $get_stu);
+      if($run_stu)
+      {
+        $_SESSION['actionsuccess']=1;
+      }
+      else
+      {
+        $_SESSION['actionsuccess']=0;
+        break;
+      }
+    }
+     echo "<script>window.location.href='adminview.php?teacherlist'</script>";
+  }
+
 
 
 //COURSES TABLES
