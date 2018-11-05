@@ -491,6 +491,38 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
+--
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prereg`
+--
+
+--
+-- Table structure for table `prereg`
+--
+
+CREATE TABLE `prereg` (
+  `Sno` int(10) NOT NULL,
+  `studentID` varchar(9) NOT NULL,
+  `teacherID` varchar(9) NOT NULL,
+  `courseID` varchar(5) NOT NULL,
+  `leavesTaken` int(11) DEFAULT NULL,
+  `grade` varchar(1) DEFAULT NULL,
+  `present` int(2) DEFAULT '0',
+  `T1` int(2) DEFAULT '0',
+  `T2` int(2) DEFAULT '0',
+  `ProjectAssignment` int(2) DEFAULT '0',
+  `EndSem` int(2) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `prereg`
+--
+
+
+ALTER TABLE `prereg`
+  MODIFY `Sno` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- --------------------------------------------------------

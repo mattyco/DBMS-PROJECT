@@ -116,6 +116,34 @@ width: 300px;
 
 	if(isset( $_GET['mycourses'] ))
 	{
+    if(isset($_SESSION['actionsuccess']))
+    {
+      if($_SESSION['actionsuccess']==1)
+        {
+        echo '
+      <div class="w3-container">
+        <div class="w3-panel w3-card w3-green w3-display-container">
+          <span onclick="this.parentElement.style.display='."'none'".'"
+          class="w3-button w3-green w3-large w3-display-topright">&times;</span>
+          <h3 style="color:white">Success!</h3>
+          <p>Record updated successfully!</p>
+          </div>
+      </div>';}
+      else if($_SESSION['actionsuccess']==0)
+        {
+          echo '
+          <div class="w3-container">
+            <div class="w3-panel w3-card w3-red w3-display-container">
+              <span onclick="this.parentElement.style.display='."'none'".'"
+              class="w3-button w3-red w3-large w3-display-topright">&times;</span>
+              <h3 style="color:white">Insert failed</h3>
+              <p>Error in updating records</p>
+              </div>
+          </div>';
+        }
+    unset($_SESSION['actionsuccess']);
+
+    }
 
 		echo '		<section id="intro" class="main">
             <h2>
@@ -193,25 +221,66 @@ width: 300px;
          </p>
       </section>';
 
-         $sql = "SELECT * FROM course c, teacher t where t.username = '$teacheruname' and c.teacherID=t.teacherID";
+         $sql = "SELECT DISTINCT c.courseID, courseName, t.teacherID, RollNo, studentName, s.department, batch, CGPA FROM course c, prereg p, teacher t, student s where t.username= '$teacheruname' and p.teacherID=t.teacherID and p.studentID = s.RollNo and c.courseID = p.courseID";
          $result = $conn->query($sql);
 
              // output data of each row
 
          if ($result->num_rows > 0) {
-           echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Course ID</th><th>Course Name</th><th>Classroom</th><th>Slot</th></tr>";
+           echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Course ID</th><th>Registerd for course</th><th>Student ID</th><th>Student Name</th><th>Department</th><th>Batch</th><th>CGPA</th><th>Check to enroll</th></tr><form action='teacherview.php?enroll/insert'  method = 'post'>";
              // output data of each row
              while($row = $result->fetch_assoc()) {
-                 echo "<tr><td>". $row["courseID"]."</td><td>"."<a href= teacherview.php?enroll/".str_replace(' ','',$row["courseName"]).">".$row["courseName"]."</a>"."</td><td>".$row["classroom"]."</td><td>". $row["slot"]."</td></tr>";
-                 $_SESSION['course'][]=$row["courseName"];
+                 echo "<tr><td>". $row["courseID"]."</td><td>". $row["courseName"]."</td><td>". $row["RollNo"]."</td><td>".$row["studentName"]."</a>"."</td><td>".$row["department"]."</td><td>". $row["batch"]."</td><td>". $row["CGPA"]."</td><td><input type = 'checkbox' name='".$row['RollNo']."_".$row['courseID']."_".$row['teacherID']."'></td></tr>";
              }
 
              echo "</table></div>";
+             echo '<center><input type="submit" value = "submit"></center></form>';
          } else {
              echo "Currently taking no courses";
          }
 
 	}
+
+  else if(isset( $_GET['enroll/insert'] ))
+  {
+    foreach (array_keys($_POST) as $i)
+    {
+      $temparr = explode('_', $i);
+      $s_id = $temparr[0];
+      $c_id = $temparr[1];
+      $t_id = $temparr[2];
+      $iterated = true;
+      $sql = "INSERT INTO student_has_course (studentID, teacherID, courseID, leavesTaken, present, T1, T2, ProjectAssignment, EndSem) VALUES ($s_id, $t_id, $c_id, 0, 0, 0, 0, 0, 0)";
+      if ($conn->query($sql) === TRUE) {
+          $iterated=true;
+          $sql = "DELETE FROM prereg where courseID = $c_id";
+          if ($conn->query($sql) === TRUE) {
+              $iterated=true;}
+          else {
+            $iterated=false;
+            echo "Error updating record: " . $conn->error;
+            break;
+                }
+          }
+      else {
+          $iterated=false;
+          echo "Error updating record: " . $conn->error;
+          break;
+      }
+    }
+    if($iterated)
+    {
+      $_SESSION['actionsuccess']=1;
+    }
+    else
+    {
+      $_SESSION['actionsuccess']=0;
+    }
+    echo "<script>window.location.href='teacherview.php?mycourses'</script>";
+
+  }
+
+
   else if(isset( $_GET['grades'] ))
 	{
     echo '		<section id="intro" class="main">

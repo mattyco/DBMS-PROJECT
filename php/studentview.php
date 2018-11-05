@@ -145,20 +145,6 @@ width: 300px;
         } else {
             echo "Currently taking no courses";
         }
-
-      //   <form action="teacherview.php?insert"  method = "post">
- 			// 	<p>Enter studentID&nbsp&nbsp<input type="number" name="studentID" id = "studentID"></p>
- 			// 	<p></p>
-			// 	<p>Enter teacherID&nbsp&nbsp<input type="number" name="teacherID" id = "teacherID"></p>
- 			// 	<p></p>
-			// 	<p>Enter CourseID&nbsp&nbsp<input type="number" name="courseID" id = "courseID"></p>
- 			// 	<p></p>
- 			// 	<p>Enter Grade&nbsp&nbsp<input type="text" name="grade" id = "grade"></p>
- 			// 	<p></p>
-      //
- 			// 	<input type="submit" value="View Data" class="button big">
-			// </form>
-
 	}
 	else if(isset( $_GET['attendance'] ))//detailed with #present, absent, total, percentage, possibleLeaves
 	{
@@ -195,6 +181,37 @@ width: 300px;
 	}
   else if(isset( $_GET['prereg'] ))
 	{
+
+    if(isset($_SESSION['actionsuccess']))
+    {
+      if($_SESSION['actionsuccess']==1)
+        {
+        echo '
+      <div class="w3-container">
+        <div class="w3-panel w3-card w3-green w3-display-container">
+          <span onclick="this.parentElement.style.display='."'none'".'"
+          class="w3-button w3-green w3-large w3-display-topright">&times;</span>
+          <h3 style="color:white">Success!</h3>
+          <p>Record updated successfully!</p>
+          </div>
+      </div>';}
+      else if($_SESSION['actionsuccess']==0)
+        {
+          echo '
+          <div class="w3-container">
+            <div class="w3-panel w3-card w3-red w3-display-container">
+              <span onclick="this.parentElement.style.display='."'none'".'"
+              class="w3-button w3-red w3-large w3-display-topright">&times;</span>
+              <h3 style="color:white">Insert failed</h3>
+              <p>Error in updating records</p>
+              </div>
+          </div>';
+        }
+    unset($_SESSION['actionsuccess']);
+
+    }
+
+
     echo '		<section id="intro" class="main">
              <h2>
         PRE-REGISTRATION
@@ -206,25 +223,60 @@ width: 300px;
          </p>
       </section>';
 
-         $sql = "SELECT * FROM course c, teacher t where t.username = '$teacheruname' and c.teacherID=t.teacherID";
-         $result = $conn->query($sql);
+      $sql = "SELECT DISTINCT c.courseID, courseName, t.teacherID, teacherName, slot, classroom, credits FROM `student_has_course` h, course c, teacher t where c.courseID != h.courseID and h.studentID = 22 and c.teacherID = t.teacherID ";
+      $result = $conn->query($sql);
 
              // output data of each row
 
          if ($result->num_rows > 0) {
-           echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Course ID</th><th>Course Name</th><th>Classroom</th><th>Slot</th></tr>";
+           echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Course ID</th><th>Course Name</th><th>Teacher ID</th><th>Teacher Name</th><th>Classroom</th><th>Slot</th><th>Credits</th><th>Check to add course</th></tr><form action='studentview.php?prereg/insert'  method = 'post'>";
              // output data of each row
              while($row = $result->fetch_assoc()) {
-                 echo "<tr><td>". $row["courseID"]."</td><td>"."<a href= studentview.php?prereg/".str_replace(' ','',$row["courseName"]).">".$row["courseName"]."</a>"."</td><td>".$row["classroom"]."</td><td>". $row["slot"]."</td></tr>";
-                 $_SESSION['course'][]=$row["courseName"];
+                 echo "<tr><td>". $row["courseID"]."</td><td>".$row["courseName"]."</td><td>".$row["teacherID"]."</td><td>".$row["teacherName"]."</td><td>".$row["classroom"]."</td><td>". $row["slot"]."</td><td>".$row["credits"]."</td><td><input type = 'checkbox' name='".$row['courseID']."_".$row['teacherID']."'></td></tr>";
              }
 
              echo "</table></div>";
+             echo '<center><input type="submit" value = "submit"></center></form>';
+
          } else {
              echo "Currently taking no courses";
          }
 
 	}
+
+  else if(isset( $_GET['prereg/insert'] ))
+	{
+      foreach (array_keys($_POST) as $i)
+      {
+        $temparr = explode('_', $i);
+        $c_id = $temparr[0];
+        $t_id = $temparr[1];
+        $s_id = $_SESSION['user'];
+        $iterated = true;
+        $sql = "INSERT INTO prereg (studentID, teacherID, courseID, leavesTaken, present, T1, T2, ProjectAssignment, EndSem) VALUES ($s_id, $t_id, $c_id, 0, 0, 0, 0, 0, 0)";
+        if ($conn->query($sql) === TRUE) {
+            $iterated=true;
+        }
+        else {
+            $iterated=false;
+            echo "Error updating record: " . $conn->error;
+            break;
+        }
+
+      }
+      if($iterated)
+      {
+        $_SESSION['actionsuccess']=1;
+      }
+      else
+      {
+        $_SESSION['actionsuccess']=0;
+      }
+      echo "<script>window.location.href='studentview.php?prereg'</script>";
+
+
+	}
+
   else if(isset( $_GET['grades'] ))//detailed with T1, T2, EndSem, percentage, grade
 	{
     echo '		<section id="intro" class="main">
