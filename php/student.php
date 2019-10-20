@@ -78,9 +78,6 @@ width: 100%;
     <a href="../index.php" class="w3-bar-item w3-button">HOME</a>
     <a href="teacher.php" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> TEACHER</a>
     <a href="student.php" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> STUDENT</a>
-    <a href="../login/logout.php" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
-      LOGOUT
-    </a>
   </div>
 
   <!-- Navbar on small screens -->
@@ -88,9 +85,6 @@ width: 100%;
     <a href="../index.php" class="w3-bar-item w3-button" onclick="toggleFunction()">HOME</a>
     <a href="teacher.php" class="w3-bar-item w3-button" onclick="toggleFunction()">TEACHER</a>
     <a href="student.php" class="w3-bar-item w3-button" onclick="toggleFunction()">STUDENT</a>
-    <a href="../login/logout.php" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
-      LOGOUT
-    </a>
   </div>
 </div>
 
@@ -142,7 +136,7 @@ width: 100%;
       </form>
       </section>
         <!-- Footer -->
-  
+
       </div>
 
     <!-- Scripts -->
