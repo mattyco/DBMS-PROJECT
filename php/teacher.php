@@ -98,9 +98,8 @@ body, html {
 
 	  			<?php
 
-			if(isset( $_GET['failedLogin'] ))
+			if(isset( $_GET['failedlogin'] ))
 			{
-				echo"failed";
 				echo '
 				<div class="w3-container">
 					<div class="w3-panel w3-card w3-red w3-display-container">
