@@ -185,20 +185,6 @@ ALTER TABLE `admin`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `loginAttempts`
---
-
-CREATE TABLE `loginAttempts` (
-  `IP` varchar(20) NOT NULL,
-  `Attempts` int(11) NOT NULL,
-  `LastLogin` datetime NOT NULL,
-  `Username` varchar(65) DEFAULT NULL,
-  `ID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `members`
 --
 
@@ -669,11 +655,6 @@ ALTER TABLE `course`
   ADD UNIQUE KEY `courseID` (`courseID`);
 
 --
--- Indexes for table `loginAttempts`
---
-ALTER TABLE `loginAttempts`
-  ADD PRIMARY KEY (`ID`);
-
 --
 -- Indexes for table `members`
 --
@@ -708,15 +689,6 @@ ALTER TABLE `teacher`
 
 --
 -- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `loginAttempts`
---
-ALTER TABLE `loginAttempts`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
---
--- Constraints for dumped tables
 --
 
 --
